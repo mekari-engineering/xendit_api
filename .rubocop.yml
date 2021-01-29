@@ -1,10 +1,36 @@
-Style/StringLiterals:
-  Enabled: true
-  EnforcedStyle: double_quotes
+require: 
+  - rubocop-rspec
+  
+AllCops:
+  TargetRubyVersion: 2.4
+  NewCops: enable
 
-Style/StringLiteralsInInterpolation:
-  Enabled: true
-  EnforcedStyle: double_quotes
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/BlockLength:
+  Enabled: false
 
 Layout/LineLength:
-  Max: 120
+  Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 10

@@ -7,7 +7,7 @@ Ruby API wrapper for Xendit payment gateway
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'xendit_api'
+gem 'xendit_api', git: 'git://github.com/mekari-engineering/xendit_api.git', branch: 'main'
 ```
 
 And then execute:

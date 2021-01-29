@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/ewallets
+    body:
+      encoding: UTF-8
+      string: amount=4050&ewallet_type=OVO&external_id=123&phone=082310202012
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50XzZqcEJJQVE5dktiR1ZKQnV1dlEzYlRvZDExbWNhTjh4ZW96MWZNc1BXOGtBaEhub3MzVE5ueWVZWTBJN3BLUTo=
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 28 Nov 2019 09:29:00 GMT
+      Etag:
+      - W/"67-0hrz5JkcrqGXa60cNx1wpgCwByM"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - "___utmvaBcBuvvsZZ=MCN\x01Qfwc; path=/; Max-Age=900"
+      - '___utmvbBcBuvvsZZ=RZY XUbOSalS: rtj; path=/; Max-Age=900'
+      - ___utmvmBcBuvvsZZ=TreuBvIrWaC; path=/; Max-Age=900
+      - incap_ses_1120_2182539=M4njQ1uE9jAp01T2kAqLD1uT310AAAAAbxeg2WZv4BNIeqX0QEUvbw==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=KCIYUh88U0Rnj43FjjCKbQAAAACc5RfvzSAvrY9M2FpFQHwD; path=/; Domain=.xendit.co
+      - visid_incap_2182539=KB5TeloGS9+yXCe/w5LjtVuT310AAAAAQUIPAAAAAACjFwtTCoLH3Gej8LspNu9Q;
+        expires=Fri, 27 Nov 2020 09:18:08 GMT; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Incapsula
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 12-13401842-13348698 pNYN RT(1574933337360 52) q(0 0 0 -1) r(23 23) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"EWALLET_APP_UNREACHABLE","message":"Your e-wallet app
+        is not reachable by the provider"}'
+    http_version: 
+  recorded_at: Thu, 28 Nov 2019 09:29:00 GMT
+recorded_with: VCR 4.0.0
