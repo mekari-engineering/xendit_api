@@ -6,10 +6,6 @@ RSpec.describe XenditApi::Client do
     expect(XenditApi::Client::BASE_URL).to eq 'https://api.xendit.co'
   end
 
-  it 'returns SECRET_KEY' do
-    expect(XenditApi::Client::SECRET_KEY).not_to be_nil
-  end
-
   describe '#ewallet' do
     it 'returns instance of XenditApi::Api::Ewallet' do
       client = described_class.new

@@ -7,12 +7,11 @@ require 'xendit_api/api/disbursement'
 
 module XenditApi
   class Client
-    BASE_URL = ENV['XENDIT_ROOT_PATH']
-    SECRET_KEY = ENV['XENDIT_SECRET_KEY']
+    BASE_URL = 'https://api.xendit.co'.freeze
 
-    def initialize
+    def initialize(authorization = nil)
       @connection = Faraday.new(url: BASE_URL) do |connection|
-        connection.basic_auth(SECRET_KEY, '')
+        connection.basic_auth(authorization, '')
         connection.request :json
         connection.response :json
 
