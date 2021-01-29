@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/callback_virtual_accounts
+    body:
+      encoding: UTF-8
+      string: '{"external_id":null,"name":null,"expected_amount":null,"is_closed":true,"is_single_use":true,"bank_code":"MANDIRI"}'
+    headers:
+      Authorization:
+      - Basic ***REMOVED***
+      User-Agent:
+      - Faraday v1.0.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 12 Oct 2020 07:19:35 GMT
+      Etag:
+      - W/"1ce-f2osmKiWwek4HfxPjoPvEZJobnA"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1112_2182539=ziadQfwn3kXOPMBMUZ5uD4cDhF8AAAAAfQWV6NrH1JFNplgfGKLFpQ==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=3tX6c2IYAAFX7vMnjjCKbQAAAADWFIiZj7IyvX67GJMNGiXi; path=/; Domain=.xendit.co
+      - visid_incap_2182539=SR1ElkApQkaEkZqvJne6LIcDhF8AAAAAQUIPAAAAAACYa7j0l/uM27FF5K+wyIXp;
+        expires=Mon, 11 Oct 2021 10:56:31 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Incapsula
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 7-7388017-7173514 pNYN RT(1602487174828 19) q(0 0 0 -1) r(4 4) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"API_VALIDATION_ERROR","message":"There was an error
+        with the format submitted to the server.","errors":[{"field":["external_id"],"location":"body","messages":["\"external_id\"
+        must be a string"],"types":["string.base"]},{"field":["name"],"location":"body","messages":["\"name\"
+        must be a string"],"types":["string.base"]},{"field":["expected_amount"],"location":"body","messages":["\"expected_amount\"
+        must be a number"],"types":["number.base"]}]}'
+    http_version: null
+  recorded_at: Mon, 12 Oct 2020 07:19:35 GMT
+recorded_with: VCR 5.1.0

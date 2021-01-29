@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/callback_virtual_accounts
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"sample-mandiri-demo","name":"Nobu nagawa","expected_amount":500000,"suggested_amount":500000,"is_closed":true,"is_single_use":true,"bank_code":"BRI"}'
+    headers:
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50XzZqcEJJQVE5dktiR1ZKQnV1dlEzYlRvZDExbWNhTjh4ZW96MWZNc1BXOGtBaEhub3MzVE5ueWVZWTBJN3BLUTo=
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 06 Mar 2020 04:12:50 GMT
+      Etag:
+      - W/"177-lYc7cn4/AqkmAZLjTHUumCMnWpk"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Content-Length:
+      - '275'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1112_2182539=UcIEPiQs9ywheyNfLp5uD8HNYV4AAAAAYVfmmkupW2GqgiNxjnXGYQ==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=nNOiWQW7yTpx5HCXjjCKbQAAAAAPvy5eub1pa6KfWCC71Ak6; path=/; Domain=.xendit.co
+      - visid_incap_2182539=mE+RXghLTzCk0D3Ej/yjRsHNYV4AAAAAQUIPAAAAAAAKNLPCDw5DezxOwQLG0IcQ;
+        expires=Fri, 05 Mar 2021 08:51:21 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Incapsula
+      X-Iinfo:
+      - 10-2095221-2084005 pNNN RT(1583467968711 54) q(0 0 0 -1) r(7 7) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"is_closed":true,"status":"PENDING","currency":"IDR","owner_id":"5ddce91d9c5c2f7670ebf42a","external_id":"sample-mandiri-demo","bank_code":"BRI","merchant_code":"26215","name":"Nobu
+        nagawa","account_number":"262159999957587","suggested_amount":500000,"expected_amount":500000,"is_single_use":true,"expiration_date":"2051-03-05T17:00:00.000Z","id":"5e61cdc239334c3592100a7b"}'
+    http_version: 
+  recorded_at: Tue, 05 May 2020 00:00:00 GMT
+recorded_with: VCR 4.0.0

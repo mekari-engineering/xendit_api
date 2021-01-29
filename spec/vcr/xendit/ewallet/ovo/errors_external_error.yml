@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/ewallets
+    body:
+      encoding: UTF-8
+      string: amount=5000&ewallet_type=OVO&external_id=123&phone=082310202012
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50XzZqcEJJQVE5dktiR1ZKQnV1dlEzYlRvZDExbWNhTjh4ZW96MWZNc1BXOGtBaEhub3MzVE5ueWVZWTBJN3BLUTo=
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 28 Nov 2019 09:32:33 GMT
+      Etag:
+      - W/"56-jttc+m8x6AzRVF5CVmpIJ9UBjPQ"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - "___utmvaBcBuvvsZZ=Ddw\x01Dari; path=/; Max-Age=900"
+      - '___utmvbBcBuvvsZZ=XZM XFQOvalx: KtR; path=/; Max-Age=900'
+      - ___utmvmBcBuvvsZZ=DdAvhqsJVuR; path=/; Max-Age=900
+      - incap_ses_1120_2182539=y2UVJwrTRzWsslX2kAqLDzGU310AAAAA2Wgw5+wxBHE0KPpt7/wCfw==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=nQgxfoYG+XzO5bWgjjCKbQAAAAAGLDoBuccB/UewTsZBHSd8; path=/; Domain=.xendit.co
+      - visid_incap_2182539=79RkkO7YSySw4Ce004f5UzGU310AAAAAQUIPAAAAAACyEqEJOt5ltoSHP3BaNR54;
+        expires=Fri, 27 Nov 2020 09:18:06 GMT; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Incapsula
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 14-45494316-44762833 pNYN RT(1574933551305 64) q(0 0 0 -1) r(17 17) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"EXTERNAL_ERROR","message":"External error. Please contact
+        our support"}'
+    http_version: 
+  recorded_at: Thu, 28 Nov 2019 09:32:33 GMT
+recorded_with: VCR 4.0.0

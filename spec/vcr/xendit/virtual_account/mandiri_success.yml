@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/callback_virtual_accounts
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"sample-mandiri-demo","name":"Nobu nagawa","suggested_amount":500000,"expected_amount":500000,"is_closed":true,"is_single_use":true,"bank_code":"MANDIRI"}'
+    headers:
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50XzZqcEJJQVE5dktiR1ZKQnV1dlEzYlRvZDExbWNhTjh4ZW96MWZNc1BXOGtBaEhub3MzVE5ueWVZWTBJN3BLUTo=
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 06 Mar 2020 03:54:59 GMT
+      Etag:
+      - W/"17b-MDUyVUCXTcxmIQ68sv6LmiX+cjI"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Content-Length:
+      - '278'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1112_2182539=j+poGvpk8y/V2yJfLp5uD5PJYV4AAAAAtwhGscbvig0fq1EWuFxpXA==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=sEjfef3tvQUB2WIOjjCKbQAAAABV2Ha1cembsBJ4szgw8h3z; path=/; Domain=.xendit.co
+      - visid_incap_2182539=CXcwrEvESIypupb95LIfTpPJYV4AAAAAQUIPAAAAAABqVnV2+ju0mTFq1C2T10a7;
+        expires=Fri, 05 Mar 2021 08:51:18 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Incapsula
+      X-Iinfo:
+      - 2-4459208-4429525 pNNN RT(1583466898381 15) q(0 0 0 -1) r(7 7) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"is_closed":true,"status":"PENDING","currency":"IDR","owner_id":"5ddce91d9c5c2f7670ebf42a","external_id":"sample-mandiri-demo","bank_code":"MANDIRI","merchant_code":"88908","name":"Nobu
+        nagawa","account_number":"889089999100698","suggested_amount":500000,"expected_amount":500000,"is_single_use":true,"expiration_date":"2051-03-05T17:00:00.000Z","id":"5e61c99339334c3592100a71"}'
+    http_version: 
+  recorded_at: Tue, 05 May 2020 00:00:00 GMT
+recorded_with: VCR 4.0.0

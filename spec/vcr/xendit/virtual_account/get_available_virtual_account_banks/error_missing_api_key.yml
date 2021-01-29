@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/available_virtual_account_banks
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic Og==
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 20 Mar 2019 03:38:37 GMT
+      Etag:
+      - W/"ec-26QY5/W0aq3WeJziY4K4xk8CQUs"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Content-Length:
+      - '236'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"error_code":"API_VALIDATION_ERROR","message":"There was an error
+        with the format submitted to the server.","errors":[{"field":["api_key"],"location":"body","messages":["\"api_key\"
+        is not allowed to be empty"],"types":["any.empty"]}]}'
+    http_version: 
+  recorded_at: Wed, 20 Mar 2019 03:38:29 GMT
+recorded_with: VCR 4.0.0

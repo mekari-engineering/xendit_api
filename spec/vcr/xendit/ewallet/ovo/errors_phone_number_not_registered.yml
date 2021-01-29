@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/ewallets
+    body:
+      encoding: UTF-8
+      string: amount=4040&ewallet_type=OVO&external_id=123&phone=087310202012
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50XzZqcEJJQVE5dktiR1ZKQnV1dlEzYlRvZDExbWNhTjh4ZW96MWZNc1BXOGtBaEhub3MzVE5ueWVZWTBJN3BLUTo=
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 28 Nov 2019 09:26:15 GMT
+      Etag:
+      - W/"79-BQGEErIo6I2exgSLCQT97HSYapw"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - "___utmvaBcBuvvsZZ=bKg\x01YALt; path=/; Max-Age=900"
+      - '___utmvbBcBuvvsZZ=dZK XXuOlaly: bto; path=/; Max-Age=900'
+      - ___utmvmBcBuvvsZZ=GMlnTQMclnq; path=/; Max-Age=900
+      - incap_ses_1120_2182539=NBGHJOZbvDtpr1T2kAqLD7eS310AAAAA0B1lbRLlYE/uyBx2KJZ6NA==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=GEY3MHScuXaiV78EjjCKbQAAAACEbV3yqP0iuxzuQ+yzr+e3; path=/; Domain=.xendit.co
+      - visid_incap_2182539=2drcc883SA6q7HlBfMgWAbeS310AAAAAQUIPAAAAAAAwbbjPneZ1w5LMSVcOBgYy;
+        expires=Fri, 27 Nov 2020 09:18:16 GMT; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Incapsula
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 9-4515220-4500159 pNYN RT(1574933172651 106) q(0 0 0 -1) r(23 23) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"PHONE_NUMBER_NOT_REGISTERED","message":"Phone number
+        is not registered in the e-wallet provider''s system"}'
+    http_version: 
+  recorded_at: Thu, 28 Nov 2019 09:26:15 GMT
+recorded_with: VCR 4.0.0

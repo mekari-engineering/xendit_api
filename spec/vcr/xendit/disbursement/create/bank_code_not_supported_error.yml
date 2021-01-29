@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/disbursements
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"4e63ea46-79ea-4477-a1aa-2399e661e94b","amount":15000,"bank_code":"NOT_FOUND","account_holder_name":"Bob
+        Jones","account_number":"1111111111","description":"sample disbursement"}'
+    headers:
+      Authorization:
+      - Basic ***REMOVED***
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 17 Apr 2020 02:18:20 GMT
+      Etag:
+      - W/"55-EnrT8P+QMbKKKS2GunBX34WsUeg"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1119_2182539=Y3IwOPiLXH7Fsm6YKX2HD+wRmV4AAAAAbEwaGt9iqCvNjgszwZ1LsQ==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=Y3Akbl8JGwaGyNHajjCKbQAAAACoPJfO52cyKt8+8CdNaUzt; path=/; Domain=.xendit.co
+      - visid_incap_2182539=lhLbO9vXS6edZP7IEs7kLuwRmV4AAAAAQUIPAAAAAAC75NBuuTE/mNmZqJebtxtS;
+        expires=Fri, 16 Apr 2021 12:19:35 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Incapsula
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 4-23730259-23686671 pNYN RT(1587089899738 16) q(0 0 0 -1) r(5 5) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"BANK_CODE_NOT_SUPPORTED_ERROR","message":"Bank code
+        is not supported"}'
+    http_version: 
+  recorded_at: Fri, 17 Apr 2020 02:18:20 GMT
+recorded_with: VCR 4.0.0

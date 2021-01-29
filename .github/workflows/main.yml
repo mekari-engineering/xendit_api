@@ -11,8 +11,8 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.7.2
-    - name: Run the default task
+    - name: Run the static analysis
       run: |
         gem install bundler -v 2.2.3
         bundle install
-        bundle exec rake
+        bundle exec rubocop
