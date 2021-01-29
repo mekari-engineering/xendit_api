@@ -54,12 +54,12 @@ RSpec.describe XenditApi::Client do
           client = described_class.new
           response = client.post('/ewallets', params)
           expect(response).to eq({
-            'transaction_date' => '2019-04-07T01:35:46.658Z',
-            'amount' => 1000,
-            'external_id' => 'nobu@mekari.com',
-            'ewallet_type' => 'OVO',
-            'business_id' => '12121212'
-          })
+                                   'transaction_date' => '2019-04-07T01:35:46.658Z',
+                                   'amount' => 1000,
+                                   'external_id' => 'nobu@mekari.com',
+                                   'ewallet_type' => 'OVO',
+                                   'business_id' => '12121212'
+                                 })
         end
       end
     end
