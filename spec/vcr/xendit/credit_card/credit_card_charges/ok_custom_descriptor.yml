@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/credit_card_charges
+    body:
+      encoding: US-ASCII
+      string: token_id=5cff62f139bbc21026b59db1&amount=19500&external_id=d20f78110b25780eb08e357f8d488f3c+Company+Name+Super+Water&descriptor=Super+Long+Custom+Merchant+Name+Bank
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-Idempotency-Key:
+      - c18b65fc-bd24-4c6e-9ffe-97f29db67506
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50X1BvMkNmT1VpZ2J5bm5KSnNlT0VaU3pURFl0UHg5TmQ1eFhLMStSeGovV0hROExXakJBSnloZz09Og==
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 11 Jun 2019 08:15:35 GMT
+      Etag:
+      - W/"23d-wSjOlku9hdY6ngnsE6p2AlxIsl8"
+      Server:
+      - nginx
+      X-Powered-By:
+      - Express
+      Content-Length:
+      - '410'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"created":"2019-06-11T08:15:34.096Z","business_id":"596d988e56b5a3c45be75e6e","authorized_amount":19500,"external_id":"d20f78110b25780eb08e357f8d488f3c
+        Company Name Super Water","merchant_id":"xendit","merchant_reference_code":"5cff62f139bbc21026b59db0","masked_card_number":"400000XXXXXX0002","charge_type":"SINGLE_USE_TOKEN","card_brand":"VISA","card_type":"CREDIT","descriptor":"XENDIT*JURNAL
+        - Super Long Custom Merchant Name Bank","status":"CAPTURED","bank_reconciliation_id":"5602409338206188903010","eci":"05","capture_amount":19500,"id":"5cff6326637bec7055ca15a4"}'
+    http_version: 
+  recorded_at: Tue, 11 Jun 2019 08:15:35 GMT
+recorded_with: VCR 4.0.0

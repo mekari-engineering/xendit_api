@@ -1,3 +1,4 @@
+require 'xendit_api/errors'
 module XenditApi
   module Middleware
     class HandleResponseException < Faraday::Middleware
@@ -11,10 +12,10 @@ module XenditApi
 
       # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize, Metrics/MethodLength
       def validate_response(response)
-        return true if response.blank?
+        return true if response.nil?
 
         json_response = JSON.parse(response)
-        return true if json_response['error_code'].blank?
+        return true if json_response['error_code'].nil?
 
         error_message = json_response['message']
 

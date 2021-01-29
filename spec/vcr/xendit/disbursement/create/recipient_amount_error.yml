@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/disbursements
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"99a23309-b82d-49ce-ab73-c875859b1791","amount":100000,"bank_code":"BCA","account_holder_name":"Bob
+        Jones","account_number":"123","disbursement_description":"sample disbursement"}'
+    headers:
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50X0lNN2NzeUc0bTNjeVBPVWJwUG02VU51MHozWmtBZXNGR3dnbXVjdXk4NFBRS1NSS2xuWUdlNllqMkphNVVtQjo=
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 17 Apr 2020 03:24:39 GMT
+      Etag:
+      - W/"66-mI3LaK77IMtjhD/Fk1TwisW20CI"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1119_2182539=0PiiGkdUESsebHGYKX2HD3chmV4AAAAALPZrkp7rz9MLKPHqKPbM2Q==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=fmd9Qwv3CRArjk1ojjCKbQAAAAC7bNnR82FQNIsP+X9381w5; path=/; Domain=.xendit.co
+      - visid_incap_2182539=Amtnv7zLQve0zwxPjLAM83chmV4AAAAAQUIPAAAAAAB+0gPHSZDOvjAamuhz6iyd;
+        expires=Fri, 16 Apr 2021 12:19:35 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Incapsula
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 4-23937682-23924889 pNYN RT(1587093878591 14) q(0 0 0 -1) r(5 5) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"RECIPIENT_AMOUNT_ERROR","message":"edit vcr manually"}'
+    http_version: 
+  recorded_at: Fri, 17 Apr 2020 03:24:39 GMT
+recorded_with: VCR 4.0.0

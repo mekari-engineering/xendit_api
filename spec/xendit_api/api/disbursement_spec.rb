@@ -1,4 +1,10 @@
 require 'spec_helper'
+require 'xendit_api/api/disbursement'
+require 'xendit_api/client'
+require 'xendit_api/errors/disbursement'
+require 'securerandom'
+# require 'xendit_api/errors/disbursement'
+# require 'xendit_api/errors/disbursement'
 
 RSpec.describe XenditApi::Api::Disbursement do
   let(:client) { XenditApi::Client.new }
@@ -14,7 +20,7 @@ RSpec.describe XenditApi::Api::Disbursement do
             bank_code: 'BCA',
             account_holder_name: 'Bob Jones',
             account_number: '1111111111',
-            disbursement_description: 'sample disbursement'
+            disbursement_description: 'Payment'
           )
           expect(response).to be_instance_of XenditApi::Model::Disbursement
           expect(response).to have_attributes(
@@ -24,8 +30,8 @@ RSpec.describe XenditApi::Api::Disbursement do
             status: 'PENDING',
             disbursement_description: 'sample disbursement'
           )
-          expect(response.external_id).to be_present
-          expect(response.id).to be_present
+          expect(response.external_id).not_to be_nil
+          expect(response.id).not_to be_nil
         end
       end
     end

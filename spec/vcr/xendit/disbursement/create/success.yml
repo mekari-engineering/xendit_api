@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/disbursements
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"7eef4979-190c-4c89-9fa8-9b78ee26f8c4","amount":15000,"bank_code":"BCA","account_holder_name":"Bob
+        Jones","account_number":"1111111111","description":"sample disbursement"}'
+    headers:
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50X0lNN2NzeUc0bTNjeVBPVWJwUG02VU51MHozWmtBZXNGR3dnbXVjdXk4NFBRS1NSS2xuWUdlNllqMkphNVVtQjo=
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 16 Apr 2020 08:40:58 GMT
+      Etag:
+      - W/"102-ZUSQSJzcs7J5oIOrOhVkYAGkOz0"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Content-Length:
+      - '214'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1119_2182539=dH0YPefqvDaAh0qYKX2HDxkamF4AAAAAlPfkrX/9HTQ/0mzU6nmSeA==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=I6K8A42YZnbZYQXQjjCKbQAAAADRagQnUV1LxZuuuuokgpwH; path=/; Domain=.xendit.co
+      - visid_incap_2182539=lh/gX78BT+21dPM2oJ1BoxkamF4AAAAAQUIPAAAAAAA5SvszYPClY+QWVilmurAy;
+        expires=Thu, 15 Apr 2021 12:19:33 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Incapsula
+      X-Iinfo:
+      - 14-32976035-32827287 pNNN RT(1587026457060 16) q(0 0 0 0) r(6 6) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"PENDING","user_id":"596d988e56b5a3c45be75e6e","external_id":"7eef4979-190c-4c89-9fa8-9b78ee26f8c4","amount":15000,"bank_code":"BCA","account_holder_name":"Bob
+        Jones","disbursement_description":"sample disbursement","id":"5e981a1a7547f00016613fc3"}'
+    http_version: 
+  recorded_at: Thu, 16 Apr 2020 08:40:58 GMT
+recorded_with: VCR 4.0.0

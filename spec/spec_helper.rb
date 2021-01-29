@@ -2,6 +2,12 @@
 
 require 'xendit_api'
 require 'pry'
+require 'vcr'
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/vcr/'
+  config.hook_into :webmock
+end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

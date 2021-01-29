@@ -1,8 +1,7 @@
+require 'xendit_api/model/base'
 module XenditApi
   module Model
-    class Disbursement
-      include ActiveModel::Model
-
+    class Disbursement < XenditApi::Model::Base
       attr_accessor :user_id,
                     :external_id,
                     :amount,

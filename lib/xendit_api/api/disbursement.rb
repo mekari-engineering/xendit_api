@@ -1,3 +1,6 @@
+require 'xendit_api/api/base'
+require 'xendit_api/model/disbursement'
+
 module XenditApi
   module Api
     class Disbursement < XenditApi::Api::Base

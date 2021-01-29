@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/credit_card_charges
+    body:
+      encoding: US-ASCII
+      string: token_id=123&amount=1&external_id=123123+Company+Name+Super+Water
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-Idempotency-Key:
+      - 8a67447c-a4f3-43ed-9640-cca377331cde
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50X1BvMkNmT1VpZ2J5bm5KSnNlT0VaU3pURFl0UHg5TmQ1eFhLMStSeGovV0hROExXakJBSnloZz09Og==
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 20 Mar 2019 04:34:22 GMT
+      Etag:
+      - W/"47-8emti+6gtkea3C2+zUn5TCYn58U"
+      Server:
+      - nginx
+      X-Powered-By:
+      - Express
+      Content-Length:
+      - '71'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"error_code":"INVALID_TOKEN_ID_ERROR","message":"Token id is invalid"}'
+    http_version: 
+  recorded_at: Wed, 20 Mar 2019 04:34:14 GMT
+recorded_with: VCR 4.0.0
