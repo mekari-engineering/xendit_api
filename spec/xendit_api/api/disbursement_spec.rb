@@ -3,8 +3,6 @@ require 'xendit_api/api/disbursement'
 require 'xendit_api/client'
 require 'xendit_api/errors/disbursement'
 require 'securerandom'
-# require 'xendit_api/errors/disbursement'
-# require 'xendit_api/errors/disbursement'
 
 RSpec.describe XenditApi::Api::Disbursement do
   let(:client) { XenditApi::Client.new }

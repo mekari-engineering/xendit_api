@@ -1,4 +1,5 @@
 require 'xendit_api/model/base'
+
 module XenditApi
   module Model
     class CreditCard < XenditApi::Model::Base

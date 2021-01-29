@@ -1,4 +1,5 @@
 require 'xendit_api/errors'
+
 module XenditApi
   module Middleware
     class HandleResponseException < Faraday::Middleware

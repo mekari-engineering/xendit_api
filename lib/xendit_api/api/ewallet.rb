@@ -1,5 +1,6 @@
 require 'xendit_api/api/base'
 require 'xendit_api/model/ewallet'
+
 module XenditApi
   module Api
     class Ewallet < XenditApi::Api::Base

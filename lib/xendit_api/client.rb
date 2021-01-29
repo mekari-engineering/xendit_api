@@ -1,5 +1,6 @@
 require 'faraday_middleware'
 require 'xendit_api/middleware/handle_response_exception'
+
 module XenditApi
   class Client
     BASE_URL = ENV['XENDIT_ROOT_PATH']
