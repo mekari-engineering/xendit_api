@@ -1,11 +1,11 @@
-module XenditPay
+module XenditApi
   module Api
     class Base
       attr_reader :client
 
       class << self
         def model_name
-          name.sub("Api", "Model")
+          name.sub('Api', 'Model')
         end
 
         def model_class

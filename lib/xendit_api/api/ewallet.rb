@@ -1,11 +1,11 @@
-module XenditPay
+module XenditApi
   module Api
-    class Ewallet < XenditPay::Api::Base
-      PATH = "/ewallets".freeze
+    class Ewallet < XenditApi::Api::Base
+      PATH = '/ewallets'.freeze
 
       def get(params)
         response = client.get(PATH, params)
-        XenditPay::Model::Ewallet.new(response)
+        XenditApi::Model::Ewallet.new(response)
       end
 
       def post(params:, ewallet_type:)
@@ -15,7 +15,7 @@ module XenditPay
                                phone: params[:phone],
                                ewallet_type: ewallet_type)
 
-        XenditPay::Model::Ewallet.new(response)
+        XenditApi::Model::Ewallet.new(response)
       end
     end
   end

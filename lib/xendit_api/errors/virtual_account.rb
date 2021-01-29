@@ -1,4 +1,4 @@
-module XenditPay
+module XenditApi
   module Errors
     module VirtualAccount
       class ResponseError < StandardError; end

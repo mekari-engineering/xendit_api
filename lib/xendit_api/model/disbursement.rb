@@ -1,4 +1,4 @@
-module XenditPay
+module XenditApi
   module Model
     class Disbursement
       include ActiveModel::Model

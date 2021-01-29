@@ -1,8 +1,7 @@
-module XenditPay
+require 'xendit_api/model/base'
+module XenditApi
   module Model
-    class CreditCard
-      include ActiveModel::Model
-
+    class CreditCard < XenditApi::Model::Base
       attr_accessor :id,
                     :created,
                     :business_id,

@@ -1,7 +1,7 @@
-module XenditPay
+module XenditApi
   module Api
-    class VirtualAccount < XenditPay::Api::Base
-      PATH = "/callback_virtual_accounts".freeze
+    class VirtualAccount < XenditApi::Api::Base
+      PATH = '/callback_virtual_accounts'.freeze
 
       def create(external_id:, name:, amount:, bank_code:)
         response = client.post(PATH,
@@ -12,7 +12,7 @@ module XenditPay
                                is_single_use: true,
                                bank_code: bank_code)
         virtual_account_params = permitted_virtual_account_params(response)
-        XenditPay::Model::VirtualAccount.new(virtual_account_params)
+        XenditApi::Model::VirtualAccount.new(virtual_account_params)
       end
 
       def update_to_expired(id)
@@ -23,14 +23,14 @@ module XenditPay
                                 expected_amount: virtual_account.expected_amount,
                                 expiration_date: expired_date.iso8601)
         virtual_account_params = permitted_virtual_account_params(response)
-        XenditPay::Model::VirtualAccount.new(virtual_account_params)
+        XenditApi::Model::VirtualAccount.new(virtual_account_params)
       end
 
       def find(id)
         find_path = "#{PATH}/#{id}"
         response = client.get(find_path, {})
         virtual_account_params = permitted_virtual_account_params(response)
-        XenditPay::Model::VirtualAccount.new(virtual_account_params)
+        XenditApi::Model::VirtualAccount.new(virtual_account_params)
       end
 
       private

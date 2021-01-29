@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "xendit_api/version"
+require_relative 'xendit_api/version'
 
 module XenditApi
   class Error < StandardError; end
