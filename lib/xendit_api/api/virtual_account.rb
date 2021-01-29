@@ -1,3 +1,6 @@
+require 'xendit_api/api/base'
+require 'xendit_api/model/virtual_account'
+
 module XenditApi
   module Api
     class VirtualAccount < XenditApi::Api::Base
@@ -17,7 +20,8 @@ module XenditApi
 
       def update_to_expired(id)
         update_path = "#{PATH}/#{id}"
-        expired_date = Time.now - 1.year
+        one_year = 31_556_952
+        expired_date = Time.now + one_year
         virtual_account = find(id)
         response = client.patch(update_path,
                                 expected_amount: virtual_account.expected_amount,
@@ -36,22 +40,21 @@ module XenditApi
       private
 
       def permitted_virtual_account_params(response = {})
-        response = response.with_indifferent_access
         {
-          owner_id: response[:owner_id],
-          id: response[:id],
-          external_id: response[:external_id],
-          bank_code: response[:bank_code],
-          merchant_code: response[:merchant_code],
-          name: response[:name],
-          account_number: response[:account_number],
-          is_single_use: response[:is_single_use],
-          suggested_amount: response[:suggested_amount],
-          expected_amount: response[:expected_amount],
-          status: response[:status],
-          expiration_date: response[:expiration_date],
-          is_closed: response[:is_closed],
-          currency: response[:currency],
+          owner_id: response['owner_id'],
+          id: response['id'],
+          external_id: response['external_id'],
+          bank_code: response['bank_code'],
+          merchant_code: response['merchant_code'],
+          name: response['name'],
+          account_number: response['account_number'],
+          is_single_use: response['is_single_use'],
+          suggested_amount: response['suggested_amount'],
+          expected_amount: response['expected_amount'],
+          status: response['status'],
+          expiration_date: response['expiration_date'],
+          is_closed: response['is_closed'],
+          currency: response['currency'],
           payload: response.to_json
         }
       end

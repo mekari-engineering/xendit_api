@@ -1,4 +1,7 @@
 require 'spec_helper'
+require 'xendit_api/api/virtual_account'
+require 'xendit_api/client'
+require 'xendit_api/errors/virtual_account'
 
 RSpec.describe XenditApi::Api::VirtualAccount do
   let(:client) { XenditApi::Client.new }
@@ -20,8 +23,8 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           is_closed: true,
           is_single_use: true
         )
-        expect(virtual_account.merchant_code).to be_present
-        expect(virtual_account.account_number).to be_present
+        expect(virtual_account.merchant_code).not_to be_nil
+        expect(virtual_account.account_number).not_to be_nil
         expect(find_year(virtual_account.expiration_date)).to eq fake_time.year + 31
       end
     end
@@ -42,8 +45,8 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           is_closed: true,
           is_single_use: true
         )
-        expect(virtual_account.merchant_code).to be_present
-        expect(virtual_account.account_number).to be_present
+        expect(virtual_account.merchant_code).not_to be_nil
+        expect(virtual_account.account_number).not_to be_nil
         expect(find_year(virtual_account.expiration_date)).to eq fake_time.year + 31
       end
     end
@@ -63,8 +66,8 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           bank_code: 'BNI',
           is_closed: true
         )
-        expect(virtual_account.merchant_code).to be_present
-        expect(virtual_account.account_number).to be_present
+        expect(virtual_account.merchant_code).not_to be_nil
+        expect(virtual_account.account_number).not_to be_nil
         expect(find_year(virtual_account.expiration_date)).to eq fake_time.year + 31
       end
     end
@@ -93,10 +96,10 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           bank_code: 'MANDIRI'
         )
         expect(response).to be_instance_of XenditApi::Model::VirtualAccount
-        expect(response.id).to be_present
-        expect(response.account_number).to be_present
-        expect(response.merchant_code).to be_present
-        expect(response.owner_id).to be_present
+        expect(response.id).not_to be_nil
+        expect(response.account_number).not_to be_nil
+        expect(response.merchant_code).not_to be_nil
+        expect(response.owner_id).not_to be_nil
         expect(find_year(response.expiration_date)).to eq fake_time.year + 31
         expect(response).to have_attributes(
           external_id: 'sample-mandiri-demo',
@@ -124,10 +127,10 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           bank_code: 'MANDIRI'
         )
         expect(response).to be_instance_of XenditApi::Model::VirtualAccount
-        expect(response.id).to be_present
-        expect(response.account_number).to be_present
-        expect(response.merchant_code).to be_present
-        expect(response.owner_id).to be_present
+        expect(response.id).not_to be_nil
+        expect(response.account_number).not_to be_nil
+        expect(response.merchant_code).not_to be_nil
+        expect(response.owner_id).not_to be_nil
         expect(find_year(response.expiration_date)).to eq fake_time.year + 31
         expect(response).to have_attributes(
           external_id: 'sample-mandiri-demo',
@@ -155,10 +158,10 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           bank_code: 'MANDIRI'
         )
         expect(response).to be_instance_of XenditApi::Model::VirtualAccount
-        expect(response.id).to be_present
-        expect(response.account_number).to be_present
-        expect(response.merchant_code).to be_blank
-        expect(response.owner_id).to be_present
+        expect(response.id).not_to be_nil
+        expect(response.account_number).not_to be_nil
+        expect(response.merchant_code).to be_nil
+        expect(response.owner_id).not_to be_nil
         expect(find_year(response.expiration_date)).to eq fake_time.year + 31
         expect(response).to have_attributes(
           external_id: 'sample-mandiri-demo',
@@ -186,10 +189,10 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           bank_code: 'BNI'
         )
         expect(response).to be_instance_of XenditApi::Model::VirtualAccount
-        expect(response.id).to be_present
-        expect(response.account_number).to be_present
-        expect(response.merchant_code).to be_present
-        expect(response.owner_id).to be_present
+        expect(response.id).not_to be_nil
+        expect(response.account_number).not_to be_nil
+        expect(response.merchant_code).not_to be_nil
+        expect(response.owner_id).not_to be_nil
         # is_single_use not supported in BNI yet.
         expect(response.is_single_use).to eq false
         expect(find_year(response.expiration_date)).to eq fake_time.year + 31
@@ -217,10 +220,10 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           bank_code: 'BRI'
         )
         expect(response).to be_instance_of XenditApi::Model::VirtualAccount
-        expect(response.id).to be_present
-        expect(response.account_number).to be_present
-        expect(response.merchant_code).to be_present
-        expect(response.owner_id).to be_present
+        expect(response.id).not_to be_nil
+        expect(response.account_number).not_to be_nil
+        expect(response.merchant_code).not_to be_nil
+        expect(response.owner_id).not_to be_nil
         expect(find_year(response.expiration_date)).to eq fake_time.year + 31
         expect(response).to have_attributes(
           external_id: 'sample-mandiri-demo',
