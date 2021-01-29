@@ -2,7 +2,6 @@ require 'xendit_api/model/base'
 module XenditApi
   module Model
     class VirtualAccount < XenditApi::Model::Base
-
       attr_accessor :owner_id,
                     :id,
                     :external_id,

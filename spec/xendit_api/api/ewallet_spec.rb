@@ -16,16 +16,16 @@ RSpec.describe XenditApi::Api::Ewallet do
         }
       end
 
-      pending 'returns success response' do
+      it 'returns success response' do
         VCR.use_cassette('xendit/ewallet/ovo/success') do
           ewallet_api = described_class.new(client)
           response = ewallet_api.post(params: params, ewallet_type: 'OVO')
           expect(response).to be_instance_of XenditApi::Model::Ewallet
-          expect(response.transaction_date).to be_present
+          expect(response.transaction_date).not_to be_nil
           expect(response.external_id).to eq 'nobu@mekari.com'
           expect(response.amount).to eq 1_000
           expect(response.ewallet_type).to eq 'OVO'
-          expect(response.business_id).to be_present
+          expect(response.business_id).not_to be_nil
         end
       end
     end

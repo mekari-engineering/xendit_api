@@ -6,8 +6,8 @@ RSpec.describe XenditApi::Client do
     expect(XenditApi::Client::BASE_URL).to eq 'https://api.xendit.co'
   end
 
-  pending 'returns SECRET_KEY' do
-    expect(XenditApi::Client::SECRET_KEY).not_to be_blank
+  it 'returns SECRET_KEY' do
+    expect(XenditApi::Client::SECRET_KEY).not_to be_nil
   end
 
   describe '#ewallet' do
@@ -49,17 +49,17 @@ RSpec.describe XenditApi::Client do
         }
       end
 
-      pending 'returns expected response' do
+      it 'returns expected response' do
         VCR.use_cassette('xendit/ewallet/ovo/success') do
           client = described_class.new
           response = client.post('/ewallets', params)
           expect(response).to eq({
-            transaction_date: '2019-04-07T01:35:46.658Z',
-            amount: 1000,
-            external_id: 'nobu@mekari.com',
-            ewallet_type: 'OVO',
-            business_id: '12121212'
-          }.with_indifferent_access)
+            'transaction_date' => '2019-04-07T01:35:46.658Z',
+            'amount' => 1000,
+            'external_id' => 'nobu@mekari.com',
+            'ewallet_type' => 'OVO',
+            'business_id' => '12121212'
+          })
         end
       end
     end
@@ -86,18 +86,18 @@ RSpec.describe XenditApi::Client do
   end
 
   describe '#get' do
-    pending 'returns complete payment' do
+    it 'returns complete payment' do
       VCR.use_cassette('xendit/ewallet/ovo/get_complete_payment') do
         client = described_class.new
         response = client.get('/ewallets', external_id: '12345')
         expect(response).to eq({
-          amount: 1_000,
-          external_id: '12345',
-          transaction_date: '2019-04-07T01:35:46.658Z',
-          business_id: '12121212',
-          ewallet_type: 'OVO',
-          status: 'COMPLETED'
-        })
+                                 'amount' => 1_000,
+                                 'external_id' => '12345',
+                                 'transaction_date' => '2019-04-07T01:35:46.658Z',
+                                 'business_id' => '12121212',
+                                 'ewallet_type' => 'OVO',
+                                 'status' => 'COMPLETED'
+                               })
       end
     end
 
