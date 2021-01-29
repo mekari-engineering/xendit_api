@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "Ruby API wrapper for Xendit payment gateway"
   spec.description   = "Ruby API wrapper for Xendit payment gateway"
   spec.homepage      = "https://github.com/mekari-engineering/xendit_api"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
 
   spec.metadata["allowed_push_host"] = "https://github.com"
 
