@@ -1,5 +1,9 @@
 require 'faraday_middleware'
 require 'xendit_api/middleware/handle_response_exception'
+require 'xendit_api/api/virtual_account'
+require 'xendit_api/api/ewallet'
+require 'xendit_api/api/credit_card'
+require 'xendit_api/api/disbursement'
 
 module XenditApi
   class Client
