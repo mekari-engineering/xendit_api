@@ -8,7 +8,7 @@ VCR.configure do |config|
   config.cassette_library_dir = 'spec/vcr/'
   config.hook_into :webmock
   VCR.configure do |c|
-    c.filter_sensitive_data('<AUTH_KEY>') { 'FILTERED AUTH KEY' }
+    c.filter_sensitive_data('<AUTH_KEY>') { 'FILTERED_AUTH_KEY' }
   end
 end
 
