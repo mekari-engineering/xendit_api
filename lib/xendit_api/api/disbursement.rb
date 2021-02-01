@@ -10,6 +10,12 @@ module XenditApi
         response = client.post(PATH, params)
         XenditApi::Model::Disbursement.new(response.merge(payload: response.to_json))
       end
+
+      def find_by_external_id(external_id)
+        response = client.get("#{self.class::PATH}/?external_id=#{external_id}", {})
+
+        XenditApi::Model::Disbursement.new(response[0])
+      end
     end
   end
 end
