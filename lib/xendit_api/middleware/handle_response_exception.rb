@@ -1,5 +1,3 @@
-require 'xendit_api/errors'
-
 module XenditApi
   module Middleware
     class HandleResponseException < Faraday::Middleware
@@ -79,6 +77,8 @@ module XenditApi
           raise XenditApi::Errors::Disbursement::DescriptionNotFound, error_message
         when 'DIRECT_DISBURSEMENT_BALANCE_INSUFFICIENT_ERROR'
           raise XenditApi::Errors::Disbursement::NotEnoughBalance, error_message
+        when 'DIRECT_DISBURSEMENT_NOT_FOUND_ERROR'
+          raise XenditApi::Errors::Disbursement::DirectDisbursementNotFound, error_message
         when 'DUPLICATE_TRANSACTION_ERROR'
           raise XenditApi::Errors::Disbursement::DuplicateTransactionError, error_message
         when 'RECIPIENT_ACCOUNT_NUMBER_ERROR'
