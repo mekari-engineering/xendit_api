@@ -9,7 +9,7 @@ http_interactions:
         Jones","account_number":"1111111111","description":"sample disbursement"}'
     headers:
       Authorization:
-      - Basic ***REMOVED***
+      - Basic <AUTH KEY>
       User-Agent:
       - Faraday v0.11.0
       Content-Type:

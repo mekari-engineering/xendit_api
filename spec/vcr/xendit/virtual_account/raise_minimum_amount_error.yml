@@ -8,7 +8,7 @@ http_interactions:
       string: '{"external_id":"sample-mandiri-demo","name":"Nobu nagawa","expected_amount":0,"is_closed":true,"is_single_use":true,"bank_code":"MANDIRI"}'
     headers:
       Authorization:
-      - Basic ***REMOVED***
+      - Basic <AUTH KEY>
       User-Agent:
       - Faraday v1.0.0
       Content-Type:

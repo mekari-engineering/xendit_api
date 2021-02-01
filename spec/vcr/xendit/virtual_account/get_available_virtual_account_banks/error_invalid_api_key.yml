@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - Ruby
       Authorization:
-      - Basic eG5kX3B1YmxpY19kZXZlbG9wbWVudF9PSW1BZk9VaWdieW5uSkpzZU9FWlN6VERZdFB4OU5kNXhYSzErUnhqL1diUy9iS2dEZ0p4amc9PTo=
+      - Basic <AUTH KEY>
   response:
     status:
       code: 401

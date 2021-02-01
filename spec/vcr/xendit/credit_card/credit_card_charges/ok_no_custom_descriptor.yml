@@ -16,7 +16,7 @@ http_interactions:
       X-Idempotency-Key:
       - d6f5db01-dc03-4953-9023-ed39d936b032
       Authorization:
-      - Basic eG5kX2RldmVsb3BtZW50X1BvMkNmT1VpZ2J5bm5KSnNlT0VaU3pURFl0UHg5TmQ1eFhLMStSeGovV0hROExXakJBSnloZz09Og==
+      - Basic <AUTH KEY>
       Content-Type:
       - application/x-www-form-urlencoded
   response:
