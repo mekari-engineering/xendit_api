@@ -9,7 +9,7 @@ http_interactions:
         Jones","account_number":"1111111111","description":null}'
     headers:
       Authorization:
-      - Basic eG5kX2RldmVsb3BtZW50X0lNN2NzeUc0bTNjeVBPVWJwUG02VU51MHozWmtBZXNGR3dnbXVjdXk4NFBRS1NSS2xuWUdlNllqMkphNVVtQjo=
+      - Basic <AUTH KEY>
       User-Agent:
       - Faraday v0.11.0
       Content-Type:
