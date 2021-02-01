@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Basic eG5kX2RldmVsb3BtZW50XzZqcEJJQVE5dktiR1ZKQnV1dlEzYlRvZDExbWNhTjh4ZW96MWZNc1BXOGtBaEhub3MzVE5ueWVZWTBJN3BLUTo=
+      - Basic <AUTH KEY>
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:

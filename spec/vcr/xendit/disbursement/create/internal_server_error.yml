@@ -9,7 +9,7 @@ http_interactions:
         PT. Jurnal 20-01-2020"}'
     headers:
       Authorization:
-      - Basic eG5kX2RldmVsb3BtZW50X0lNN2NzeUc0bTNjeVBPVWJwUG02VU51MHozWmtBZXNGR3dnbXVjdXk4NFBRS1NSS2xuWUdlNllqMkphNVVtQjo=
+      - Basic <AUTH KEY>
       User-Agent:
       - Faraday v1.0.0
       Content-Type:

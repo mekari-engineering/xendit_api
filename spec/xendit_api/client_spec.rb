@@ -2,34 +2,36 @@ require 'spec_helper'
 require 'xendit_api/errors/ovo'
 
 RSpec.describe XenditApi::Client do
-  it 'returns expected base url' do
+  let(:auth_key) { 'FILTERED_AUTH_KEY' }
+
+  it 'retur ns expected base url' do
     expect(XenditApi::Client::BASE_URL).to eq 'https://api.xendit.co'
   end
 
   describe '#ewallet' do
     it 'returns instance of XenditApi::Api::Ewallet' do
-      client = described_class.new
+      client = described_class.new(auth_key)
       expect(client.ewallet).to be_instance_of XenditApi::Api::Ewallet
     end
   end
 
   describe '#virtual_account' do
     it 'returns instance of XenditApi::Api::VirtualAccount' do
-      client = described_class.new
+      client = described_class.new(auth_key)
       expect(client.virtual_account).to be_instance_of XenditApi::Api::VirtualAccount
     end
   end
 
   describe '#credit_card' do
     it 'returns instance of XenditApi::Api::CreditCard' do
-      client = described_class.new
+      client = described_class.new(auth_key)
       expect(client.credit_card).to be_instance_of XenditApi::Api::CreditCard
     end
   end
 
   describe '#disbursement' do
     it 'returns instance of XenditApi::Api::Disbursement' do
-      client = described_class.new
+      client = described_class.new(auth_key)
       expect(client.disbursement).to be_instance_of XenditApi::Api::Disbursement
     end
   end
@@ -47,7 +49,7 @@ RSpec.describe XenditApi::Client do
 
       it 'returns expected response' do
         VCR.use_cassette('xendit/ewallet/ovo/success') do
-          client = described_class.new
+          client = described_class.new(auth_key)
           response = client.post('/ewallets', params)
           expect(response).to eq({
                                    'transaction_date' => '2019-04-07T01:35:46.658Z',
@@ -72,7 +74,7 @@ RSpec.describe XenditApi::Client do
       it 'returns error response' do
         VCR.use_cassette('xendit/ewallet/ovo/errors_invalid_phone_number') do
           expect do
-            client = described_class.new
+            client = described_class.new(auth_key)
             client.post('/ewallets', params)
             # FIXME
           end.to raise_error(XenditApi::Errors::ApiValidation)
@@ -84,7 +86,7 @@ RSpec.describe XenditApi::Client do
   describe '#get' do
     it 'returns complete payment' do
       VCR.use_cassette('xendit/ewallet/ovo/get_complete_payment') do
-        client = described_class.new
+        client = described_class.new(auth_key)
         response = client.get('/ewallets', external_id: '12345')
         expect(response).to eq({
                                  'amount' => 1_000,
@@ -100,7 +102,7 @@ RSpec.describe XenditApi::Client do
     it 'returns payment not found' do
       VCR.use_cassette('xendit/ewallet/ovo/get_payment_not_found') do
         expect do
-          client = described_class.new
+          client = described_class.new(auth_key)
           client.get('/ewallets', external_id: nil)
         end.to raise_error(XenditApi::Errors::OVO::PaymentNotFound)
       end

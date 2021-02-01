@@ -8,7 +8,7 @@ http_interactions:
         string: '{"external_id":"123","amount":9999,"phone":"082310202299","ewallet_type":"OVO"}'
       headers:
         Authorization:
-          - Basic eG5kX2RldmVsb3BtZW50XzZqcEJJQVE5dktiR1ZKQnV1dlEzYlRvZDExbWNhTjh4ZW96MWZNc1BXOGtBaEhub3MzVE5ueWVZWTBJN3BLUTo=
+          - Basic <AUTH KEY>
         User-Agent:
           - Faraday v0.11.0
         Content-Type:
