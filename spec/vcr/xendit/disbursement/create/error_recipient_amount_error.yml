@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/disbursements
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"dfa35750-eb04-4193-b532-6eefcd16fc9e","amount":9000,"bank_code":"BCA","account_holder_name":"Bob
+        Jones","account_number":"1111111111","description":"raise mininum limit error"}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 17 Apr 2020 02:36:01 GMT
+      Etag:
+      - W/"107-hq6zOz1DuQtzFsS5qGRmX56lu6I"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Content-Length:
+      - '221'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1119_2182539=sxbJAJ9iGlSHZm+YKX2HDxEWmV4AAAAA5HOFuZePfjWBUWTCp5YZSQ==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=Z2reS//6CRF0YsRKjjCKbQAAAADJfQP6phTF/BzNC5O+NEzR; path=/; Domain=.xendit.co
+      - visid_incap_2182539=Ojr9vfxBTnG2lfK+1qms8RAWmV4AAAAAQUIPAAAAAACbNNUts4LpT+2DYtYu+qPz;
+        expires=Fri, 16 Apr 2021 12:19:35 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Incapsula
+      X-Iinfo:
+      - 5-31419843-31419847 nNNN RT(1587090960155 41) q(0 0 4 0) r(6 9) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"PENDING","user_id":"596d988e56b5a3c45be75e6e","external_id":"dfa35750-eb04-4193-b532-6eefcd16fc9e","amount":9000,"bank_code":"BCA","account_holder_name":"Bob
+        Jones","disbursement_description":"raise mininum limit error","id":"5e9916117547f00016613fe9"}'
+    http_version: 
+  recorded_at: Fri, 17 Apr 2020 02:36:01 GMT
+recorded_with: VCR 4.0.0

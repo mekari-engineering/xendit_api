@@ -1,0 +1,59 @@
+---
+http_interactions:
+  - request:
+      method: get
+      uri: https://api.xendit.co/ewallets?external_id
+      body:
+        encoding: US-ASCII
+        string: ""
+      headers:
+        User-Agent:
+          - Faraday v0.11.0
+        Authorization:
+          - Basic <AUTH KEY>
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        Accept:
+          - "*/*"
+    response:
+      status:
+        code: 500
+        message: Internal Server Error
+      headers:
+        Cache-Control:
+          - no-store, no-cache, must-revalidate, proxy-revalidate
+        Date:
+          - Thu, 28 Nov 2019 04:31:28 GMT
+        Expires:
+          - "0"
+        Pragma:
+          - no-cache
+        Server:
+          - nginx
+        Strict-Transport-Security:
+          - max-age=2592000; includeSubDomains
+        Surrogate-Control:
+          - no-store
+        Content-Length:
+          - "0"
+        Connection:
+          - keep-alive
+        Set-Cookie:
+          - "___utmvaBcBuvvsZZ=auI\x01MGID; path=/; Max-Age=900"
+          - "___utmvbBcBuvvsZZ=xZe XrIOkalT: OtF; path=/; Max-Age=900"
+          - ___utmvmBcBuvvsZZ=lKGsirzBlPm; path=/; Max-Age=900
+          - incap_ses_1120_2182539=HwYbSPvTXVQgBhf2kAqLD59N310AAAAA0hb63eeibsj/4so61ev6PA==;
+            path=/; Domain=.xendit.co
+          - nlbi_2182539=ji7oGI6F1hHs2/3mjjCKbQAAAAAxq5JbAnxiANJkrh9dOhrw; path=/; Domain=.xendit.co
+          - visid_incap_2182539=7R6ZdMwmSjKcsG0mFSZ5bp9N310AAAAAQUIPAAAAAABkS14EZu+2n/0jqVwWC+bv;
+            expires=Thu, 26 Nov 2020 09:18:06 GMT; path=/; Domain=.xendit.co
+        X-Cdn:
+          - Incapsula
+        X-Iinfo:
+          - 4-26035944-25996253 pNNN RT(1574915487302 26) q(0 0 0 -1) r(4 4) U16
+      body:
+        encoding: UTF-8
+        string: '{"error_code":"PAYMENT_NOT_FOUND_ERROR","message":"Payment not found"}'
+      http_version:
+    recorded_at: Thu, 28 Nov 2019 04:31:28 GMT
+recorded_with: VCR 4.0.0

@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/ewallets
+    body:
+      encoding: UTF-8
+      string: amount=4010&ewallet_type=OVO&external_id=123&phone=082310202012
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Basic <AUTH KEY>
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 28 Nov 2019 09:14:20 GMT
+      Etag:
+      - W/"60-oxofGJ/e6PEe+jMDbe9Kd856ldU"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - "___utmvaBcBuvvsZZ=kgg\x01IlrT; path=/; Max-Age=900"
+      - '___utmvbBcBuvvsZZ=mZz XyhOBalC: nth; path=/; Max-Age=900'
+      - ___utmvmBcBuvvsZZ=XNdSrrciRUy; path=/; Max-Age=900
+      - incap_ses_1120_2182539=gxltfWzi8UOJ3VP2kAqLD+yP310AAAAAq5XCMXQpC2RN7rVbbKYPcg==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=zwEVMZ8Ndi71jdCujjCKbQAAAABshPi+/dFinpXrAoLaKT8j; path=/; Domain=.xendit.co
+      - visid_incap_2182539=/SItXee+SFyGQZVu4bUP8+yP310AAAAAQUIPAAAAAAAA+xYkZh3FsAofNPpTRa4e;
+        expires=Thu, 26 Nov 2020 09:18:06 GMT; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Incapsula
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 4-27331165-27279151 pNYN RT(1574932457838 20) q(0 0 0 -1) r(23 23) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"DUPLICATE_PAYMENT","message":"There is already payment
+        for the same external ID"}'
+    http_version: 
+  recorded_at: Thu, 28 Nov 2019 09:14:20 GMT
+recorded_with: VCR 4.0.0

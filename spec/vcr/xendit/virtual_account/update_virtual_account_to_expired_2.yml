@@ -1,0 +1,121 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/callback_virtual_accounts/5ff2dd35e1b82c4028aeb918
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.0.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 04 Jan 2021 09:20:52 GMT
+      Etag:
+      - W/"14f-uTqAOqq/+Rl1W2FmeAMCOWMcZ3o"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Content-Length:
+      - '262'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1122_2182539=IAasYIy0byVB2pHDPCWSD/Pd8l8AAAAAhxrnZ3ICD8VSHoogZSe+iQ==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=CfFwK/k2rjCL+cbSjjCKbQAAAAALUVLAd3iK58KZkZR1zvnl; path=/; Domain=.xendit.co
+      - visid_incap_2182539=8IbAqUAoTWOgu04etv84yfPd8l8AAAAAQUIPAAAAAAAKQJgIohwjNBQktqiIUmv8;
+        expires=Tue, 04 Jan 2022 06:30:02 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Incapsula
+      X-Iinfo:
+      - 3-39457792-39441542 pNNN RT(1609752050938 34) q(0 0 0 -1) r(5 5) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '{"is_closed":true,"status":"ACTIVE","owner_id":"596d988e56b5a3c45be75e6e","external_id":"sample-mandiri-demo","bank_code":"MANDIRI","merchant_code":"88908","name":"Nobu
+        nagawa","account_number":"889081063719211","expected_amount":500000,"is_single_use":true,"expiration_date":"2052-01-03T17:00:00.000Z","id":"5ff2dd35e1b82c4028aeb918"}'
+    http_version: null
+  recorded_at: Tue, 05 May 2020 00:00:00 GMT
+- request:
+    method: patch
+    uri: https://api.xendit.co/callback_virtual_accounts/5ff2dd35e1b82c4028aeb918
+    body:
+      encoding: UTF-8
+      string: '{"expected_amount":500000,"expiration_date":"2019-05-05T00:00:00+00:00"}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.0.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 04 Jan 2021 09:20:53 GMT
+      Etag:
+      - W/"151-qJLjsyDwcMZNWwYVshiWbyxyvjM"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Content-Length:
+      - '262'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1122_2182539=H8weIsBMJz9z2pHDPCWSD/Td8l8AAAAALTmz3o3IbsuGLrP3mcluCQ==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=Otp2Fb/ClHafkMP0jjCKbQAAAAD50DSoNUjN98XXG42DGxg3; path=/; Domain=.xendit.co
+      - visid_incap_2182539=05iTtu66R6KPPd2aKtOJ4vTd8l8AAAAAQUIPAAAAAAB8uirWhbDedqvKeJGKRRhM;
+        expires=Tue, 04 Jan 2022 06:30:02 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Incapsula
+      X-Iinfo:
+      - 13-43913752-43864091 pNNN RT(1609752051758 30) q(0 0 0 -1) r(6 6) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"is_closed":true,"status":"INACTIVE","owner_id":"596d988e56b5a3c45be75e6e","external_id":"sample-mandiri-demo","bank_code":"MANDIRI","merchant_code":"88908","name":"Nobu
+        nagawa","account_number":"889081063719211","expected_amount":500000,"is_single_use":true,"expiration_date":"2019-05-05T00:00:00.000Z","id":"5ff2dd35e1b82c4028aeb918"}'
+    http_version: null
+  recorded_at: Tue, 05 May 2020 00:00:00 GMT
+recorded_with: VCR 5.1.0

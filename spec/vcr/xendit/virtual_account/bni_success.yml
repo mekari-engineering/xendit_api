@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/callback_virtual_accounts
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"sample-mandiri-demo","name":"Nobu nagawa","expected_amount":500000,"is_closed":true,"bank_code":"BNI"}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 06 Mar 2020 03:52:56 GMT
+      Etag:
+      - W/"15e-TuOzR8oWjaZp00AacDlsBtyVO0c"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Content-Length:
+      - '271'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1112_2182539=K4FNe5Nx41T9zCJfLp5uDxfJYV4AAAAAwmczKfrkh2wBrj2+W09tFg==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=fFGaHuEUBQXKiN68jjCKbQAAAAC2txNZHRe/KdjFBRS0IPhv; path=/; Domain=.xendit.co
+      - visid_incap_2182539=bOIqqSU3T7K40sZoyvW5SBfJYV4AAAAAQUIPAAAAAADQwweflmqleYT1DDomDtbv;
+        expires=Fri, 05 Mar 2021 08:51:11 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Incapsula
+      X-Iinfo:
+      - 1-3358727-3336304 pNNN RT(1583466774695 19) q(0 0 0 -1) r(5 5) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"is_closed":true,"status":"PENDING","currency":"IDR","owner_id":"5ddce91d9c5c2f7670ebf42a","external_id":"sample-mandiri-demo","bank_code":"BNI","merchant_code":"8808","name":"Nobu
+        nagawa","account_number":"8808999974252918","expected_amount":500000,"is_single_use":false,"expiration_date":"2051-03-05T17:00:00.000Z","id":"5e61c9187f26b138b0580d65"}'
+    http_version: 
+  recorded_at: Tue, 05 May 2020 00:00:00 GMT
+recorded_with: VCR 4.0.0

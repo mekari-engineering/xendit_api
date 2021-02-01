@@ -1,0 +1,63 @@
+---
+http_interactions:
+  - request:
+      method: get
+      uri: https://api.xendit.co/ewallets?external_id=nobu@mekari.com
+      body:
+        encoding: US-ASCII
+        string: ""
+      headers:
+        User-Agent:
+          - Faraday v0.11.0
+        Authorization:
+          - Basic <AUTH KEY>
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        Accept:
+          - "*/*"
+    response:
+      status:
+        code: 403
+        message: Forbidden
+      headers:
+        Cache-Control:
+          - no-store, no-cache, must-revalidate, proxy-revalidate
+        Content-Type:
+          - application/json; charset=utf-8
+        Date:
+          - Thu, 28 Nov 2019 04:06:15 GMT
+        Etag:
+          - W/"65-7RodLm2Yd+aG5gryRIKnut/G6Yg"
+        Expires:
+          - "0"
+        Pragma:
+          - no-cache
+        Server:
+          - nginx
+        Strict-Transport-Security:
+          - max-age=2592000; includeSubDomains
+        Surrogate-Control:
+          - no-store
+        Content-Length:
+          - "116"
+        Connection:
+          - keep-alive
+        Set-Cookie:
+          - "___utmvaBcBuvvsZZ=fKB\x01jmLe; path=/; Max-Age=900"
+          - "___utmvbBcBuvvsZZ=bZP XRPOUalg: DtV; path=/; Max-Age=900"
+          - ___utmvmBcBuvvsZZ=aDFYVRqYsjA; path=/; Max-Age=900
+          - incap_ses_1120_2182539=Pk1bBZJSZSnO1A/2kAqLD7ZH310AAAAABJjnPpP6y5C5lDpaQhC+PQ==;
+            path=/; Domain=.xendit.co
+          - nlbi_2182539=X71EEdEJsF8I7BevjjCKbQAAAADdJ0Gc2CfhTfWNGPGz1yDD; path=/; Domain=.xendit.co
+          - visid_incap_2182539=MgCmeD26RB+Qd9AyifEXyrZH310AAAAAQUIPAAAAAAAVt7enJZKpy0gbb10wBHCI;
+            expires=Thu, 26 Nov 2020 09:18:05 GMT; path=/; Domain=.xendit.co
+        X-Cdn:
+          - Incapsula
+        X-Iinfo:
+          - 14-42242934-42066671 pNNN RT(1574913974166 32) q(0 0 0 0) r(4 4) U16
+      body:
+        encoding: ASCII-8BIT
+        string: '{"amount":1000,"external_id":"nobu@mekari.com","transaction_date":"2019-04-07T01:35:46.658Z","business_id":"12121212","ewallet_type":"OVO","status":"COMPLETED"}'
+      http_version:
+    recorded_at: Thu, 28 Nov 2019 04:06:15 GMT
+recorded_with: VCR 4.0.0

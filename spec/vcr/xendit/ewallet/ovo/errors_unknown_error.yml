@@ -1,0 +1,62 @@
+---
+http_interactions:
+  - request:
+      method: post
+      uri: https://api.xendit.co/ewallets
+      body:
+        encoding: UTF-8
+        string: '{"external_id":"123","amount":9999,"phone":"082310202299","ewallet_type":"OVO"}'
+      headers:
+        Authorization:
+          - Basic <AUTH KEY>
+        User-Agent:
+          - Faraday v0.11.0
+        Content-Type:
+          - application/json
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        Accept:
+          - "*/*"
+    response:
+      status:
+        code: 400
+        message: Bad Request
+      headers:
+        Cache-Control:
+          - no-store, no-cache, must-revalidate, proxy-revalidate
+        Content-Type:
+          - application/json; charset=utf-8
+        Date:
+          - Fri, 29 Nov 2019 03:16:03 GMT
+        Etag:
+          - W/"90-0D64lM5aqivQSqWLJOyHde6fgE8"
+        Expires:
+          - "0"
+        Pragma:
+          - no-cache
+        Server:
+          - nginx
+        Strict-Transport-Security:
+          - max-age=2592000; includeSubDomains
+        Surrogate-Control:
+          - no-store
+        Connection:
+          - keep-alive
+        Set-Cookie:
+          - incap_ses_1120_2182539=a4U3MFEJvi1Sqeb2kAqLD3KN4F0AAAAAK13XY68d0iQznOVyKevH9A==;
+            path=/; Domain=.xendit.co
+          - nlbi_2182539=+iadAxn9hjw98EgojjCKbQAAAADHw2IlAeDwPgFfSIdYy2L3; path=/; Domain=.xendit.co
+          - visid_incap_2182539=KKJPdLaoRtWNx70OHtOi8nKN4F0AAAAAQUIPAAAAAAA/IcyggbRVxuXa3oh7Y0N9;
+            expires=Fri, 27 Nov 2020 09:18:07 GMT; path=/; Domain=.xendit.co
+        X-Cdn:
+          - Incapsula
+        Transfer-Encoding:
+          - chunked
+        X-Iinfo:
+          - 5-39803932-39719693 pNYN RT(1574997360437 20) q(0 0 0 -1) r(23 23) U6
+      body:
+        encoding: ASCII-8BIT
+        string: '{"error_code":"UNKNOWN_ERROR","message":"Unknown error was triggered"}'
+      http_version:
+    recorded_at: Fri, 29 Nov 2019 03:16:03 GMT
+recorded_with: VCR 4.0.0
