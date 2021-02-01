@@ -148,4 +148,18 @@ RSpec.describe XenditApi::Api::Disbursement do
       end
     end
   end
+
+  # describe '#find_by_external_id' do
+  #   context 'with invalid external id' do
+  #     it 'returns expected response' do
+  #       VCR.use_cassette('xendit/disbursement/find_by_external_id/invalid') do
+  #         disbursement_api = described_class.new(client)
+
+  #         expect do
+  #           disbursement_api.find_by_external_id('666')
+  #         end.to raise_error XenditApi::Errors::Disbursement::MaximumTransferLimitError
+  #       end
+  #     end
+  #   end
+  # end
 end
