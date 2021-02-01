@@ -7,6 +7,7 @@ require 'vcr'
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/vcr/'
   config.hook_into :webmock
+  config.filter_sensitive_data('<AUTH_KEY>') { 'FILTERED AUTH_KEY' }
 end
 
 RSpec.configure do |config|
