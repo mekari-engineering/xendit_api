@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/disbursements/?external_id=666
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic Og==
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 30 Jan 2021 07:23:44 GMT
+      Etag:
+      - W/"63-+jUwCeeDBe0RBtXaKFNHR0spPak"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1120_2182539=ofWTJdBBm1NQvzsXUgqLD38JFWAAAAAA5ZDOoe7wi8dzAD8lUys3cw==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=lShnZ+FO3CeUXtuQjjCKbQAAAAAcr+/2CIpwIFz57JvnuxmW; path=/; Domain=.xendit.co
+      - visid_incap_2182539=3wVYS8UGTT678UscTH0zf38JFWAAAAAAQUIPAAAAAACNE/tw2VWCKvahAfAbGRyd;
+        expires=Sat, 29 Jan 2022 11:33:05 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Incapsula
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 5-16791675-16696898 pNYN RT(1611991423757 14) q(0 0 0 -1) r(2 2) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"INVALID_API_KEY","message":"Please include your API
+        key as an Authorization header"}'
+  recorded_at: Sat, 30 Jan 2021 07:23:44 GMT
+recorded_with: VCR 6.0.0
