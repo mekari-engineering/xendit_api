@@ -34,6 +34,12 @@ module XenditApi
           'The card you are trying to capture is inactive.'
         end
       end
+
+      class InvalidCvn < ResponseError
+        def message
+          'Invalid CVN number'
+        end
+      end
     end
   end
 end

@@ -25,6 +25,7 @@ module XenditApi
       def permitted_credit_card_params(response = {})
         {
           id: response['id'],
+          xid: response['xid'],
           created: response['created'],
           business_id: response['business_id'],
           authorized_amount: response['authorized_amount'],
@@ -44,6 +45,9 @@ module XenditApi
           currency: response['currency'],
           failure_reason: response['failure_reason'],
           credit_card_token_id: response['credit_card_token_id'],
+          issuing_bank_name: response['issuing_bank_name'],
+          cvn_code: response['cvn_code'],
+          card_fingerprint: response['card_fingerprint'],
           payload: response.to_json
         }
       end
