@@ -4,7 +4,7 @@ require 'xendit_api/errors/ovo'
 require 'xendit_api/client'
 
 RSpec.describe XenditApi::Api::Ewallet do
-  let(:client) { XenditApi::Client.new('xnd_development_IM7csyG4m3cyPOUbpPm6UNu0z3ZkAesFGwgmucuy84PQKSRKlnYGe6Yj2Ja5UmB') }
+  let(:client) { XenditApi::Client.new }
 
   describe '#post' do
     context 'with valid params' do

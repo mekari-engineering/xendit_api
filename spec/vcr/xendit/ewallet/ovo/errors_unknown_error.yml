@@ -8,7 +8,7 @@ http_interactions:
       string: '{"reference_id":"127","currency":"IDR","amount":9999,"checkout_method":"ONE_TIME_PAYMENT","channel_code":"ID_OVO","channel_properties":{"mobile_number":"+6282310202012"}}'
     headers:
       Authorization:
-      - Basic eG5kX2RldmVsb3BtZW50X0lNN2NzeUc0bTNjeVBPVWJwUG02VU51MHozWmtBZXNGR3dnbXVjdXk4NFBRS1NSS2xuWUdlNllqMkphNVVtQjo=
+      - Basic <AUTH KEY>
       User-Agent:
       - Faraday v1.3.0
       Content-Type:
