@@ -2,34 +2,32 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.xendit.co/ewallets
+    uri: https://api.xendit.co/ewallets/charges
     body:
       encoding: UTF-8
-      string: amount=4010&ewallet_type=OVO&external_id=123&phone=082310202012
+      string: '{"reference_id":"123","currency":"IDR","amount":4000,"checkout_method":"ONE_TIME_PAYMENT","channel_code":"ID_OVO","channel_properties":{"mobile_number":"+6282310202012"}}'
     headers:
-      User-Agent:
-      - Faraday v0.11.0
       Authorization:
-      - Basic <AUTH KEY>
+      - Basic eG5kX2RldmVsb3BtZW50X0lNN2NzeUc0bTNjeVBPVWJwUG02VU51MHozWmtBZXNGR3dnbXVjdXk4NFBRS1NSS2xuWUdlNllqMkphNVVtQjo=
+      User-Agent:
+      - Faraday v1.3.0
       Content-Type:
-      - application/x-www-form-urlencoded
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 409
+      message: Conflict
     headers:
       Cache-Control:
       - no-store, no-cache, must-revalidate, proxy-revalidate
       Content-Type:
-      - application/json; charset=utf-8
+      - application/json; charset=UTF-8
       Date:
-      - Thu, 28 Nov 2019 09:32:52 GMT
-      Etag:
-      - W/"60-oxofGJ/e6PEe+jMDbe9Kd856ldU"
+      - Thu, 17 Jun 2021 07:17:50 GMT
       Expires:
       - '0'
       Pragma:
@@ -43,24 +41,22 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - "___utmvaBcBuvvsZZ=dct\x01DjkD; path=/; Max-Age=900"
-      - '___utmvbBcBuvvsZZ=eZq XgQOGalc: Dtz; path=/; Max-Age=900'
-      - ___utmvmBcBuvvsZZ=pzhBuLOcLrG; path=/; Max-Age=900
-      - incap_ses_1120_2182539=S4/bOQkWSlai3VX2kAqLD0OU310AAAAAZL0M5xlyT2ArWvnkULER8w==;
+      - incap_ses_1116_2182539=ulc2bZILTWG/DNZ/bNR8Dx73ymAAAAAArW2Su+DCSCe6RZ9tIq/PxA==;
         path=/; Domain=.xendit.co
-      - nlbi_2182539=kN2ie3qmYTlPhC1gjjCKbQAAAACAAsIEW8rP620eI/ZH77Xv; path=/; Domain=.xendit.co
-      - visid_incap_2182539=WLTWKIwdSd6Z77OREaeiAEOU310AAAAAQUIPAAAAAAABO1DpjktHDXokbqB/4F36;
-        expires=Fri, 27 Nov 2020 09:18:07 GMT; path=/; Domain=.xendit.co
+      - nlbi_2182539=F7G2cyeKUHBvDf/TjjCKbQAAAABTCn/Esmnqo8JX53T0Vek8; path=/; Domain=.xendit.co
+      - visid_incap_2182539=Umjh+a3cSwCsOHS/aVWL/B73ymAAAAAAQUIPAAAAAACwtgXO6HADCTICjEFHQXtz;
+        expires=Thu, 16 Jun 2022 09:12:48 GMT; HttpOnly; path=/; Domain=.xendit.co
       X-Cdn:
-      - Incapsula
+      - Imperva
       Transfer-Encoding:
       - chunked
       X-Iinfo:
-      - 13-23462859-23355481 pNYN RT(1574933569628 56) q(0 0 0 -1) r(23 23) U6
+      - 9-15454787-15418900 pNYN RT(1623914268807 12) q(0 0 0 -1) r(12 12) U6
     body:
       encoding: ASCII-8BIT
-      string: '{"error_code":"DUPLICATE_PAYMENT","message":"There is already payment
-        for the same external ID"}'
-    http_version: 
-  recorded_at: Thu, 28 Nov 2019 09:32:52 GMT
-recorded_with: VCR 4.0.0
+      string: '{"error_code":"DUPLICATE_ERROR","message":"There is already a charge
+        request with the same reference_id."}
+
+'
+  recorded_at: Thu, 17 Jun 2021 07:17:50 GMT
+recorded_with: VCR 6.0.0

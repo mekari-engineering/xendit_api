@@ -40,24 +40,25 @@ RSpec.describe XenditApi::Client do
     context 'with valid params' do
       let(:params) do
         {
-          external_id: 'nobu@mekari.com',
+          reference_id: 'nobu@mekari.com',
           amount: 1_000,
-          phone: '081234567890',
-          ewallet_type: 'OVO'
+          mobile_number: '+6281234567890',
+          channel_code: 'ID_OVO'
         }
       end
 
       it 'returns expected response' do
         VCR.use_cassette('xendit/ewallet/ovo/success') do
           client = described_class.new(auth_key)
-          response = client.post('/ewallets', params)
-          expect(response).to eq({
-                                   'transaction_date' => '2019-04-07T01:35:46.658Z',
-                                   'amount' => 1000,
-                                   'external_id' => 'nobu@mekari.com',
-                                   'ewallet_type' => 'OVO',
-                                   'business_id' => '12121212'
-                                 })
+          response = client.post('/ewallets/charges', params)
+          expect(response).to include({
+                                        'created' => '2021-06-17T03:26:11.253Z',
+                                        'capture_amount' => 1000,
+                                        'charge_amount' => 1000,
+                                        'reference_id' => 'nobu@mekari.com',
+                                        'channel_code' => 'ID_OVO',
+                                        'business_id' => '12121212'
+                                      })
         end
       end
     end
@@ -65,9 +66,10 @@ RSpec.describe XenditApi::Client do
     context 'with invalid params' do
       let(:params) do
         {
-          external_id: 'nobu@mekari.com',
+          reference_id: 'nuba@mekari.com',
           amount: 1_000,
-          phone: ''
+          mobile_number: '0',
+          channel_code: 'ID_OVO'
         }
       end
 
@@ -75,7 +77,7 @@ RSpec.describe XenditApi::Client do
         VCR.use_cassette('xendit/ewallet/ovo/errors_invalid_phone_number') do
           expect do
             client = described_class.new(auth_key)
-            client.post('/ewallets', params)
+            client.post('/ewallets/charges', params)
             # FIXME
           end.to raise_error(XenditApi::Errors::ApiValidation)
         end
@@ -87,15 +89,17 @@ RSpec.describe XenditApi::Client do
     it 'returns complete payment' do
       VCR.use_cassette('xendit/ewallet/ovo/get_complete_payment') do
         client = described_class.new(auth_key)
-        response = client.get('/ewallets', external_id: '12345')
-        expect(response).to eq({
-                                 'amount' => 1_000,
-                                 'external_id' => '12345',
-                                 'transaction_date' => '2019-04-07T01:35:46.658Z',
-                                 'business_id' => '12121212',
-                                 'ewallet_type' => 'OVO',
-                                 'status' => 'COMPLETED'
-                               })
+        id = 'ewc_b66bb767-be7e-4247-8a75-2a970a749e46'
+        response = client.get("/ewallets/charges/#{id}")
+        expect(response).to include({
+                                      'capture_amount' => 1_000,
+                                      'charge_amount' => 1_000,
+                                      'reference_id' => 'nobu@mekari.com',
+                                      'created' => '2021-06-17T03:26:11.253Z',
+                                      'business_id' => '12121212',
+                                      'channel_code' => 'ID_OVO',
+                                      'status' => 'SUCCEEDED'
+                                    })
       end
     end
 
@@ -103,7 +107,8 @@ RSpec.describe XenditApi::Client do
       VCR.use_cassette('xendit/ewallet/ovo/get_payment_not_found') do
         expect do
           client = described_class.new(auth_key)
-          client.get('/ewallets', external_id: nil)
+          random_uuid = 'ewc_d351c488-fd5c-4a41-975f-f94614f7628f'
+          client.get("/ewallets/charges/#{random_uuid}")
         end.to raise_error(XenditApi::Errors::OVO::PaymentNotFound)
       end
     end

@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.xendit.co/ewallets/charges
     body:
       encoding: UTF-8
-      string: '{"reference_id":"127","currency":"IDR","amount":9999,"checkout_method":"ONE_TIME_PAYMENT","channel_code":"ID_OVO","channel_properties":{"mobile_number":"+6282310202012"}}'
+      string: '{"reference_id":"125","currency":"IDR","amount":10100,"checkout_method":"ONE_TIME_PAYMENT","channel_code":"ID_OVO","channel_properties":{"mobile_number":"+6282310202012"}}'
     headers:
       Authorization:
       - Basic eG5kX2RldmVsb3BtZW50X0lNN2NzeUc0bTNjeVBPVWJwUG02VU51MHozWmtBZXNGR3dnbXVjdXk4NFBRS1NSS2xuWUdlNllqMkphNVVtQjo=
@@ -54,7 +54,9 @@ http_interactions:
       - 5-39276814-39188979 pNYN RT(1623917299057 49) q(0 0 0 0) r(12 12) U6
     body:
       encoding: ASCII-8BIT
-      string: '{"error_code":"UNKNOWN","message":"Unknown error was triggered"}
+      string: '{"error_code":"CHANNEL_NOT_ACTIVATED","message":"Payment request failed
+        because this specific payment channel has not been activated. Please activate
+        the payment channel via your dashboard or our customer service."}
 
 '
   recorded_at: Thu, 17 Jun 2021 08:08:20 GMT

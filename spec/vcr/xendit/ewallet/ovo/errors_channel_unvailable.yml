@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.xendit.co/ewallets/charges
     body:
       encoding: UTF-8
-      string: '{"reference_id":"127","currency":"IDR","amount":9999,"checkout_method":"ONE_TIME_PAYMENT","channel_code":"ID_OVO","channel_properties":{"mobile_number":"+6282310202012"}}'
+      string: '{"reference_id":"125","currency":"IDR","amount":10101,"checkout_method":"ONE_TIME_PAYMENT","channel_code":"ID_OVO","channel_properties":{"mobile_number":"+6282310202012"}}'
     headers:
       Authorization:
       - Basic eG5kX2RldmVsb3BtZW50X0lNN2NzeUc0bTNjeVBPVWJwUG02VU51MHozWmtBZXNGR3dnbXVjdXk4NFBRS1NSS2xuWUdlNllqMkphNVVtQjo=
@@ -19,15 +19,15 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 403
-      message: Forbidden
+      code: 503
+      message: Service Unavailable
     headers:
       Cache-Control:
       - no-store, no-cache, must-revalidate, proxy-revalidate
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Thu, 17 Jun 2021 08:08:20 GMT
+      - Thu, 17 Jun 2021 08:24:12 GMT
       Expires:
       - '0'
       Pragma:
@@ -41,21 +41,23 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - incap_ses_1116_2182539=w3DLJlOhhmgyrd5/bNR8D/QCy2AAAAAAbCUQUlk+cEHLmFkRd01HXA==;
+      - incap_ses_1122_2182539=Oxz0bYIiCiDtalysXyWSD6sGy2AAAAAAgOI5qFz/4UKprKeEH+KT/g==;
         path=/; Domain=.xendit.co
-      - nlbi_2182539=VcQUDFwwCxIQPg2ZjjCKbQAAAAA1InvxUTq4KG16NeGAbAMA; path=/; Domain=.xendit.co
-      - visid_incap_2182539=cDer2KhnQy21W/GU0iDzfdkCy2AAAAAAQUIPAAAAAAA0tNDg8UyDEGYtVe9Jd9jk;
-        expires=Thu, 16 Jun 2022 09:12:47 GMT; HttpOnly; path=/; Domain=.xendit.co
+      - nlbi_2182539=trROTKIYoD0nGOFXjjCKbQAAAABMhvCCUBWxXAlCnDVaTIl6; path=/; Domain=.xendit.co
+      - visid_incap_2182539=L1FQWmiYSO+MO2J4SipokL4Fy2AAAAAAQUIPAAAAAAAH8ozJ6tCz5kCw5o6/dzjt;
+        expires=Thu, 16 Jun 2022 13:49:36 GMT; HttpOnly; path=/; Domain=.xendit.co
       X-Cdn:
       - Imperva
       Transfer-Encoding:
       - chunked
       X-Iinfo:
-      - 5-39276814-39188979 pNYN RT(1623917299057 49) q(0 0 0 0) r(12 12) U6
+      - 14-4116595-4097276 pNYN RT(1623918250303 47) q(0 0 0 5) r(16 16) U6
     body:
       encoding: ASCII-8BIT
-      string: '{"error_code":"UNKNOWN","message":"Unknown error was triggered"}
+      string: '{"error_code":"CHANNEL_UNAVAILABLE","message":"The payment channel
+        requested is currently experiencing unexpected issues. The eWallet provider
+        will be notified to resolve this issue."}
 
 '
-  recorded_at: Thu, 17 Jun 2021 08:08:20 GMT
+  recorded_at: Thu, 17 Jun 2021 08:24:12 GMT
 recorded_with: VCR 6.0.0

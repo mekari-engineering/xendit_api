@@ -5,20 +5,39 @@ module XenditApi
   module Api
     class Ewallet < XenditApi::Api::Base
       PATH = '/ewallets'.freeze
+      CHECKOUT_METHOD = 'ONE_TIME_PAYMENT'.freeze
+      CURRENCY = 'IDR'.freeze
 
-      def get(params)
-        response = client.get(PATH, params)
+      def get(id:)
+        response = client.get("#{PATH}/charges/#{id}")
         XenditApi::Model::Ewallet.new(response)
       end
 
-      def post(params:, ewallet_type:)
-        response = client.post(PATH,
-                               external_id: params[:external_id],
+      def post(params:, channel_code:)
+        channel_properties = get_channel_properties(channel_code, params)
+        response = client.post("#{PATH}/charges",
+                               reference_id: params[:reference_id],
+                               currency: CURRENCY,
                                amount: params[:amount],
-                               phone: params[:phone],
-                               ewallet_type: ewallet_type)
+                               checkout_method: CHECKOUT_METHOD,
+                               channel_code: channel_code,
+                               channel_properties: channel_properties)
 
         XenditApi::Model::Ewallet.new(response)
+      end
+
+      private
+
+      def get_channel_properties(channel_code, params)
+        return ovo_channel_properties(params) if channel_code == 'ID_OVO'
+
+        {}
+      end
+
+      def ovo_channel_properties(params)
+        {
+          mobile_number: params[:mobile_number]
+        }
       end
     end
   end

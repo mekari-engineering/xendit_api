@@ -3,14 +3,31 @@ require 'xendit_api/model/base'
 module XenditApi
   module Model
     class Ewallet < XenditApi::Model::Base
-      attr_accessor :transaction_date,
+      attr_accessor :id,
                     :business_id,
-                    :amount,
-                    :phone,
-                    :external_id,
-                    :ewallet_type,
-                    :created,
-                    :status
+                    :reference_id,
+                    :status,
+                    :currency,
+                    :charge_amount,
+                    :capture_amount,
+                    :channel_code,
+                    :channel_properties,
+                    :created
+
+      attr_writer :actions,
+                  :is_redirect_required,
+                  :callback_url,
+                  :void_status,
+                  :voided_at,
+                  :capture_now,
+                  :payment_method_id,
+                  :basket,
+                  :metadata,
+                  :updated,
+                  :refunded_amount,
+                  :checkout_method,
+                  :customer_id,
+                  :failure_code
     end
   end
 end

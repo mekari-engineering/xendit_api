@@ -5,11 +5,7 @@ module XenditApi
 
       class PaymentTimeout < ResponseError; end
 
-      class DuplicatePayment < ResponseError; end
-
-      class SendingRequest < ResponseError; end
-
-      class TransactionDeclined < ResponseError; end
+      class DuplicateError < ResponseError; end
 
       class PhoneNumberNotRegistered < ResponseError; end
 
@@ -20,6 +16,14 @@ module XenditApi
       class InvalidPhoneNumber < ResponseError; end
 
       class PaymentNotFound < ResponseError; end
+
+      class ChannelNotActivated < ResponseError; end
+
+      class ChannelUnavailable < ResponseError; end
+
+      class ServerError < ResponseError; end
+
+      class MaximumLimitReached < ResponseError; end
 
       class UnknownError < ResponseError; end
     end

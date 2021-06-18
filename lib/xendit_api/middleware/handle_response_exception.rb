@@ -19,12 +19,11 @@ module XenditApi
         return true if json_response['error_code'].nil?
 
         error_message = json_response['message']
-
         case json_response['error_code']
         when 'USER_DID_NOT_AUTHORIZE_THE_PAYMENT'
           raise XenditApi::Errors::OVO::PaymentTimeout, error_message
-        when 'DUPLICATE_PAYMENT'
-          raise XenditApi::Errors::OVO::DuplicatePayment, error_message
+        when 'DUPLICATE_ERROR'
+          raise XenditApi::Errors::OVO::DuplicateError, error_message
         when 'SENDING_TRANSACTION_ERROR'
           raise XenditApi::Errors::OVO::SendingRequest, error_message
         when 'USER_DECLINED_THE_TRANSACTION'
@@ -37,7 +36,17 @@ module XenditApi
           raise XenditApi::Errors::OVO::ExternalError, error_message
         when 'PAYMENT_NOT_FOUND_ERROR'
           raise XenditApi::Errors::OVO::PaymentNotFound, error_message
+        when 'DATA_NOT_FOUND'
+          raise XenditApi::Errors::OVO::PaymentNotFound, error_message
+        when 'CHANNEL_NOT_ACTIVATED'
+          raise XenditApi::Errors::OVO::ChannelNotActivated, error_message
+        when 'CHANNEL_UNAVAILABLE'
+          raise XenditApi::Errors::OVO::ChannelUnavailable, error_message
+        when 'MAXIMUM_LIMIT_REACHED'
+          raise XenditApi::Errors::OVO::MaximumLimitReached, error_message
         when 'API_VALIDATION_ERROR'
+          raise XenditApi::Errors::ApiValidation, error_message
+        when 'INVALID_API_KEY'
           raise XenditApi::Errors::ApiValidation, error_message
         when 'CALLBACK_VIRTUAL_ACCOUNT_NOT_FOUND_ERROR'
           raise XenditApi::Errors::VirtualAccount::CallbackNotFound, error_message

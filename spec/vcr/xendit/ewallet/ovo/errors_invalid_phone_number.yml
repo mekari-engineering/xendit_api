@@ -1,71 +1,63 @@
 ---
 http_interactions:
-  - request:
-      method: post
-      uri: https://api.xendit.co/ewallets
-      body:
-        encoding: UTF-8
-        string: amount=1000&ewallet_type=OVO&external_id=nubu%40mekari.com&phone=01111111111
-      headers:
-        User-Agent:
-          - Faraday v0.11.0
-        Content-Type:
-          - application/x-www-form-urlencoded
-        Accept-Encoding:
-          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-        Accept:
-          - "*/*"
-    response:
-      status:
-        code: 200
-        message: ok
-      headers:
-        Access-Control-Allow-Headers:
-          - Content-Type, Authorization
-        Access-Control-Allow-Methods:
-          - GET,POST
-        Access-Control-Allow-Origin:
-          - "*"
-        Cache-Control:
-          - no-store, no-cache, must-revalidate, proxy-revalidate
-        Content-Security-Policy:
-          - default-src 'none'
-        Content-Type:
-          - text/html; charset=utf-8
-        Date:
-          - Tue, 26 Nov 2019 09:10:45 GMT
-        Expires:
-          - "0"
-        Pragma:
-          - no-cache
-        Server:
-          - nginx
-        Strict-Transport-Security:
-          - max-age=2592000; includeSubDomains
-        Surrogate-Control:
-          - no-store
-        X-Content-Type-Options:
-          - nosniff
-        Content-Length:
-          - "135"
-        Connection:
-          - keep-alive
-        Set-Cookie:
-          - "___utmvaBcBuvvsZZ=hFx\x01DTmH; path=/; Max-Age=900"
-          - "___utmvbBcBuvvsZZ=yZW XPJOnall: stp; path=/; Max-Age=900"
-          - ___utmvmBcBuvvsZZ=xPapEEIsBwc; path=/; Max-Age=900
-          - incap_ses_1120_2182539=1ocCanhhTRnWHO30kAqLDxTs3F0AAAAACWJjbAzTVfON/OKpO9BJlg==;
-            path=/; Domain=.xendit.co
-          - nlbi_2182539=yYhDDKWfdUKlA7axjjCKbQAAAABueSPKAccMSt9N3KFw8nrN; path=/; Domain=.xendit.co
-          - visid_incap_2182539=QhxyGc6WQ7ypKaiOW4Ka6hTs3F0AAAAAQUIPAAAAAABWBNZLHO5GBOIPCrhVAYYc;
-            expires=Tue, 24 Nov 2020 09:18:03 GMT; path=/; Domain=.xendit.co
-        X-Cdn:
-          - Incapsula
-        X-Iinfo:
-          - 3-16684569-16649729 pNNy RT(1574759444446 19) q(0 0 0 -1) r(2 2) U6
-      body:
-        encoding: ASCII-8BIT
-        string: '{"error_code":"API_VALIDATION_ERROR","errors":[{"message":"\"phone\" length must be at least 9 characters long","path":["phone"],"type":"string.min","context":{"limit":9,"value":"0","key":"phone","label":"phone"}}]}'
-      http_version:
-    recorded_at: Tue, 26 Nov 2019 09:10:45 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: post
+    uri: https://api.xendit.co/ewallets/charges
+    body:
+      encoding: UTF-8
+      string: '{"reference_id":"nuba@mekari.com","currency":"IDR","amount":1000,"checkout_method":"ONE_TIME_PAYMENT","channel_code":"ID_OVO","channel_properties":{"mobile_number":"0"}}'
+    headers:
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50X0lNN2NzeUc0bTNjeVBPVWJwUG02VU51MHozWmtBZXNGR3dnbXVjdXk4NFBRS1NSS2xuWUdlNllqMkphNVVtQjo=
+      User-Agent:
+      - Faraday v1.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Thu, 17 Jun 2021 08:20:16 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1122_2182539=/e8XLauExWTtalysXyWSD8AFy2AAAAAAjSgEiYA9ySW0rEZQ7PaBHg==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=r/5QbQU1oWvG5yFZjjCKbQAAAAB+dbubjmVnO8JxoBfrQJfR; path=/; Domain=.xendit.co
+      - visid_incap_2182539=L1FQWmiYSO+MO2J4SipokL4Fy2AAAAAAQUIPAAAAAAAH8ozJ6tCz5kCw5o6/dzjt;
+        expires=Thu, 16 Jun 2022 13:49:36 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 13-2951177-2914426 pNYN RT(1623918014736 142) q(0 0 0 0) r(15 15) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"API_VALIDATION_ERROR","message":"Failed to validate
+        the request, 1 error occurred.","errors":[{"path":"body.channel_properties.mobile_number","message":"JSON
+        string doesn''t match the regular expression \"^\\\\+?[1-9]\\\\d{1,14}$\""}]}
+
+'
+  recorded_at: Thu, 17 Jun 2021 08:20:17 GMT
+recorded_with: VCR 6.0.0
