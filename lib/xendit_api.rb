@@ -9,6 +9,7 @@ require 'xendit_api/errors/ovo'
 require 'xendit_api/errors/disbursement'
 require 'xendit_api/errors/credit_card'
 require 'xendit_api/errors/virtual_account'
+require 'xendit_api/errors/v1/ovo'
 
 module XenditApi
 end

@@ -36,7 +36,7 @@ module XenditApi
       @disbursement ||= XenditApi::Api::Disbursement.new(self)
     end
 
-    def get(url, params)
+    def get(url, params = nil)
       response = @connection.get(url, params)
       response.body
     end

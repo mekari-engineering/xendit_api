@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/ewallets/charges
+    body:
+      encoding: UTF-8
+      string: '{"reference_id":"9c833514-c47d-49f2-adb0-f49ab88a5f44","currency":"IDR","amount":1000,"checkout_method":"ONE_TIME_PAYMENT","channel_code":"ID_OVO","channel_properties":{"mobile_number":"0"}}'
+    headers:
+      Authorization:
+      - Basic ***REMOVED***
+      User-Agent:
+      - Faraday v1.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 21 Jun 2021 02:38:25 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1111_2182539=Ozw8cYjsgXMYI4E1CBFrD6D7z2AAAAAAB+9dLwtj6/6LJDbMoBXu3g==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=PtdfbefCsmVekrsOjjCKbQAAAAA+Yq+iX45506HAB7bM2yp6; path=/; Domain=.xendit.co
+      - visid_incap_2182539=h0NL9rp8R/ancA5Hz3vSaqD7z2AAAAAAQUIPAAAAAAAXl1GV4BeLLf55mULnDt0a;
+        expires=Mon, 20 Jun 2022 12:41:20 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 9-3712387-3672018 pNYN RT(1624243103504 85) q(0 0 0 -1) r(11 11) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"API_VALIDATION_ERROR","message":"Failed to validate
+        the request, 1 error occurred.","errors":[{"path":"body.channel_properties.mobile_number","message":"JSON
+        string doesn''t match the regular expression \"^\\\\+?[1-9]\\\\d{1,14}$\""}]}
+
+'
+  recorded_at: Mon, 21 Jun 2021 02:38:25 GMT
+recorded_with: VCR 6.0.0

@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/ewallets/charges
+    body:
+      encoding: UTF-8
+      string: '{"reference_id":"eacd7788-8864-421c-a39c-9c59c3ee875c","currency":"IDR","amount":1000,"checkout_method":"ONE_TIME_PAYMENT","channel_code":"ID_OVO","channel_properties":{"mobile_number":"+6281234567890"}}'
+    headers:
+      Authorization:
+      - Basic ***REMOVED***
+      User-Agent:
+      - Faraday v1.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 21 Jun 2021 02:35:13 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1111_2182539=aQVZB1rVEC1n7IA1CBFrD+D6z2AAAAAAiXnYTaD1mUAW44iy/022Yw==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=5n6vKO3kGQu9TuYwjjCKbQAAAAAeJZEIDvCAoLbgNVWzFKty; path=/; Domain=.xendit.co
+      - visid_incap_2182539=uyT0gZ5DSkOZSSGTyEcCr336z2AAAAAAQUIPAAAAAAA5y+rXnshFmKBAjBK4Tklf;
+        expires=Mon, 20 Jun 2022 12:41:20 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 12-5957666-5917491 pNYN RT(1624242911024 39) q(0 0 0 1) r(13 13) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"ewc_5459d09c-6393-43ae-bbbd-e600b9706743","business_id":"596d988e56b5a3c45be75e6e","reference_id":"eacd7788-8864-421c-a39c-9c59c3ee875c","status":"PENDING","currency":"IDR","charge_amount":1000,"capture_amount":1000,"refunded_amount":null,"checkout_method":"ONE_TIME_PAYMENT","channel_code":"ID_OVO","channel_properties":{"mobile_number":"+6281234567890"},"actions":null,"is_redirect_required":false,"callback_url":"https://webhook.site/6eef288c-e4ac-4b1b-a453-bbdde612af6b","created":"2021-06-21T02:35:12.999Z","updated":"2021-06-21T02:35:12.999Z","void_status":null,"voided_at":null,"capture_now":true,"customer_id":null,"payment_method_id":null,"failure_code":null,"basket":null,"metadata":null}
+
+'
+  recorded_at: Mon, 21 Jun 2021 02:35:13 GMT
+recorded_with: VCR 6.0.0
