@@ -1,6 +1,6 @@
 require 'spec_helper'
 require 'xendit_api/api/v1/ewallet'
-require 'xendit_api/errors/v1/ewallet/ovo'
+require 'xendit_api/errors/v1/ewallet'
 require 'xendit_api/client'
 
 RSpec.describe XenditApi::Api::V1::Ewallet do
@@ -55,7 +55,7 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
             ewallet_api = described_class.new(client)
             params = { reference_id: 'fa37759f-6bb0-4b7f-9701-2b6f43af01c9', amount: 10_100, mobile_number: '+6282310202012' }
             ewallet_api.post(params: params, payment_method: :ovo)
-          end.to raise_error(XenditApi::Errors::V1::Ewallet::OVO::ChannelNotActivated)
+          end.to raise_error(XenditApi::Errors::V1::Ewallet::ChannelNotActivated)
         end
       end
 
@@ -65,7 +65,7 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
             ewallet_api = described_class.new(client)
             params = { reference_id: '7f156109-5f7a-479a-84db-f59c5ab38766', amount: 10_101, mobile_number: '+6282310202012' }
             ewallet_api.post(params: params, payment_method: :ovo)
-          end.to raise_error(XenditApi::Errors::V1::Ewallet::OVO::ChannelUnavailable)
+          end.to raise_error(XenditApi::Errors::V1::Ewallet::ChannelUnavailable)
         end
       end
 
@@ -85,7 +85,7 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
             ewallet_api = described_class.new(client)
             params = { reference_id: 'eacd7788-8864-421c-a39c-9c59c3ee875c', amount: 4000, mobile_number: '+6282310202012' }
             ewallet_api.post(params: params, payment_method: :ovo)
-          end.to raise_error(XenditApi::Errors::V1::Ewallet::OVO::DuplicateError, 'There is already a charge request with the same reference_id.')
+          end.to raise_error(XenditApi::Errors::V1::Ewallet::DuplicateError, 'There is already a charge request with the same reference_id.')
         end
       end
 
@@ -126,7 +126,7 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
             ewallet_api = described_class.new(client)
             random_uuid = 'ewc_d351c488-fd5c-4a41-975f-f94614f7628f'
             ewallet_api.get(random_uuid)
-          end.to raise_error(XenditApi::Errors::V1::Ewallet::OVO::DataNotFound, 'Charge request not found')
+          end.to raise_error(XenditApi::Errors::V1::Ewallet::DataNotFound, 'Charge request not found')
         end
       end
     end
