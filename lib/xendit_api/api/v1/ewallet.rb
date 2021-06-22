@@ -9,12 +9,13 @@ module XenditApi
         CHECKOUT_METHOD = 'ONE_TIME_PAYMENT'.freeze
         CURRENCY = 'IDR'.freeze
 
-        def get(id:)
+        def get(id)
           response = client.get("#{PATH}/#{id}")
           XenditApi::Model::V1::Ewallet.new(response)
         end
 
-        def post(params:, channel_code:)
+        def post(params:, payment_method:)
+          channel_code = find_channel_code(payment_method)
           channel_properties = get_channel_properties(channel_code, params)
           response = client.post(PATH,
                                  reference_id: params[:reference_id],
@@ -28,6 +29,12 @@ module XenditApi
         end
 
         private
+
+        def find_channel_code(payment_method)
+          return 'ID_OVO' if payment_method.eql?(:ovo)
+
+          ''
+        end
 
         def get_channel_properties(channel_code, params)
           return ovo_channel_properties(params) if channel_code == 'ID_OVO'

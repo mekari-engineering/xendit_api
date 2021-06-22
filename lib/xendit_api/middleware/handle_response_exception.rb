@@ -38,13 +38,13 @@ module XenditApi
         when 'PAYMENT_NOT_FOUND_ERROR'
           raise XenditApi::Errors::OVO::PaymentNotFound, error_message
         when 'CHANNEL_NOT_ACTIVATED'
-          raise XenditApi::Errors::V1::OVO::ChannelNotActivated, error_message
+          raise XenditApi::Errors::V1::Ewallet::OVO::ChannelNotActivated, error_message
         when 'CHANNEL_UNAVAILABLE'
-          raise XenditApi::Errors::V1::OVO::ChannelUnavailable, error_message
+          raise XenditApi::Errors::V1::Ewallet::OVO::ChannelUnavailable, error_message
         when 'DUPLICATE_ERROR'
-          raise XenditApi::Errors::V1::OVO::DuplicateError, error_message
+          raise XenditApi::Errors::V1::Ewallet::OVO::DuplicateError, error_message
         when 'DATA_NOT_FOUND'
-          raise XenditApi::Errors::V1::OVO::DataNotFound, error_message
+          raise XenditApi::Errors::V1::Ewallet::OVO::DataNotFound, error_message
         when 'API_VALIDATION_ERROR'
           raise XenditApi::Errors::ApiValidation, error_message
         when 'CALLBACK_VIRTUAL_ACCOUNT_NOT_FOUND_ERROR'

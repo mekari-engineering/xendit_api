@@ -11,22 +11,21 @@ module XenditApi
                       :capture_amount,
                       :channel_code,
                       :channel_properties,
-                      :created
-
-        attr_writer :actions,
-                    :is_redirect_required,
-                    :callback_url,
-                    :void_status,
-                    :voided_at,
-                    :capture_now,
-                    :payment_method_id,
-                    :basket,
-                    :metadata,
-                    :updated,
-                    :refunded_amount,
-                    :checkout_method,
-                    :customer_id,
-                    :failure_code
+                      :created,
+                      :actions,
+                      :is_redirect_required,
+                      :callback_url,
+                      :void_status,
+                      :voided_at,
+                      :capture_now,
+                      :payment_method_id,
+                      :basket,
+                      :metadata,
+                      :updated,
+                      :refunded_amount,
+                      :checkout_method,
+                      :customer_id,
+                      :failure_code
       end
     end
   end
