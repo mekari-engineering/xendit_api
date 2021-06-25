@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/ewallets/charges/ewc_5459d09c-6393-43ae-bbbd-e600b9706743
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 21 Jun 2021 09:38:30 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1120_2182539=NuQCB4lkmTNiXj60awqLDxVe0GAAAAAAz37FbDQc1jBJB2KNVnwjXA==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=4TgbK8VZOjQckqoejjCKbQAAAACQs4v3X+AODJ82SEUgjjR/; path=/; Domain=.xendit.co
+      - visid_incap_2182539=to8jvZrWT7WS0Ribw0BTgRRe0GAAAAAAQUIPAAAAAABh5x0TJ7SyDEizGOdLRyiQ;
+        expires=Mon, 20 Jun 2022 13:05:52 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 14-15427366-15385795 pNYN RT(1624268308325 76) q(0 0 0 0) r(13 13) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"ewc_5459d09c-6393-43ae-bbbd-e600b9706743","business_id":"596d988e56b5a3c45be75e6e","reference_id":"eacd7788-8864-421c-a39c-9c59c3ee875c","status":"SUCCEEDED","currency":"IDR","charge_amount":1000,"capture_amount":1000,"refunded_amount":null,"checkout_method":"ONE_TIME_PAYMENT","channel_code":"ID_OVO","channel_properties":{"mobile_number":"+6281234567890"},"actions":null,"is_redirect_required":false,"callback_url":"https://webhook.site/6eef288c-e4ac-4b1b-a453-bbdde612af6b","created":"2021-06-21T02:35:12.999Z","updated":"2021-06-21T02:35:13.009Z","void_status":null,"voided_at":null,"capture_now":true,"customer_id":null,"payment_method_id":null,"failure_code":null,"basket":null,"metadata":null}
+
+'
+  recorded_at: Mon, 21 Jun 2021 09:38:30 GMT
+recorded_with: VCR 6.0.0

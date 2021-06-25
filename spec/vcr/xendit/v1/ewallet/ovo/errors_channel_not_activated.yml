@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/ewallets/charges
+    body:
+      encoding: UTF-8
+      string: '{"reference_id":"fa37759f-6bb0-4b7f-9701-2b6f43af01c9","currency":"IDR","amount":10100,"checkout_method":"ONE_TIME_PAYMENT","channel_code":"ID_OVO","channel_properties":{"mobile_number":"+6282310202012"}}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 21 Jun 2021 02:43:16 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1111_2182539=82zsEt5iAFupV4E1CBFrD8T8z2AAAAAA9qR/bPZTX6WgLwb8WyXPJQ==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=+GmgXqDt2WiJeJjkjjCKbQAAAAAJyUgnLvTIM4ZUOi2WQXSu; path=/; Domain=.xendit.co
+      - visid_incap_2182539=FGKXB6sgQUyWBoQroE/n6MT8z2AAAAAAQUIPAAAAAACC10afof/UrXyVlTadtcxq;
+        expires=Mon, 20 Jun 2022 12:41:19 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 5-9485610-9433503 pNYN RT(1624243394933 47) q(0 0 0 -1) r(13 13) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"CHANNEL_NOT_ACTIVATED","message":"Payment request failed
+        because this specific payment channel has not been activated. Please activate
+        the payment channel via your dashboard or our customer service."}
+
+'
+  recorded_at: Mon, 21 Jun 2021 02:43:16 GMT
+recorded_with: VCR 6.0.0

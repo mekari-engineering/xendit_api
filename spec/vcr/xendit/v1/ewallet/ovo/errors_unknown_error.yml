@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/ewallets/charges
+    body:
+      encoding: UTF-8
+      string: '{"reference_id":"307e9c34-7fed-45fe-b6d6-1f77bbbe872e","currency":"IDR","amount":9999,"checkout_method":"ONE_TIME_PAYMENT","channel_code":"ID_OVO","channel_properties":{"mobile_number":"+6282310202012"}}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Thu, 17 Jun 2021 08:08:20 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1116_2182539=w3DLJlOhhmgyrd5/bNR8D/QCy2AAAAAAbCUQUlk+cEHLmFkRd01HXA==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=VcQUDFwwCxIQPg2ZjjCKbQAAAAA1InvxUTq4KG16NeGAbAMA; path=/; Domain=.xendit.co
+      - visid_incap_2182539=cDer2KhnQy21W/GU0iDzfdkCy2AAAAAAQUIPAAAAAAA0tNDg8UyDEGYtVe9Jd9jk;
+        expires=Thu, 16 Jun 2022 09:12:47 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 5-39276814-39188979 pNYN RT(1623917299057 49) q(0 0 0 0) r(12 12) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"UNKNOWN","message":"Unknown error was triggered"}
+'
+  recorded_at: Thu, 17 Jun 2021 08:08:20 GMT
+recorded_with: VCR 6.0.0
