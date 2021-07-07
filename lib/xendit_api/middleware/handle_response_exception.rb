@@ -1,9 +1,3 @@
-require 'xendit_api/errors'
-require 'xendit_api/errors/virtual_account'
-require 'xendit_api/errors/ovo'
-require 'xendit_api/errors/disbursement'
-require 'xendit_api/errors/credit_card'
-
 module XenditApi
   module Middleware
     class HandleResponseException < Faraday::Middleware
