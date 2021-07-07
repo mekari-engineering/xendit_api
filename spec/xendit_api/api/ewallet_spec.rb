@@ -1,7 +1,4 @@
 require 'spec_helper'
-require 'xendit_api/api/ewallet'
-require 'xendit_api/errors/ovo'
-require 'xendit_api/client'
 
 RSpec.describe XenditApi::Api::Ewallet do
   let(:client) { XenditApi::Client.new }

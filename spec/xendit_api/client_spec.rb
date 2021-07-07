@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'xendit_api/errors/ovo'
 
 RSpec.describe XenditApi::Client do
   let(:auth_key) { 'FILTERED_AUTH_KEY' }
