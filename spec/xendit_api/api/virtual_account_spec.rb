@@ -381,7 +381,7 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           expected_amount: -100_000
         }
         expect do
-          update_response = virtual_account_api.update(create_response.id, params)
+          virtual_account_api.update(create_response.id, params)
         end.to raise_error XenditApi::Errors::VirtualAccount::MinimumExpectedAmount, 'The minimum Expected Amount for MANDIRI VA is 1'
       end
     end
