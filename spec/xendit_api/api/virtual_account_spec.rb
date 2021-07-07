@@ -381,11 +381,11 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           bank_code: 'MANDIRI'
         )
         params = {
-          expected_amount: -100_000,
+          expected_amount: -100_000
         }
-        expect {
-          update_response = virtual_account_api.update(create_response.id, params)
-        }.to raise_error XenditApi::Errors::VirtualAccount::MinimumExpectedAmount, "The minimum Expected Amount for MANDIRI VA is 1"
+        expect do
+          virtual_account_api.update(create_response.id, params)
+        end.to raise_error XenditApi::Errors::VirtualAccount::MinimumExpectedAmount, 'The minimum Expected Amount for MANDIRI VA is 1'
       end
     end
   end
