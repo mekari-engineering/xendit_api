@@ -35,6 +35,13 @@ RSpec.describe XenditApi::Client do
     end
   end
 
+  describe '#v1_ewallet' do
+    it 'returns instance of XenditApi::Api::Ewallet' do
+      client = described_class.new(auth_key)
+      expect(client.v1_ewallet).to be_instance_of XenditApi::Api::V1::Ewallet
+    end
+  end
+
   describe '#post' do
     context 'with valid params' do
       let(:params) do

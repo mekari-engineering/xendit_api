@@ -43,6 +43,14 @@ module XenditApi
           raise XenditApi::Errors::OVO::ExternalError, error_message
         when 'PAYMENT_NOT_FOUND_ERROR'
           raise XenditApi::Errors::OVO::PaymentNotFound, error_message
+        when 'CHANNEL_NOT_ACTIVATED'
+          raise XenditApi::Errors::V1::Ewallet::ChannelNotActivated, error_message
+        when 'CHANNEL_UNAVAILABLE'
+          raise XenditApi::Errors::V1::Ewallet::ChannelUnavailable, error_message
+        when 'DUPLICATE_ERROR'
+          raise XenditApi::Errors::V1::Ewallet::DuplicateError, error_message
+        when 'DATA_NOT_FOUND'
+          raise XenditApi::Errors::V1::Ewallet::DataNotFound, error_message
         when 'API_VALIDATION_ERROR'
           raise XenditApi::Errors::ApiValidation, error_message
         when 'CALLBACK_VIRTUAL_ACCOUNT_NOT_FOUND_ERROR'
@@ -83,6 +91,8 @@ module XenditApi
           raise XenditApi::Errors::Disbursement::DescriptionNotFound, error_message
         when 'DIRECT_DISBURSEMENT_BALANCE_INSUFFICIENT_ERROR'
           raise XenditApi::Errors::Disbursement::NotEnoughBalance, error_message
+        when 'DIRECT_DISBURSEMENT_NOT_FOUND_ERROR'
+          raise XenditApi::Errors::Disbursement::DirectDisbursementNotFound, error_message
         when 'DUPLICATE_TRANSACTION_ERROR'
           raise XenditApi::Errors::Disbursement::DuplicateTransactionError, error_message
         when 'RECIPIENT_ACCOUNT_NUMBER_ERROR'

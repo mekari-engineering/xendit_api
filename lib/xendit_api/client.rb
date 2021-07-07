@@ -4,6 +4,7 @@ require 'xendit_api/api/virtual_account'
 require 'xendit_api/api/ewallet'
 require 'xendit_api/api/credit_card'
 require 'xendit_api/api/disbursement'
+require 'xendit_api/api/v1/ewallet'
 
 module XenditApi
   class Client
@@ -36,7 +37,11 @@ module XenditApi
       @disbursement ||= XenditApi::Api::Disbursement.new(self)
     end
 
-    def get(url, params)
+    def v1_ewallet
+      @v1_ewallet ||= XenditApi::Api::V1::Ewallet.new(self)
+    end
+
+    def get(url, params = nil)
       response = @connection.get(url, params)
       response.body
     end
