@@ -30,6 +30,13 @@ module XenditApi
         XenditApi::Model::VirtualAccount.new(virtual_account_params)
       end
 
+      def update(id, params)
+        update_path = "#{PATH}/#{id}"
+        response = client.patch(update_path, params)
+        virtual_account_response = permitted_virtual_account_params(response)
+        XenditApi::Model::VirtualAccount.new(virtual_account_response)
+      end
+
       def find(id)
         find_path = "#{PATH}/#{id}"
         response = client.get(find_path, {})

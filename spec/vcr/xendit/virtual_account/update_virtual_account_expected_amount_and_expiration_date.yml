@@ -1,0 +1,125 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/callback_virtual_accounts
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"sample-mandiri-demo","name":"Nobu nagawa","expected_amount":500000,"is_closed":true,"is_single_use":true,"bank_code":"MANDIRI"}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 07 Jul 2021 08:42:20 GMT
+      Etag:
+      - W/"14f-cGB6TlRvyt8VaDKOpXZDSVtiHlg"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      X-Powered-By:
+      - Express
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_932_2182539=1pokDmla4y2JC1aycSHvDOxo5WAAAAAAlMW9tjU/qqBrMZMQIpPMaw==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=4j/OGxW3jG9kaoHGjjCKbQAAAABk/CrT4c+BQuYyq9T6eFd1; path=/; Domain=.xendit.co
+      - visid_incap_2182539=egjzNU3lQu66bniESjulGOxo5WAAAAAAQUIPAAAAAABqW2HjBwo/OSfGJCslmqjT;
+        expires=Thu, 07 Jul 2022 06:52:55 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 13-30412578-30403744 pNYN RT(1625647338879 98) q(0 0 0 -1) r(11 11) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"is_closed":true,"status":"ACTIVE","owner_id":"596d988e56b5a3c45be75e6e","external_id":"sample-mandiri-demo","bank_code":"MANDIRI","merchant_code":"88908","name":"Nobu
+        nagawa","account_number":"889081063765256","expected_amount":500000,"is_single_use":true,"expiration_date":"2052-07-06T17:00:00.000Z","id":"60e568eb908eba71aa1726ae"}'
+  recorded_at: Wed, 07 Jul 2021 08:42:20 GMT
+- request:
+    method: patch
+    uri: https://api.xendit.co/callback_virtual_accounts/60e568eb908eba71aa1726ae
+    body:
+      encoding: UTF-8
+      string: '{"expected_amount":100000,"expiration_date":"2019-11-12T23:46:00.000Z"}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 07 Jul 2021 08:42:21 GMT
+      Etag:
+      - W/"151-LV19j0bCy30uT+pOe3BgsGuUhUo"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      X-Powered-By:
+      - Express
+      Content-Length:
+      - '337'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_932_2182539=DW+JRxfAw2CNDFaycSHvDO1o5WAAAAAA4RhN+YbPD8tQXIosgA6bnw==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=gS8VSwQq2SekBAwqjjCKbQAAAACgCVotcuthvqDNwIy7yudf; path=/; Domain=.xendit.co
+      - visid_incap_2182539=AqukIRFgQLWu3xZC1kBhve1o5WAAAAAAQUIPAAAAAAAx6M8qizs6hcB05tDmBJam;
+        expires=Thu, 07 Jul 2022 06:52:55 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      X-Iinfo:
+      - 3-14918090-14918095 nNNN RT(1625647340281 131) q(0 0 2 -1) r(3 9) U6
+    body:
+      encoding: UTF-8
+      string: '{"is_closed":true,"status":"INACTIVE","owner_id":"596d988e56b5a3c45be75e6e","external_id":"sample-mandiri-demo","bank_code":"MANDIRI","merchant_code":"88908","name":"Nobu
+        nagawa","account_number":"889081063765256","expected_amount":100000,"is_single_use":true,"expiration_date":"2019-11-12T23:46:00.000Z","id":"60e568eb908eba71aa1726ae"}'
+  recorded_at: Wed, 07 Jul 2021 08:42:21 GMT
+recorded_with: VCR 6.0.0

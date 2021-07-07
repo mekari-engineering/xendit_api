@@ -317,6 +317,79 @@ RSpec.describe XenditApi::Api::VirtualAccount do
     end
   end
 
+  describe '#update' do
+    it 'returns updated virtual account' do
+      VCR.use_cassette('xendit/virtual_account/update_virtual_account') do
+        virtual_account_api = described_class.new(client)
+        create_response = virtual_account_api.create(
+          external_id: 'sample-mandiri-demo',
+          name: 'Nobu nagawa',
+          amount: 500_000,
+          bank_code: 'MANDIRI'
+        )
+        params = {
+          expected_amount: 100_000
+        }
+        update_response = virtual_account_api.update(create_response.id, params)
+        expect(update_response.expected_amount).to eq 100_000
+      end
+    end
+
+    it 'returns updated virtual account when update only expired_date' do
+      VCR.use_cassette('xendit/virtual_account/update_virtual_account_expiration_date') do
+        virtual_account_api = described_class.new(client)
+        create_response = virtual_account_api.create(
+          external_id: 'sample-mandiri-demo',
+          name: 'Nobu nagawa',
+          amount: 500_000,
+          bank_code: 'MANDIRI'
+        )
+        params = {
+          expiration_date: '2019-11-12T23:46:00.000Z'
+        }
+        update_response = virtual_account_api.update(create_response.id, params)
+        expect(update_response.expiration_date).to eq '2019-11-12T23:46:00.000Z'
+      end
+    end
+
+    it 'returns updated virtual account when update both expected_amount and expired_date' do
+      VCR.use_cassette('xendit/virtual_account/update_virtual_account_expected_amount_and_expiration_date') do
+        virtual_account_api = described_class.new(client)
+        create_response = virtual_account_api.create(
+          external_id: 'sample-mandiri-demo',
+          name: 'Nobu nagawa',
+          amount: 500_000,
+          bank_code: 'MANDIRI'
+        )
+        params = {
+          expected_amount: 100_000,
+          expiration_date: '2019-11-12T23:46:00.000Z'
+        }
+        update_response = virtual_account_api.update(create_response.id, params)
+        expect(update_response.expected_amount).to eq 100_000
+        expect(update_response.expiration_date).to eq '2019-11-12T23:46:00.000Z'
+      end
+    end
+
+    it 'raise error when expected_amount is less than zero' do
+      VCR.use_cassette('xendit/virtual_account/update_virtual_account_invalid_amount') do
+        virtual_account_api = described_class.new(client)
+        create_response = virtual_account_api.create(
+          external_id: 'sample-mandiri-demo',
+          name: 'Nobu nagawa',
+          amount: 500_000,
+          bank_code: 'MANDIRI'
+        )
+        params = {
+          expected_amount: -100_000,
+        }
+        expect {
+          update_response = virtual_account_api.update(create_response.id, params)
+        }.to raise_error XenditApi::Errors::VirtualAccount::MinimumExpectedAmount, "The minimum Expected Amount for MANDIRI VA is 1"
+      end
+    end
+  end
+
   private
 
   def stub_time_now_to(fake_time)
