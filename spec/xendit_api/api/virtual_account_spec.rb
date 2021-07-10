@@ -97,17 +97,17 @@ RSpec.describe XenditApi::Api::VirtualAccount do
         expect(response.account_number).not_to be_nil
         expect(response.merchant_code).not_to be_nil
         expect(response.owner_id).not_to be_nil
-        expect(find_year(response.expiration_date)).to eq fake_time.year + 31
+        expect(find_year(response.expiration_date)).to eq fake_time.year + 32
         expect(response).to have_attributes(
           external_id: 'sample-mandiri-demo',
           name: 'Nobu nagawa',
           bank_code: 'MANDIRI',
-          suggested_amount: 500_000,
+          suggested_amount: nil,
           expected_amount: 500_000,
           is_closed: true,
           is_single_use: true,
-          currency: 'IDR',
-          status: 'PENDING'
+          currency: nil,
+          status: 'ACTIVE'
         )
       end
     end
@@ -139,6 +139,41 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           is_single_use: true,
           currency: 'IDR',
           status: 'PENDING'
+        )
+      end
+    end
+    
+    it 'returns success response with bri bank code and assigned account number' do
+      fake_time = DateTime.new(2020, 5, 5)
+      stub_time_now_to(fake_time)
+      VCR.use_cassette('xendit/virtual_account/bri_success_with_account_number') do
+        virtual_account_api = described_class.new(client)
+        response = virtual_account_api.create(
+          external_id: 'sample-bri-demo-new',
+          name: 'Nobu nagawa',
+          suggested_amount: 500_000,
+          expected_amount: 500_000,
+          virtual_account_number: '1063795361',
+          is_closed: true,
+          is_single_use: true,
+          bank_code: 'BRI'
+        )
+        expect(response).to be_instance_of XenditApi::Model::VirtualAccount
+        expect(response.id).not_to be_nil
+        expect(response.merchant_code).not_to be_nil
+        expect(response.owner_id).not_to be_nil
+        expect(find_year(response.expiration_date)).to eq fake_time.year + 32
+        expect(response).to have_attributes(
+          external_id: 'sample-bri-demo-new',
+          name: 'Nobu nagawa',
+          bank_code: 'BRI',
+          suggested_amount: 500_000,
+          expected_amount: 500_000,
+          account_number: '920011063795361',
+          is_closed: true,
+          is_single_use: true,
+          currency: nil,
+          status: 'ACTIVE'
         )
       end
     end

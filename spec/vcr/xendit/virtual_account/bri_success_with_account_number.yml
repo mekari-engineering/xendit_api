@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/callback_virtual_accounts
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"sample-bri-demo-new","name":"Nobu nagawa","suggested_amount":500000,"expected_amount":500000,"virtual_account_number":"1063795361","is_closed":true,"is_single_use":true,"bank_code":"BRI"}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 10 Jul 2021 14:16:08 GMT
+      Etag:
+      - W/"165-ucCHPcY77cl0RyL9ogJS1cmG+qo"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1120_2182539=TePoN/pXIWqI9uoIbgqLD6er6WAAAAAAbyL0pK2Alh6a4kuZYSETSQ==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=JGzqSEr/Lip/StnmjjCKbQAAAABPg5Mn4zHcvPvIL/6RX6UJ; path=/; Domain=.xendit.co
+      - visid_incap_2182539=NbxiD41aQBKljn/u+WCxXqer6WAAAAAAQUIPAAAAAACUrbqr1QMxaPAEXk8TWYJk;
+        expires=Sun, 10 Jul 2022 06:50:55 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 14-24065035-24052099 pNYN RT(1625926566634 56) q(0 0 0 -1) r(13 13) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"is_closed":true,"status":"ACTIVE","owner_id":"596d988e56b5a3c45be75e6e","external_id":"sample-bri-demo-new","account_number":"920011063795361","bank_code":"BRI","merchant_code":"92001","name":"Nobu
+        nagawa","suggested_amount":500000,"expected_amount":500000,"expiration_date":"2052-07-09T17:00:00.000Z","is_single_use":true,"id":"60e9aba8bcc61153823e4873"}'
+  recorded_at: Tue, 05 May 2020 00:00:00 GMT
+recorded_with: VCR 6.0.0
