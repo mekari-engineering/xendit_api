@@ -142,7 +142,7 @@ RSpec.describe XenditApi::Api::VirtualAccount do
         )
       end
     end
-    
+
     it 'returns success response with bri bank code and assigned account number' do
       fake_time = DateTime.new(2020, 5, 5)
       stub_time_now_to(fake_time)
