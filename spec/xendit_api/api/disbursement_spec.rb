@@ -1,7 +1,4 @@
 require 'spec_helper'
-require 'xendit_api/api/disbursement'
-require 'xendit_api/client'
-require 'xendit_api/errors/disbursement'
 require 'securerandom'
 
 RSpec.describe XenditApi::Api::Disbursement do
