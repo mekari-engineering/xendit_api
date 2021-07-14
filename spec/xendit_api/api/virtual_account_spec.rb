@@ -271,6 +271,38 @@ RSpec.describe XenditApi::Api::VirtualAccount do
       end
     end
 
+    it 'returns expected response when expected amount and amount params nil' do
+      fake_time = DateTime.new(2020, 5, 5)
+      stub_time_now_to(fake_time)
+      VCR.use_cassette('xendit/virtual_account/success_without_amount') do
+        virtual_account_api = described_class.new(client)
+        response = virtual_account_api.create(
+          external_id: 'sample-without-amount',
+          name: 'Nobu nagawa',
+          is_closed: false,
+          is_single_use: false,
+          bank_code: 'MANDIRI'
+        )
+        expect(response).to be_instance_of XenditApi::Model::VirtualAccount
+        expect(response.id).not_to be_nil
+        expect(response.account_number).not_to be_nil
+        expect(response.merchant_code).not_to be_nil
+        expect(response.owner_id).not_to be_nil
+        expect(find_year(response.expiration_date)).to eq fake_time.year + 32
+        expect(response).to have_attributes(
+          external_id: 'sample-without-amount',
+          name: 'Nobu nagawa',
+          bank_code: 'MANDIRI',
+          suggested_amount: nil,
+          expected_amount: nil,
+          is_closed: false,
+          is_single_use: false,
+          currency: nil,
+          status: 'ACTIVE'
+        )
+      end
+    end
+
     it 'raise BANK_NOT_SUPPORTED_ERROR with unknown bank code' do
       VCR.use_cassette('xendit/virtual_account/raise_bank_not_supported') do
         virtual_account_api = described_class.new(client)

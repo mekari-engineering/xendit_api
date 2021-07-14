@@ -7,9 +7,10 @@ module XenditApi
       PATH = '/callback_virtual_accounts'.freeze
 
       def create(params)
-        params[:expected_amount] = params[:amount] if params[:expected_amount].nil?
         params[:is_closed] = true if params[:is_closed].nil?
         params[:is_single_use] = true if params[:is_single_use].nil?
+        params[:expected_amount] = params[:amount] unless params[:amount].nil?
+
         response = client.post(PATH, params)
         virtual_account_params = permitted_virtual_account_params(response)
         XenditApi::Model::VirtualAccount.new(virtual_account_params)
