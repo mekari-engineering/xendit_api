@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'xendit_api/errors/ovo'
 
 RSpec.describe XenditApi::Client do
   let(:auth_key) { 'FILTERED_AUTH_KEY' }
@@ -33,6 +32,13 @@ RSpec.describe XenditApi::Client do
     it 'returns instance of XenditApi::Api::Disbursement' do
       client = described_class.new(auth_key)
       expect(client.disbursement).to be_instance_of XenditApi::Api::Disbursement
+    end
+  end
+
+  describe '#v1_ewallet' do
+    it 'returns instance of XenditApi::Api::Ewallet' do
+      client = described_class.new(auth_key)
+      expect(client.v1_ewallet).to be_instance_of XenditApi::Api::V1::Ewallet
     end
   end
 

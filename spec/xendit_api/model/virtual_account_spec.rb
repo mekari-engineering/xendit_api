@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'xendit_api/model/virtual_account'
 
 RSpec.describe XenditApi::Model::VirtualAccount do
   it 'returns expected attributes' do

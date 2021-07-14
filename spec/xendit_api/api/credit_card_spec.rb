@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'xendit_api/api/credit_card'
 require 'securerandom'
 
 RSpec.describe XenditApi::Api::CreditCard do

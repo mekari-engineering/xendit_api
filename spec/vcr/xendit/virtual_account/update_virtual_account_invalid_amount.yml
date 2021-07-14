@@ -1,0 +1,125 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/callback_virtual_accounts
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"sample-mandiri-demo","name":"Nobu nagawa","expected_amount":500000,"is_closed":true,"is_single_use":true,"bank_code":"MANDIRI"}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 07 Jul 2021 08:46:28 GMT
+      Etag:
+      - W/"14f-AB0VPRB1adfC0NCiZR1oxwVeJfI"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      X-Powered-By:
+      - Express
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_932_2182539=XwWQRfUyFCQCw1aycSHvDORp5WAAAAAAuLK3oduau7fDzio6gYTggg==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=GL1AAOMFwVN5fYYejjCKbQAAAAC9i+CaZRonZPfDC3mO3yso; path=/; Domain=.xendit.co
+      - visid_incap_2182539=9aEGE0zXTrGBQsf0+7CfSuRp5WAAAAAAQUIPAAAAAACGMOplvom3rOVKyUrwMfxT;
+        expires=Thu, 07 Jul 2022 06:52:55 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 11-16889280-16859987 pNYN RT(1625647587701 99) q(0 1 1 -1) r(12 12) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"is_closed":true,"status":"ACTIVE","owner_id":"596d988e56b5a3c45be75e6e","external_id":"sample-mandiri-demo","bank_code":"MANDIRI","merchant_code":"88908","name":"Nobu
+        nagawa","account_number":"889081063774746","expected_amount":500000,"is_single_use":true,"expiration_date":"2052-07-06T17:00:00.000Z","id":"60e569e4ddf4a1b01fa12a9e"}'
+  recorded_at: Wed, 07 Jul 2021 08:46:29 GMT
+- request:
+    method: patch
+    uri: https://api.xendit.co/callback_virtual_accounts/60e569e4ddf4a1b01fa12a9e
+    body:
+      encoding: UTF-8
+      string: '{"expected_amount":-100000}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 07 Jul 2021 08:46:29 GMT
+      Etag:
+      - W/"6a-1JXt09nfnEcS2SUQ2xGe0d35ZZk"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      X-Powered-By:
+      - Express
+      Content-Length:
+      - '106'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_932_2182539=naYFNyUWIUfUw1aycSHvDOVp5WAAAAAA1SAbmVSnVvefOTr8AgHzcQ==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=vS2hfCcz2zpuEdgzjjCKbQAAAABkR5HsbKINVfwRhsb/QXGH; path=/; Domain=.xendit.co
+      - visid_incap_2182539=WuGd7TryQqOB5VNl/XWOy+Vp5WAAAAAAQUIPAAAAAABuxP/3dXOhCeoOplO/I4w0;
+        expires=Thu, 07 Jul 2022 06:52:54 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      X-Iinfo:
+      - 14-41966981-41803098 pNNN RT(1625647589121 105) q(0 0 0 -1) r(7 7) U6
+    body:
+      encoding: UTF-8
+      string: '{"error_code":"MINIMUM_EXPECTED_AMOUNT_ERROR","message":"The minimum
+        Expected Amount for MANDIRI VA is 1"}'
+  recorded_at: Wed, 07 Jul 2021 08:46:30 GMT
+recorded_with: VCR 6.0.0
