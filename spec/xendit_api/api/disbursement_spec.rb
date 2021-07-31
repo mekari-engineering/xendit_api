@@ -33,6 +33,7 @@ RSpec.describe XenditApi::Api::Disbursement do
 
     context 'with invalid params' do
       it 'raise errors when bank code not registered' do
+        error_payload = { 'error_code' => 'BANK_CODE_NOT_SUPPORTED_ERROR', 'message' => 'Bank code is not supported' }
         VCR.use_cassette('xendit/disbursement/create/bank_code_not_supported_error') do
           disbursement_api = described_class.new(client)
           expect do
@@ -44,7 +45,11 @@ RSpec.describe XenditApi::Api::Disbursement do
               account_number: '1111111111',
               disbursement_description: 'sample disbursement'
             )
-          end.to raise_error XenditApi::Errors::Disbursement::BankCodeNotSupported, 'Bank code is not supported'
+          end.to raise_error do |error|
+            expect(error).to be_kind_of(XenditApi::Errors::Disbursement::BankCodeNotSupported)
+            expect(error.message).to eq 'Bank code is not supported'
+            expect(error.payload).to eq error_payload
+          end
         end
       end
 
