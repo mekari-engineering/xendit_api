@@ -54,6 +54,7 @@ RSpec.describe XenditApi::Api::Disbursement do
       end
 
       it 'raise errors when got DISBURSEMENT_DESCRIPTION_NOT_FOUND_ERROR' do
+        error_payload = { 'error_code' => 'DISBURSEMENT_DESCRIPTION_NOT_FOUND_ERROR', 'message' => 'Direct disbursement not found' }
         VCR.use_cassette('xendit/disbursement/create/disbursement_description_not_found_error') do
           disbursement_api = described_class.new(client)
           expect do
@@ -65,11 +66,16 @@ RSpec.describe XenditApi::Api::Disbursement do
               account_number: '1111111111',
               disbursement_description: nil
             )
-          end.to raise_error XenditApi::Errors::Disbursement::DescriptionNotFound
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::Disbursement::DescriptionNotFound
+            expect(error.message).to eq 'Direct disbursement not found'
+            expect(error.payload).to eq error_payload
+          end
         end
       end
 
       it 'raise errors when got DIRECT_DISBURSEMENT_BALANCE_INSUFFICIENT_ERROR' do
+        error_payload = { 'error_code' => 'DIRECT_DISBURSEMENT_BALANCE_INSUFFICIENT_ERROR', 'message' => 'Balance is insufficient' }
         VCR.use_cassette('xendit/disbursement/create/disbursement_not_enough_balance_error') do
           disbursement_api = described_class.new(client)
           expect do
@@ -81,11 +87,16 @@ RSpec.describe XenditApi::Api::Disbursement do
               account_number: '1111111111',
               disbursement_description: 'sample disbursement'
             )
-          end.to raise_error XenditApi::Errors::Disbursement::NotEnoughBalance
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::Disbursement::NotEnoughBalance
+            expect(error.message).to eq 'Balance is insufficient'
+            expect(error.payload).to eq error_payload
+          end
         end
       end
 
       it 'raise erorrs when got DUPLICATE_TRANSACTION_ERROR' do
+        error_payload = { 'error_code' => 'DUPLICATE_TRANSACTION_ERROR', 'message' => 'Disbursement was duplicated' }
         VCR.use_cassette('xendit/disbursement/create/duplicate_transaction_error') do
           disbursement_api = described_class.new(client)
           expect do
@@ -97,11 +108,16 @@ RSpec.describe XenditApi::Api::Disbursement do
               account_number: '1111111111',
               disbursement_description: 'sample disbursement'
             )
-          end.to raise_error XenditApi::Errors::Disbursement::DuplicateTransactionError
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::Disbursement::DuplicateTransactionError
+            expect(error.message).to eq 'Disbursement was duplicated'
+            expect(error.payload).to eq error_payload
+          end
         end
       end
 
       it 'raise error when got RECIPIENT_ACCOUNT_NUMBER_ERROR' do
+        error_payload = { 'error_code' => 'RECIPIENT_ACCOUNT_NUMBER_ERROR', 'message' => 'BCA account numbers must be 10 digits long' }
         VCR.use_cassette('xendit/disbursement/create/recipient_account_number_error') do
           disbursement_api = described_class.new(client)
           expect do
@@ -113,11 +129,16 @@ RSpec.describe XenditApi::Api::Disbursement do
               account_number: '123',
               disbursement_description: 'sample disbursement'
             )
-          end.to raise_error XenditApi::Errors::Disbursement::RecipientAccountNumberError
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::Disbursement::RecipientAccountNumberError
+            expect(error.message).to eq 'BCA account numbers must be 10 digits long'
+            expect(error.payload).to eq error_payload
+          end
         end
       end
 
       it 'raise error when got RECIPIENT_AMOUNT_ERROR' do
+        error_payload = { 'error_code' => 'RECIPIENT_AMOUNT_ERROR', 'message' => 'Recipient amount error' }
         VCR.use_cassette('xendit/disbursement/create/recipient_amount_error') do
           disbursement_api = described_class.new(client)
           expect do
@@ -129,11 +150,16 @@ RSpec.describe XenditApi::Api::Disbursement do
               account_number: '1111111111',
               disbursement_description: 'sample disbursement'
             )
-          end.to raise_error XenditApi::Errors::Disbursement::RecipientAmountError
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::Disbursement::RecipientAmountError
+            expect(error.message).to eq 'Recipient amount error'
+            expect(error.payload).to eq error_payload
+          end
         end
       end
 
       it 'raise error when got MAXIMUM_TRANSFER_LIMIT_ERROR' do
+        error_payload = { 'error_code' => 'MAXIMUM_TRANSFER_LIMIT_ERROR', 'message' => 'Maximum transfer limit error' }
         VCR.use_cassette('xendit/disbursement/create/maximum_transfer_limit_error') do
           disbursement_api = described_class.new(client)
           expect do
@@ -145,7 +171,11 @@ RSpec.describe XenditApi::Api::Disbursement do
               account_number: '1111111111',
               disbursement_description: 'sample disbursement'
             )
-          end.to raise_error XenditApi::Errors::Disbursement::MaximumTransferLimitError
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::Disbursement::MaximumTransferLimitError
+            expect(error.message).to eq 'Maximum transfer limit error'
+            expect(error.payload).to eq error_payload
+          end
         end
       end
     end

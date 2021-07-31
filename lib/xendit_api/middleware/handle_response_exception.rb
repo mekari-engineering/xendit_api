@@ -82,19 +82,19 @@ module XenditApi
           raise XenditApi::Errors::CreditCard::ChargeError, error_message
         # disbursements
         when 'DISBURSEMENT_DESCRIPTION_NOT_FOUND_ERROR'
-          raise XenditApi::Errors::Disbursement::DescriptionNotFound, error_message
+          raise XenditApi::Errors::Disbursement::DescriptionNotFound.new(error_message, json_response)
         when 'DIRECT_DISBURSEMENT_BALANCE_INSUFFICIENT_ERROR'
-          raise XenditApi::Errors::Disbursement::NotEnoughBalance, error_message
+          raise XenditApi::Errors::Disbursement::NotEnoughBalance.new(error_message, json_response)
         when 'DIRECT_DISBURSEMENT_NOT_FOUND_ERROR'
-          raise XenditApi::Errors::Disbursement::DirectDisbursementNotFound, error_message
+          raise XenditApi::Errors::Disbursement::DirectDisbursementNotFound.new(error_message, json_response)
         when 'DUPLICATE_TRANSACTION_ERROR'
-          raise XenditApi::Errors::Disbursement::DuplicateTransactionError, error_message
+          raise XenditApi::Errors::Disbursement::DuplicateTransactionError.new(error_message, json_response)
         when 'RECIPIENT_ACCOUNT_NUMBER_ERROR'
-          raise XenditApi::Errors::Disbursement::RecipientAccountNumberError, error_message
+          raise XenditApi::Errors::Disbursement::RecipientAccountNumberError.new(error_message, json_response)
         when 'RECIPIENT_AMOUNT_ERROR'
-          raise XenditApi::Errors::Disbursement::RecipientAmountError, error_message
+          raise XenditApi::Errors::Disbursement::RecipientAmountError.new(error_message, json_response)
         when 'MAXIMUM_TRANSFER_LIMIT_ERROR'
-          raise XenditApi::Errors::Disbursement::MaximumTransferLimitError, error_message
+          raise XenditApi::Errors::Disbursement::MaximumTransferLimitError.new(error_message, json_response)
         when 'BANK_CODE_NOT_SUPPORTED_ERROR'
           raise XenditApi::Errors::Disbursement::BankCodeNotSupported.new(error_message, json_response)
         when 'SERVER_ERROR'
