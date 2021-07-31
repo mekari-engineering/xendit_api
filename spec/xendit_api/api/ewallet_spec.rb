@@ -38,11 +38,15 @@ RSpec.describe XenditApi::Api::Ewallet do
 
       it 'raise error phone number not registered' do
         VCR.use_cassette('xendit/ewallet/ovo/errors_invalid_phone_number') do
+          error_payload = { 'error_code' => 'API_VALIDATION_ERROR', 'errors' => [{ 'message' => '"phone" length must be at least 9 characters long', 'path' => ['phone'], 'type' => 'string.min', 'context' => { 'limit' => 9, 'value' => '0', 'key' => 'phone', 'label' => 'phone' } }] }
           expect do
             ewallet_api = described_class.new(client)
             ewallet_api.post(params: params, ewallet_type: 'OVO')
-            # FIXME
-          end.to raise_error(XenditApi::Errors::ApiValidation)
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::ApiValidation
+            expect(error.message).to eq 'Validation error'
+            expect(error.payload).to eq error_payload
+          end
         end
       end
 

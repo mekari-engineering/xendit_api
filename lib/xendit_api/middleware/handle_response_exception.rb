@@ -38,7 +38,7 @@ module XenditApi
         when 'PAYMENT_NOT_FOUND_ERROR'
           raise XenditApi::Errors::OVO::PaymentNotFound, error_message
         when 'CHANNEL_NOT_ACTIVATED'
-          raise XenditApi::Errors::V1::Ewallet::ChannelNotActivated, error_message
+          raise XenditApi::Errors::V1::Ewallet::ChannelNotActivated.new(error_message, json_response)
         when 'CHANNEL_UNAVAILABLE'
           raise XenditApi::Errors::V1::Ewallet::ChannelUnavailable, error_message
         when 'DUPLICATE_ERROR'
@@ -46,7 +46,9 @@ module XenditApi
         when 'DATA_NOT_FOUND'
           raise XenditApi::Errors::V1::Ewallet::DataNotFound, error_message
         when 'API_VALIDATION_ERROR'
-          raise XenditApi::Errors::ApiValidation, error_message
+          # In this exception with custom the title since, the message from
+          # could returns arrays (see the payload for the full messages)
+          raise XenditApi::Errors::ApiValidation.new('Validation error', json_response)
         when 'CALLBACK_VIRTUAL_ACCOUNT_NOT_FOUND_ERROR'
           raise XenditApi::Errors::VirtualAccount::CallbackNotFound, error_message
         when 'BANK_NOT_SUPPORTED_ERROR'

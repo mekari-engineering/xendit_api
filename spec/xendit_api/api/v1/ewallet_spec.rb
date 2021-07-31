@@ -42,10 +42,15 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
 
       it 'raise error phone number not registered' do
         VCR.use_cassette('xendit/v1/ewallet/ovo/errors_invalid_phone_number') do
+          error_payload = { 'error_code' => 'API_VALIDATION_ERROR', 'message' => 'Failed to validate the request, 1 error occurred.', 'errors' => [{ 'path' => 'body.channel_properties.mobile_number', 'message' => "JSON string doesn't match the regular expression \"^\\\\+?[1-9]\\\\d{1,14}$\"" }] }
           expect do
             ewallet_api = described_class.new(client)
             ewallet_api.post(params: params, payment_method: :ovo)
-          end.to raise_error(XenditApi::Errors::ApiValidation, 'Failed to validate the request, 1 error occurred.')
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::ApiValidation
+            expect(error.message).to eq 'Validation error'
+            expect(error.payload).to eq error_payload
+          end
         end
       end
 
@@ -55,7 +60,11 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
             ewallet_api = described_class.new(client)
             params = { reference_id: 'fa37759f-6bb0-4b7f-9701-2b6f43af01c9', amount: 10_100, mobile_number: '+6282310202012' }
             ewallet_api.post(params: params, payment_method: :ovo)
-          end.to raise_error(XenditApi::Errors::V1::Ewallet::ChannelNotActivated)
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::V1::Ewallet::ChannelNotActivated
+            expect(error.message).to eq 'Payment request failed because this specific payment channel has not been activated. Please activate the payment channel via your dashboard or our customer service.'
+            expect(error.payload).to eq({ 'error_code' => 'CHANNEL_NOT_ACTIVATED', 'message' => 'Payment request failed because this specific payment channel has not been activated. Please activate the payment channel via your dashboard or our customer service.' })
+          end
         end
       end
 
