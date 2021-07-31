@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/credit_card_charges
+    body:
+      encoding: UTF-8
+      string: '{"token":"dc3404a5ceb56650f493f076a1b46c01","card_cvv":"123","external_id":"d45bf4d4fdef9231c5b37a3d4ac80777"}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 31 Jul 2021 09:04:24 GMT
+      Etag:
+      - W/"f9-C0aGw8vHeuCb1tJtBUBe5PNjh8M"
+      Server:
+      - nginx
+      X-Powered-By:
+      - Express
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1113_2182539=MUQCEh8UBntHxrJ9BSxyDxgSBWEAAAAAj7gbeNf33gfJzuwbGEfOpQ==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=ns01FunAzGzc0TMZjjCKbQAAAACcKXQVnC0C9xKrVXFPnUvt; path=/; Domain=.xendit.co
+      - visid_incap_2182539=9ljfqgYSRim2un7zRrkGvBcSBWEAAAAAQUIPAAAAAAA7jsIziyHeSvW5cAHNtDbM;
+        expires=Sun, 31 Jul 2022 09:04:13 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 14-6886500-6628387 pNYN RT(1627722263738 58) q(0 0 0 1) r(5 5) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"INVALID_TOKEN_ID_ERROR","message":"Invalid charge"}'
+  recorded_at: Sat, 31 Jul 2021 09:04:24 GMT
+recorded_with: VCR 6.0.0

@@ -79,7 +79,7 @@ module XenditApi
           raise XenditApi::Errors::VirtualAccount::RequestForbidden, error_message
         # credit cards
         when 'INVALID_TOKEN_ID_ERROR'
-          raise XenditApi::Errors::CreditCard::ChargeError, error_message
+          raise XenditApi::Errors::CreditCard::ChargeError.new(error_message, json_response)
         # disbursements
         when 'DISBURSEMENT_DESCRIPTION_NOT_FOUND_ERROR'
           raise XenditApi::Errors::Disbursement::DescriptionNotFound.new(error_message, json_response)
