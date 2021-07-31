@@ -181,17 +181,40 @@ RSpec.describe XenditApi::Api::Disbursement do
     end
   end
 
-  # describe '#find_by_external_id' do
-  #   context 'with invalid external id' do
-  #     it 'returns expected response' do
-  #       VCR.use_cassette('xendit/disbursement/find_by_external_id/invalid') do
-  #         disbursement_api = described_class.new(client)
+  describe '#find_by_external_id' do
+    context 'with valid external_id' do
+      it 'returns exected response' do
+        VCR.use_cassette('xendit/disbursement/find_by_external_id/200_ok') do
+          disbursement_api = described_class.new(client)
+          disbursement = disbursement_api.find_by_external_id('d28aac6a-03c8-46d0-ac03-43b6278b35eb')
+          expect(disbursement).to be_kind_of XenditApi::Model::Disbursement
+          expect(disbursement.external_id).to eq 'd28aac6a-03c8-46d0-ac03-43b6278b35eb'
+          expect(disbursement.amount).not_to be_nil
+          expect(disbursement.bank_code).not_to be_nil
+          expect(disbursement.user_id).not_to be_nil
+          expect(disbursement.account_holder_name).not_to be_nil
+          expect(disbursement.status).not_to be_nil
+          expect(disbursement.id).not_to be_nil
+          expect(disbursement.payload).not_to be_nil
+        end
+      end
+    end
 
-  #         expect do
-  #           disbursement_api.find_by_external_id('666')
-  #         end.to raise_error XenditApi::Errors::Disbursement::MaximumTransferLimitError
-  #       end
-  #     end
-  #   end
-  # end
+    context 'with invalid external id' do
+      it 'returns expected response' do
+        error_payload = { 'error_code' => 'DIRECT_DISBURSEMENT_NOT_FOUND_ERROR', 'message' => 'Direct disbursement not found' }
+        VCR.use_cassette('xendit/disbursement/find_by_external_id/invalid') do
+          disbursement_api = described_class.new(client)
+
+          expect do
+            disbursement_api.find_by_external_id('d666')
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::Disbursement::DirectDisbursementNotFound
+            expect(error.message).to eq 'Direct disbursement not found'
+            expect(error.payload).to eq error_payload
+          end
+        end
+      end
+    end
+  end
 end

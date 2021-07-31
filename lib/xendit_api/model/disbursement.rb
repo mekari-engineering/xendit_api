@@ -10,6 +10,7 @@ module XenditApi
                     :account_holder_name,
                     :description,
                     :disbursement_description,
+                    :is_instant,
                     :status,
                     :id,
                     :email_to,
