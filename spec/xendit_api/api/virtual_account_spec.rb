@@ -313,11 +313,21 @@ RSpec.describe XenditApi::Api::VirtualAccount do
             amount: 500_000,
             bank_code: 'RANDOM_BANK_CODE'
           )
-        end.to raise_error XenditApi::Errors::VirtualAccount::BankNotSupported
+        end.to raise_error do |error|
+          expect(error).to be_kind_of XenditApi::Errors::VirtualAccount::BankNotSupported
+          expect(error.message).to eq 'That bank code is not currently supported'
+          expect(error.payload).to eq({ 'error_code' => 'BANK_NOT_SUPPORTED_ERROR', 'message' => 'That bank code is not currently supported' })
+        end
       end
     end
 
     it 'raises API_VALIDATION_ERROR when external_id, name, amount was blank' do
+      error_payload = { 'error_code' => 'API_VALIDATION_ERROR',
+                        'message' => 'There was an error with the format submitted to the server.',
+                        'errors' =>
+         [{ 'field' => ['external_id'], 'location' => 'body', 'messages' => ['"external_id" must be a string'], 'types' => ['string.base'] },
+          { 'field' => ['name'], 'location' => 'body', 'messages' => ['"name" must be a string'], 'types' => ['string.base'] },
+          { 'field' => ['expected_amount'], 'location' => 'body', 'messages' => ['"expected_amount" must be a number'], 'types' => ['number.base'] }] }
       VCR.use_cassette('xendit/virtual_account/raise_api_validation') do
         virtual_account_api = described_class.new(client)
         expect do
@@ -327,7 +337,11 @@ RSpec.describe XenditApi::Api::VirtualAccount do
             amount: nil,
             bank_code: 'MANDIRI'
           )
-        end.to raise_error XenditApi::Errors::ApiValidation
+        end.to raise_error do |error|
+          expect(error).to be_kind_of XenditApi::Errors::ApiValidation
+          expect(error.message).to eq 'Validation error'
+          expect(error.payload).to eq error_payload
+        end
       end
     end
 
@@ -341,7 +355,11 @@ RSpec.describe XenditApi::Api::VirtualAccount do
             amount: 0,
             bank_code: 'MANDIRI'
           )
-        end.to raise_error XenditApi::Errors::VirtualAccount::MinimumExpectedAmount
+        end.to raise_error do |error|
+          expect(error).to be_kind_of XenditApi::Errors::VirtualAccount::MinimumExpectedAmount
+          expect(error.message).to eq 'The minimum Expected Amount for MANDIRI VA is 1'
+          expect(error.payload).to eq({ 'error_code' => 'MINIMUM_EXPECTED_AMOUNT_ERROR', 'message' => 'The minimum Expected Amount for MANDIRI VA is 1' })
+        end
       end
     end
 
@@ -355,7 +373,11 @@ RSpec.describe XenditApi::Api::VirtualAccount do
             amount: 50_000_000_001,
             bank_code: 'MANDIRI'
           )
-        end.to raise_error XenditApi::Errors::VirtualAccount::MaximumExpectedAmount
+        end.to raise_error do |error|
+          expect(error).to be_kind_of XenditApi::Errors::VirtualAccount::MaximumExpectedAmount
+          expect(error.message).to eq 'The maximum Expected Amount for MANDIRI VA is 50000000000'
+          expect(error.payload).to eq({ 'error_code' => 'MAXIMUM_EXPECTED_AMOUNT_ERROR', 'message' => 'The maximum Expected Amount for MANDIRI VA is 50000000000' })
+        end
       end
     end
   end
@@ -449,7 +471,11 @@ RSpec.describe XenditApi::Api::VirtualAccount do
         }
         expect do
           virtual_account_api.update(create_response.id, params)
-        end.to raise_error XenditApi::Errors::VirtualAccount::MinimumExpectedAmount, 'The minimum Expected Amount for MANDIRI VA is 1'
+        end.to raise_error do |error|
+          expect(error).to be_kind_of XenditApi::Errors::VirtualAccount::MinimumExpectedAmount
+          expect(error.message).to eq 'The minimum Expected Amount for MANDIRI VA is 1'
+          expect(error.payload).to eq({ 'error_code' => 'MINIMUM_EXPECTED_AMOUNT_ERROR', 'message' => 'The minimum Expected Amount for MANDIRI VA is 1' })
+        end
       end
     end
   end

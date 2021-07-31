@@ -50,35 +50,35 @@ module XenditApi
           # could returns arrays (see the payload for the full messages)
           raise XenditApi::Errors::ApiValidation.new('Validation error', json_response)
         when 'CALLBACK_VIRTUAL_ACCOUNT_NOT_FOUND_ERROR'
-          raise XenditApi::Errors::VirtualAccount::CallbackNotFound, error_message
+          raise XenditApi::Errors::VirtualAccount::CallbackNotFound.new(error_message, json_response)
         when 'BANK_NOT_SUPPORTED_ERROR'
-          raise XenditApi::Errors::VirtualAccount::BankNotSupported, error_message
+          raise XenditApi::Errors::VirtualAccount::BankNotSupported.new(error_message, json_response)
         when 'INVALID_JSON_FORMAT'
-          raise XenditApi::Errors::VirtualAccount::InvalidJsonFormat, error_message
+          raise XenditApi::Errors::VirtualAccount::InvalidJsonFormat.new(error_message, json_response)
         when 'VIRTUAL_ACCOUNT_NUMBER_OUTSIDE_RANGE'
-          raise XenditApi::Errors::VirtualAccount::VirtualAccountNumberOutsideRange, error_message
+          raise XenditApi::Errors::VirtualAccount::VirtualAccountNumberOutsideRange.new(error_message, json_response)
         when 'EXPIRATION_DATE_NOT_SUPPORTED_ERROR'
-          raise XenditApi::Errors::VirtualAccount::ExpirationDateNotSupported, error_message
+          raise XenditApi::Errors::VirtualAccount::ExpirationDateNotSupported.new(error_message, json_response)
         when 'EXPIRATION_DATE_INVALID_ERROR'
-          raise XenditApi::Errors::VirtualAccount::ExpirationInvalid, error_message
+          raise XenditApi::Errors::VirtualAccount::ExpirationInvalid.new(error_message, json_response)
         when 'SUGGESTED_AMOUNT_NOT_SUPPORTED_ERROR'
-          raise XenditApi::Errors::VirtualAccount::SuggestedAmountNotSupported, error_message
+          raise XenditApi::Errors::VirtualAccount::SuggestedAmountNotSupported.new(error_message, json_response)
         when 'EXPECTED_AMOUNT_REQUIRED_ERROR'
-          raise XenditApi::Errors::VirtualAccount::ExpectedAmountRequired, error_message
+          raise XenditApi::Errors::VirtualAccount::ExpectedAmountRequired.new(error_message, json_response)
         when 'CLOSED_VA_NOT_SUPPORTED_ERROR'
-          raise XenditApi::Errors::VirtualAccount::ClosedVaNotSupported, error_message
+          raise XenditApi::Errors::VirtualAccount::ClosedVaNotSupported.new(error_message, json_response)
         when 'DUPLICATE_CALLBACK_VIRTUAL_ACCOUNT_ERROR'
-          raise XenditApi::Errors::VirtualAccount::DuplicateCallbackVirtualAccount, error_message
+          raise XenditApi::Errors::VirtualAccount::DuplicateCallbackVirtualAccount.new(error_message, json_response)
         when 'MAXIMUM_EXPECTED_AMOUNT_ERROR'
-          raise XenditApi::Errors::VirtualAccount::MaximumExpectedAmount, error_message
+          raise XenditApi::Errors::VirtualAccount::MaximumExpectedAmount.new(error_message, json_response)
         when 'CALLBACK_VIRTUAL_ACCOUNT_NAME_NOT_ALLOWED_ERROR'
-          raise XenditApi::Errors::VirtualAccount::CallbackVirtualAccountNameNotAllowed, error_message
+          raise XenditApi::Errors::VirtualAccount::CallbackVirtualAccountNameNotAllowed.new(error_message, json_response)
         when 'DESCRIPTION_NOT_SUPPORTED_ERROR'
-          raise XenditApi::Errors::VirtualAccount::DescriptionNotSupported, error_message
+          raise XenditApi::Errors::VirtualAccount::DescriptionNotSupported.new(error_message, json_response)
         when 'MINIMUM_EXPECTED_AMOUNT_ERROR'
-          raise XenditApi::Errors::VirtualAccount::MinimumExpectedAmount, error_message
+          raise XenditApi::Errors::VirtualAccount::MinimumExpectedAmount.new(error_message, json_response)
         when 'REQUEST_FORBIDDEN_ERROR'
-          raise XenditApi::Errors::VirtualAccount::RequestForbidden, error_message
+          raise XenditApi::Errors::VirtualAccount::RequestForbidden.new(error_message, json_response)
         # credit cards
         when 'INVALID_TOKEN_ID_ERROR'
           raise XenditApi::Errors::CreditCard::ChargeError.new(error_message, json_response)

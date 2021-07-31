@@ -1,7 +1,7 @@
 module XenditApi
   module Errors
     module VirtualAccount
-      class ResponseError < StandardError; end
+      class ResponseError < XenditApi::Errors::ResponseError; end
 
       class CallbackNotFound < ResponseError; end
 
