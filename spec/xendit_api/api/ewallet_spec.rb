@@ -56,7 +56,11 @@ RSpec.describe XenditApi::Api::Ewallet do
             ewallet_api = described_class.new(client)
             params = { external_id: '123', amount: 4000, phone: '082310202012' }
             ewallet_api.post(params: params, ewallet_type: 'OVO')
-          end.to raise_error(XenditApi::Errors::OVO::PaymentTimeout, 'Payment was not authorized')
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::OVO::PaymentTimeout
+            expect(error.message).to eq 'Payment was not authorized'
+            expect(error.payload).to eq({ 'error_code' => 'USER_DID_NOT_AUTHORIZE_THE_PAYMENT', 'message' => 'Payment was not authorized' })
+          end
         end
       end
 

@@ -22,29 +22,29 @@ module XenditApi
 
         case json_response['error_code']
         when 'USER_DID_NOT_AUTHORIZE_THE_PAYMENT'
-          raise XenditApi::Errors::OVO::PaymentTimeout, error_message
+          raise XenditApi::Errors::OVO::PaymentTimeout.new(error_message, json_response)
         when 'DUPLICATE_PAYMENT'
-          raise XenditApi::Errors::OVO::DuplicatePayment, error_message
+          raise XenditApi::Errors::OVO::DuplicatePayment.new(error_message, json_response)
         when 'SENDING_TRANSACTION_ERROR'
-          raise XenditApi::Errors::OVO::SendingRequest, error_message
+          raise XenditApi::Errors::OVO::SendingRequest.new(error_message, json_response)
         when 'USER_DECLINED_THE_TRANSACTION'
-          raise XenditApi::Errors::OVO::TransactionDeclined, error_message
+          raise XenditApi::Errors::OVO::TransactionDeclined.new(error_message, json_response)
         when 'PHONE_NUMBER_NOT_REGISTERED'
-          raise XenditApi::Errors::OVO::PhoneNumberNotRegistered, error_message
+          raise XenditApi::Errors::OVO::PhoneNumberNotRegistered.new(error_message, json_response)
         when 'EWALLET_APP_UNREACHABLE'
-          raise XenditApi::Errors::OVO::EwalletAppUnreacable, error_message
+          raise XenditApi::Errors::OVO::EwalletAppUnreacable.new(error_message, json_response)
         when 'EXTERNAL_ERROR'
-          raise XenditApi::Errors::OVO::ExternalError, error_message
+          raise XenditApi::Errors::OVO::ExternalError.new(error_message, json_response)
         when 'PAYMENT_NOT_FOUND_ERROR'
-          raise XenditApi::Errors::OVO::PaymentNotFound, error_message
+          raise XenditApi::Errors::OVO::PaymentNotFound.new(error_message, json_response)
         when 'CHANNEL_NOT_ACTIVATED'
           raise XenditApi::Errors::V1::Ewallet::ChannelNotActivated.new(error_message, json_response)
         when 'CHANNEL_UNAVAILABLE'
-          raise XenditApi::Errors::V1::Ewallet::ChannelUnavailable, error_message
+          raise XenditApi::Errors::V1::Ewallet::ChannelUnavailable.new(error_message, json_response)
         when 'DUPLICATE_ERROR'
-          raise XenditApi::Errors::V1::Ewallet::DuplicateError, error_message
+          raise XenditApi::Errors::V1::Ewallet::DuplicateError.new(error_message, json_response)
         when 'DATA_NOT_FOUND'
-          raise XenditApi::Errors::V1::Ewallet::DataNotFound, error_message
+          raise XenditApi::Errors::V1::Ewallet::DataNotFound.new(error_message, json_response)
         when 'API_VALIDATION_ERROR'
           # In this exception with custom the title since, the message from
           # could returns arrays (see the payload for the full messages)
@@ -100,9 +100,9 @@ module XenditApi
         when 'BANK_CODE_NOT_SUPPORTED_ERROR'
           raise XenditApi::Errors::Disbursement::BankCodeNotSupported.new(error_message, json_response)
         when 'SERVER_ERROR'
-          raise XenditApi::Errors::ServerError, error_message
+          raise XenditApi::Errors::ServerError.new(error_message, json_response)
         else
-          raise XenditApi::Errors::UnknownError, error_message
+          raise XenditApi::Errors::UnknownError.new(error_message, json_response)
         end
       end
       # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize, Metrics/MethodLength

@@ -74,7 +74,11 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
             ewallet_api = described_class.new(client)
             params = { reference_id: '7f156109-5f7a-479a-84db-f59c5ab38766', amount: 10_101, mobile_number: '+6282310202012' }
             ewallet_api.post(params: params, payment_method: :ovo)
-          end.to raise_error(XenditApi::Errors::V1::Ewallet::ChannelUnavailable)
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::V1::Ewallet::ChannelUnavailable
+            expect(error.message).to eq 'The payment channel requested is currently experiencing unexpected issues. The eWallet provider will be notified to resolve this issue.'
+            expect(error.payload).to eq({ 'error_code' => 'CHANNEL_UNAVAILABLE', 'message' => 'The payment channel requested is currently experiencing unexpected issues. The eWallet provider will be notified to resolve this issue.' })
+          end
         end
       end
 
@@ -84,7 +88,11 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
             ewallet_api = described_class.new(client)
             params = { reference_id: '434c9cc3-72ab-4ec0-82ba-488d040c15c1', amount: 10_102, mobile_number: '+6282310202012' }
             ewallet_api.post(params: params, payment_method: :ovo)
-          end.to raise_error(XenditApi::Errors::ServerError)
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::ServerError
+            expect(error.message).to eq 'An unexpected error occurred, our team has been notified and will troubleshoot the issue.'
+            expect(error.payload).to eq({ 'error_code' => 'SERVER_ERROR', 'message' => 'An unexpected error occurred, our team has been notified and will troubleshoot the issue.' })
+          end
         end
       end
 
@@ -94,7 +102,11 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
             ewallet_api = described_class.new(client)
             params = { reference_id: 'eacd7788-8864-421c-a39c-9c59c3ee875c', amount: 4000, mobile_number: '+6282310202012' }
             ewallet_api.post(params: params, payment_method: :ovo)
-          end.to raise_error(XenditApi::Errors::V1::Ewallet::DuplicateError, 'There is already a charge request with the same reference_id.')
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::V1::Ewallet::DuplicateError
+            expect(error.message).to eq 'There is already a charge request with the same reference_id.'
+            expect(error.payload).to eq({ 'error_code' => 'DUPLICATE_ERROR', 'message' => 'There is already a charge request with the same reference_id.' })
+          end
         end
       end
 
@@ -104,7 +116,11 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
             ewallet_api = described_class.new(client)
             params = { reference_id: '307e9c34-7fed-45fe-b6d6-1f77bbbe872e', amount: 9999, mobile_number: '+6282310202299' }
             ewallet_api.post(params: params, payment_method: :ovo)
-          end.to raise_error(XenditApi::Errors::UnknownError, 'Unknown error was triggered')
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::UnknownError
+            expect(error.message).to eq 'Unknown error was triggered'
+            expect(error.payload).to eq({ 'error_code' => 'UNKNOWN', 'message' => 'Unknown error was triggered' })
+          end
         end
       end
     end
@@ -135,7 +151,11 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
             ewallet_api = described_class.new(client)
             random_uuid = 'ewc_d351c488-fd5c-4a41-975f-f94614f7628f'
             ewallet_api.get(random_uuid)
-          end.to raise_error(XenditApi::Errors::V1::Ewallet::DataNotFound, 'Charge request not found')
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::V1::Ewallet::DataNotFound
+            expect(error.message).to eq 'Charge request not found'
+            expect(error.payload).to eq({ 'error_code' => 'DATA_NOT_FOUND', 'message' => 'Charge request not found' })
+          end
         end
       end
     end
