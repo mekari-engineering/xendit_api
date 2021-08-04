@@ -3,10 +3,10 @@ module XenditApi
     class ResponseError < StandardError
       attr_reader :payload
 
-      def initialize(message, payload = nil)
+      def initialize(message = nil, payload = nil)
         @message = message
         @payload = payload
-        super(@message)
+        super(@message) unless @message.nil?
       end
     end
 
