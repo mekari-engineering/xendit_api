@@ -2,7 +2,7 @@ module XenditApi
   module Errors
     module V1
       module Ewallet
-        class ResponseError < StandardError; end
+        class ResponseError < XenditApi::Errors::ResponseError; end
 
         class ChannelNotActivated < ResponseError; end
 

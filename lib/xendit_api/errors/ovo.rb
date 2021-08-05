@@ -1,7 +1,7 @@
 module XenditApi
   module Errors
     module OVO
-      class ResponseError < StandardError; end
+      class ResponseError < XenditApi::Errors::ResponseError; end
 
       class PaymentTimeout < ResponseError; end
 
