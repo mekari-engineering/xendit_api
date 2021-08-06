@@ -19,7 +19,7 @@ module XenditApi
       def update_to_expired(id)
         update_path = "#{PATH}/#{id}"
         one_year = 31_556_952
-        expired_date = Time.now + one_year
+        expired_date = Time.now - one_year
         virtual_account = find(id)
         response = client.patch(update_path,
                                 expected_amount: virtual_account.expected_amount,
