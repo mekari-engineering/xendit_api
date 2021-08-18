@@ -12,9 +12,16 @@ module XenditApi
       end
 
       def find_by_external_id(external_id)
-        response = client.get("#{self.class::PATH}/?external_id=#{external_id}", {})
+        where_by_external_id(external_id).first
+      end
 
-        XenditApi::Model::Disbursement.new(response[0].merge(payload: response.to_json))
+      def where_by_external_id(external_id)
+        response = client.get("#{self.class::PATH}/?external_id=#{external_id}", {})
+        disbursements = []
+        response.each do |disbursement|
+          disbursements << XenditApi::Model::Disbursement.new(disbursement.merge(payload: response.to_json))
+        end
+        disbursements
       end
     end
   end
