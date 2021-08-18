@@ -12,7 +12,7 @@ module XenditApi
       end
 
       def find_by_external_id(external_id)
-        where_by_external_id(external_id).last
+        where_by_external_id(external_id).first
       end
 
       def where_by_external_id(external_id)

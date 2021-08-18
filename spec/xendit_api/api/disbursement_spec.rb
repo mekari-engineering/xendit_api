@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'securerandom'
 
 RSpec.describe XenditApi::Api::Disbursement do
-  let(:client) { XenditApi::Client.new }
+  let(:client) { XenditApi::Client.new(ENV["XENDIT_SECRET_KEY"]) }
 
   describe '#create' do
     context 'with valid params' do
@@ -183,13 +183,29 @@ RSpec.describe XenditApi::Api::Disbursement do
 
   describe '#find_by_external_id' do
     context 'with valid external_id' do
-      it 'returns exected response' do
+      it 'returns expected response' do
         VCR.use_cassette('xendit/disbursement/find_by_external_id/200_ok') do
           disbursement_api = described_class.new(client)
           disbursement = disbursement_api.find_by_external_id('d28aac6a-03c8-46d0-ac03-43b6278b35eb')
           expect(disbursement).to be_kind_of XenditApi::Model::Disbursement
           expect(disbursement.external_id).to eq 'd28aac6a-03c8-46d0-ac03-43b6278b35eb'
           expect(disbursement.amount).not_to be_nil
+          expect(disbursement.bank_code).not_to be_nil
+          expect(disbursement.user_id).not_to be_nil
+          expect(disbursement.account_holder_name).not_to be_nil
+          expect(disbursement.status).not_to be_nil
+          expect(disbursement.id).not_to be_nil
+          expect(disbursement.payload).not_to be_nil
+        end
+      end
+
+      it 'returns the last disbursement record when has multiple' do
+        VCR.use_cassette('xendit/disbursement/find_by_external_id/multiple') do
+          disbursement_api = described_class.new(client)
+          disbursement = disbursement_api.find_by_external_id('sample-external-id')
+          expect(disbursement).to be_kind_of XenditApi::Model::Disbursement
+          expect(disbursement.external_id).to eq 'sample-external-id'
+          expect(disbursement.amount).to eq 200_000
           expect(disbursement.bank_code).not_to be_nil
           expect(disbursement.user_id).not_to be_nil
           expect(disbursement.account_holder_name).not_to be_nil
