@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'securerandom'
 
 RSpec.describe XenditApi::Api::Disbursement do
-  let(:client) { XenditApi::Client.new(ENV["XENDIT_SECRET_KEY"]) }
+  let(:client) { XenditApi::Client.new }
 
   describe '#create' do
     context 'with valid params' do
