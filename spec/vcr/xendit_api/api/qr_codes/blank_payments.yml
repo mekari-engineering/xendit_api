@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/qr_codes/payments?external_id=sample-qr-code-valid
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 07 Sep 2021 09:03:58 GMT
+      Etag:
+      - W/"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      X-Powered-By:
+      - Express
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_932_2182539=kWKXU9nTkHqhxZ0JeyHvDP0qN2EAAAAA8A3f1BElSm5q+7jnmbrCPQ==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=pgb7apuSJ0NbOYxUjjCKbQAAAABSZl3kgX14zX/5h/GcLLpG; path=/; Domain=.xendit.co
+      - visid_incap_2182539=ubMsLRxETuirnhPVYTJlofwqN2EAAAAAQUIPAAAAAABGKLRqhz29Fjh7ZXSe8lwB;
+        expires=Wed, 07 Sep 2022 08:14:17 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 14-103205367-102885575 pNYN RT(1631005436529 173) q(0 0 0 3) r(11 11) U16
+    body:
+      encoding: ASCII-8BIT
+      string: "[]"
+  recorded_at: Tue, 07 Sep 2021 09:03:58 GMT
+recorded_with: VCR 6.0.0

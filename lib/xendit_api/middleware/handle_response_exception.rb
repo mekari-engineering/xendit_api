@@ -16,6 +16,7 @@ module XenditApi
         json_response = JSON.parse(response)
         json_response = json_response.first if json_response.is_a? Array
 
+        return true if json_response.nil?
         return true if json_response['error_code'].nil?
 
         error_message = json_response['message']

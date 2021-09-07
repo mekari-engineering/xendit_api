@@ -122,4 +122,38 @@ RSpec.describe XenditApi::Api::QrCode do
       end
     end
   end
+
+  describe '#find_payments' do
+    it 'returns expected response' do
+      VCR.use_cassette('xendit_api/api/qr_codes/payments') do
+        qr_code = described_class.new(client)
+        payments = qr_code.find_payments('sample-qr-code')
+        expect(payments.size).to eq 1
+        payment = payments.last
+        expect(payment).to be_instance_of XenditApi::Model::QrCodePayment
+        expect(payment.qr_code).to be_instance_of XenditApi::Model::QrCode
+        expect(payment.payload).not_to eq nil
+        expect(payment.id).to eq 'qrpy_dd3591a4-3dda-4b96-bd82-d3fc05e1a902'
+        expect(payment.amount).to eq 100_000
+        expect(payment.created).to eq '2021-09-07T08:40:52.876Z'
+        expect(payment.status).to eq 'COMPLETED'
+      end
+    end
+
+    it 'returns expected when payment was blank' do
+      VCR.use_cassette('xendit_api/api/qr_codes/blank_payments') do
+        qr_code = described_class.new(client)
+        payments = qr_code.find_payments('sample-qr-code-valid')
+        expect(payments).to eq []
+      end
+    end
+
+    it 'raise error when find payments with invalid external-id' do
+      VCR.use_cassette('xendit_api/api/qr_codes/not_found_data_99999') do
+        qr_code = described_class.new(client)
+        payments = qr_code.find_payments('not_found_data_99999')
+        expect(payments).to eq []
+      end
+    end
+  end
 end
