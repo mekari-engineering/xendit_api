@@ -13,7 +13,8 @@ module XenditApi
                     :status,
                     :created,
                     :updated,
-                    :metadata
+                    :metadata,
+                    :payload
     end
   end
 end

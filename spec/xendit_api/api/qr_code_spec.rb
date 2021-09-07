@@ -26,6 +26,7 @@ RSpec.describe XenditApi::Api::QrCode do
         expect(response.created).to eq '2021-09-07T06:37:28.827Z'
         expect(response.updated).to eq '2021-09-07T06:37:28.827Z'
         expect(response.metadata).to eq nil
+        expect(response.payload).not_to eq nil
       end
     end
 
@@ -51,6 +52,7 @@ RSpec.describe XenditApi::Api::QrCode do
         expect(response.created).to eq '2021-09-07T06:37:28.827Z'
         expect(response.updated).to eq '2021-09-07T06:37:28.827Z'
         expect(response.metadata).to eq nil
+        expect(response.payload).not_to eq nil
       end
     end
 
@@ -107,6 +109,7 @@ RSpec.describe XenditApi::Api::QrCode do
         expect(response.created).to eq '2021-09-07T06:37:28.827Z'
         expect(response.updated).to eq '2021-09-07T06:37:28.827Z'
         expect(response.metadata).to eq nil
+        expect(response.payload).not_to eq nil
       end
     end
 

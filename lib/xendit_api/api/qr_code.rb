@@ -8,13 +8,13 @@ module XenditApi
 
       def create(params)
         response = @client.post(PATH, params)
-        XenditApi::Model::QrCode.new(response)
+        XenditApi::Model::QrCode.new(response.merge(payload: response.to_json))
       end
 
       def find(id)
         find_path = "#{PATH}/#{id}"
         response = @client.get(find_path)
-        XenditApi::Model::QrCode.new(response)
+        XenditApi::Model::QrCode.new(response.merge(payload: response.to_json))
       end
     end
   end
