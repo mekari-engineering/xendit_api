@@ -235,7 +235,6 @@ RSpec.describe XenditApi::Api::Disbursement do
   end
 
   describe '#where_by_external_id' do
-    # rubocop:disable RSpec/MultipleExpectations
     it 'returns expected disbursements' do
       VCR.use_cassette('xendit/disbursement/where_by_external_id/two_records') do
         disbursement_api = described_class.new(client)
@@ -263,7 +262,6 @@ RSpec.describe XenditApi::Api::Disbursement do
         expect(second_disbursement.payload).not_to be_nil
       end
     end
-    # rubocop:enable RSpec/MultipleExpectations
 
     it 'raise error when disbursement was not found' do
       VCR.use_cassette('xendit/disbursement/where_by_external_id/not_found') do

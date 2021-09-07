@@ -42,7 +42,7 @@ module XenditApi
         when 'CHANNEL_UNAVAILABLE'
           raise XenditApi::Errors::V1::Ewallet::ChannelUnavailable.new(error_message, json_response)
         when 'DUPLICATE_ERROR'
-          raise XenditApi::Errors::V1::Ewallet::DuplicateError.new(error_message, json_response)
+          raise XenditApi::Errors::DuplicateError.new(error_message, json_response)
         when 'DATA_NOT_FOUND'
           raise XenditApi::Errors::V1::Ewallet::DataNotFound.new(error_message, json_response)
         when 'API_VALIDATION_ERROR'

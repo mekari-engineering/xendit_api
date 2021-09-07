@@ -36,4 +36,4 @@ RSpec/InstanceVariable:
   Enabled: false
 
 RSpec/MultipleExpectations:
-  Max: 10
+  Enabled: false

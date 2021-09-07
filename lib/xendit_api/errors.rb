@@ -13,5 +13,6 @@ module XenditApi
     class ApiValidation < ResponseError; end
     class UnknownError < ResponseError; end
     class ServerError < ResponseError; end
+    class DuplicateError < ResponseError; end
   end
 end
