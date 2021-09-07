@@ -152,7 +152,7 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
             random_uuid = 'ewc_d351c488-fd5c-4a41-975f-f94614f7628f'
             ewallet_api.get(random_uuid)
           end.to raise_error do |error|
-            expect(error).to be_kind_of XenditApi::Errors::V1::Ewallet::DataNotFound
+            expect(error).to be_kind_of XenditApi::Errors::DataNotFound
             expect(error.message).to eq 'Charge request not found'
             expect(error.payload).to eq({ 'error_code' => 'DATA_NOT_FOUND', 'message' => 'Charge request not found' })
           end

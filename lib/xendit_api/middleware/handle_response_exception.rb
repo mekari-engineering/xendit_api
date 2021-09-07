@@ -44,7 +44,7 @@ module XenditApi
         when 'DUPLICATE_ERROR'
           raise XenditApi::Errors::DuplicateError.new(error_message, json_response)
         when 'DATA_NOT_FOUND'
-          raise XenditApi::Errors::V1::Ewallet::DataNotFound.new(error_message, json_response)
+          raise XenditApi::Errors::DataNotFound.new(error_message, json_response)
         when 'API_VALIDATION_ERROR'
           # In this exception with custom the title since, the message from
           # could returns arrays (see the payload for the full messages)

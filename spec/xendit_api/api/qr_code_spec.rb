@@ -89,4 +89,34 @@ RSpec.describe XenditApi::Api::QrCode do
       end
     end
   end
+
+  describe '#find' do
+    it 'returns expected response when find by external_id' do
+      VCR.use_cassette('xendit_api/api/qr_codes/find_valid') do
+        qr_code = described_class.new(client)
+        response = qr_code.find('sample-qr-code')
+        expect(response).to be_instance_of XenditApi::Model::QrCode
+        expect(response.id).to eq 'qr_0c5dab3c-eaac-4348-bb43-4e4884425dd8'
+        expect(response.external_id).to eq 'sample-qr-code'
+        expect(response.amount).to eq 100_000
+        expect(response.description).to eq ''
+        expect(response.qr_string).to eq 'mock-QR-string-use-simulate-payment-to-test-flow'
+        expect(response.callback_url).to eq 'https://webhook.site/cc1e188a-cd5a-4a7e-b7f9-413a2289b580'
+        expect(response.type).to eq 'DYNAMIC'
+        expect(response.status).to eq 'ACTIVE'
+        expect(response.created).to eq '2021-09-07T06:37:28.827Z'
+        expect(response.updated).to eq '2021-09-07T06:37:28.827Z'
+        expect(response.metadata).to eq nil
+      end
+    end
+
+    it 'raise not found when find by vendorable_id' do
+      VCR.use_cassette('xendit_api/api/qr_codes/not_found') do
+        expect do
+          qr_code = described_class.new(client)
+          qr_code.find('qr_0c5dab3c-eaac-4348-bb43-4e4884425dd8')
+        end.to raise_error XenditApi::Errors::DataNotFound
+      end
+    end
+  end
 end

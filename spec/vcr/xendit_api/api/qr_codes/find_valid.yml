@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/qr_codes/sample-qr-code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 07 Sep 2021 07:09:50 GMT
+      Etag:
+      - W/"177-ZvpR0znKzW3DwEQ6LVfDVfbuFQw"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_932_2182539=ngZzdxvhLERRO4MJeyHvDD4QN2EAAAAAWJd5XhruTITW6JFt2Ihfcw==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=Jj0+BYpGoQjd7JYrjjCKbQAAAACE9rBvyxz1YWwHiH1p3W6M; path=/; Domain=.xendit.co
+      - visid_incap_2182539=I/NZEE/WRxCq3HtnkjpjljwQN2EAAAAAQUIPAAAAAABqqAu2j2UFg23U3SXHDfiM;
+        expires=Tue, 06 Sep 2022 08:14:16 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 9-26728111-26728112 nNYN RT(1630998588810 116) q(0 0 2 0) r(3 13) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"qr_0c5dab3c-eaac-4348-bb43-4e4884425dd8","external_id":"sample-qr-code","amount":100000,"description":"","qr_string":"mock-QR-string-use-simulate-payment-to-test-flow","callback_url":"https://webhook.site/cc1e188a-cd5a-4a7e-b7f9-413a2289b580","type":"DYNAMIC","status":"ACTIVE","created":"2021-09-07T06:37:28.827Z","updated":"2021-09-07T06:37:28.827Z","metadata":null}'
+  recorded_at: Tue, 07 Sep 2021 07:09:50 GMT
+recorded_with: VCR 6.0.0
