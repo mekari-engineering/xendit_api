@@ -115,7 +115,7 @@ RSpec.describe XenditApi::Client do
     end
   end
 
-  describe '#qr_codes' do
+  describe '#qr_code' do
     it 'returns expeted instance' do
       client = described_class.new(auth_key)
       expect(client.qr_code).to be_instance_of XenditApi::Api::QrCode
