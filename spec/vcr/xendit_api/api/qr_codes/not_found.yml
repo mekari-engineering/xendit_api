@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/qr_codes/qr_0c5dab3c-eaac-4348-bb43-4e4884425dd8
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 07 Sep 2021 07:11:08 GMT
+      Etag:
+      - W/"76-6NG9Qjcy/nUoOYSJC2qDRKH5Gwc"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_932_2182539=2xGHX66+3HZRO4MJeyHvDIwQN2EAAAAAhtJPfh+vHfJ7XSDe4kKvlA==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=vvzveA9ZOyAa5JkzjjCKbQAAAAB8XwvwM2y4n3NXVY/30qEh; path=/; Domain=.xendit.co
+      - visid_incap_2182539=I/NZEE/WRxCq3HtnkjpjljwQN2EAAAAAQUIPAAAAAABqqAu2j2UFg23U3SXHDfiM;
+        expires=Tue, 06 Sep 2022 08:14:16 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 14-102417977-102363561 pNYN RT(1630998666980 90) q(0 0 0 0) r(11 11) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"DATA_NOT_FOUND","message":"QR code with external_id
+        qr_0c5dab3c-eaac-4348-bb43-4e4884425dd8 not found"}'
+  recorded_at: Tue, 07 Sep 2021 07:11:08 GMT
+recorded_with: VCR 6.0.0

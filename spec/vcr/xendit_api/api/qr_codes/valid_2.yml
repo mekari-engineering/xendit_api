@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/qr_codes
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"sample-qr-code","type":"DYNAMIC","callback_url":"https://webhook.site/cc1e188a-cd5a-4a7e-b7f9-413a2289b580","amount":100000}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 07 Sep 2021 06:37:28 GMT
+      Etag:
+      - W/"177-ZvpR0znKzW3DwEQ6LVfDVfbuFQw"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_932_2182539=X2uNIswMsVYQq3wJeyHvDKgIN2EAAAAAVPUsZ5MUrXt99NHCfIobjQ==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=dsjXIZvG7Vqe40itjjCKbQAAAACbo9HdGpHz5Vs6FGdJLV7v; path=/; Domain=.xendit.co
+      - visid_incap_2182539=VVSOKnoHQyuCj/Hw/O3hCqYIN2EAAAAAQUIPAAAAAADRbaE7rJm33Y5nCkA0oWW4;
+        expires=Tue, 06 Sep 2022 08:14:16 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 2-19389317-19389321 nNYN RT(1630996646792 119) q(0 0 2 1) r(3 14) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"qr_0c5dab3c-eaac-4348-bb43-4e4884425dd8","external_id":"sample-qr-code","amount":100000,"description":"","qr_string":"mock-QR-string-use-simulate-payment-to-test-flow","callback_url":"https://webhook.site/cc1e188a-cd5a-4a7e-b7f9-413a2289b580","type":"DYNAMIC","status":"ACTIVE","created":"2021-09-07T06:37:28.827Z","updated":"2021-09-07T06:37:28.827Z","metadata":null, "hello":"world"}'
+  recorded_at: Tue, 07 Sep 2021 06:37:29 GMT
+recorded_with: VCR 6.0.0

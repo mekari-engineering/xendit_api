@@ -96,14 +96,14 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
         end
       end
 
-      it 'raises error XenditApi::Errors::OVO::DuplicateError' do
+      it 'raises error XenditApi::Errors::DuplicateError' do
         VCR.use_cassette('xendit/v1/ewallet/ovo/errors_duplicate_payment') do
           expect do
             ewallet_api = described_class.new(client)
             params = { reference_id: 'eacd7788-8864-421c-a39c-9c59c3ee875c', amount: 4000, mobile_number: '+6282310202012' }
             ewallet_api.post(params: params, payment_method: :ovo)
           end.to raise_error do |error|
-            expect(error).to be_kind_of XenditApi::Errors::V1::Ewallet::DuplicateError
+            expect(error).to be_kind_of XenditApi::Errors::DuplicateError
             expect(error.message).to eq 'There is already a charge request with the same reference_id.'
             expect(error.payload).to eq({ 'error_code' => 'DUPLICATE_ERROR', 'message' => 'There is already a charge request with the same reference_id.' })
           end
@@ -152,7 +152,7 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
             random_uuid = 'ewc_d351c488-fd5c-4a41-975f-f94614f7628f'
             ewallet_api.get(random_uuid)
           end.to raise_error do |error|
-            expect(error).to be_kind_of XenditApi::Errors::V1::Ewallet::DataNotFound
+            expect(error).to be_kind_of XenditApi::Errors::DataNotFound
             expect(error.message).to eq 'Charge request not found'
             expect(error.payload).to eq({ 'error_code' => 'DATA_NOT_FOUND', 'message' => 'Charge request not found' })
           end

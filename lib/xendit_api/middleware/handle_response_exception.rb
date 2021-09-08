@@ -16,6 +16,7 @@ module XenditApi
         json_response = JSON.parse(response)
         json_response = json_response.first if json_response.is_a? Array
 
+        return true if json_response.nil?
         return true if json_response['error_code'].nil?
 
         error_message = json_response['message']
@@ -42,9 +43,9 @@ module XenditApi
         when 'CHANNEL_UNAVAILABLE'
           raise XenditApi::Errors::V1::Ewallet::ChannelUnavailable.new(error_message, json_response)
         when 'DUPLICATE_ERROR'
-          raise XenditApi::Errors::V1::Ewallet::DuplicateError.new(error_message, json_response)
+          raise XenditApi::Errors::DuplicateError.new(error_message, json_response)
         when 'DATA_NOT_FOUND'
-          raise XenditApi::Errors::V1::Ewallet::DataNotFound.new(error_message, json_response)
+          raise XenditApi::Errors::DataNotFound.new(error_message, json_response)
         when 'API_VALIDATION_ERROR'
           # In this exception with custom the title since, the message from
           # could returns arrays (see the payload for the full messages)

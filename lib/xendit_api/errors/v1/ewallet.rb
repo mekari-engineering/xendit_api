@@ -8,8 +8,6 @@ module XenditApi
 
         class ChannelUnavailable < ResponseError; end
 
-        class DuplicateError < ResponseError; end
-
         class DataNotFound < ResponseError; end
       end
     end

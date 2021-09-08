@@ -5,6 +5,7 @@ require 'xendit_api/api/ewallet'
 require 'xendit_api/api/credit_card'
 require 'xendit_api/api/disbursement'
 require 'xendit_api/api/v1/ewallet'
+require 'xendit_api/api/qr_code'
 
 module XenditApi
   class Client
@@ -39,6 +40,10 @@ module XenditApi
 
     def v1_ewallet
       @v1_ewallet ||= XenditApi::Api::V1::Ewallet.new(self)
+    end
+
+    def qr_code
+      @qr_code ||= XenditApi::Api::QrCode.new(self)
     end
 
     def get(url, params = nil)
