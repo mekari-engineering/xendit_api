@@ -11,13 +11,13 @@ module XenditApi
   class Client
     BASE_URL = 'https://api.xendit.co'.freeze
 
-    def initialize(authorization = nil, options = {})
+    def initialize(authorization = nil)
       @connection = Faraday.new(url: BASE_URL) do |connection|
         connection.basic_auth(authorization, '')
         connection.request :json
         connection.response :json
 
-        connection.response :logger, options[:logger] if options[:logger]
+        connection.response :logger, XenditApi.configuration.logger, { headers: false, bodies: true } if XenditApi.configuration&.logger
 
         connection.use XenditApi::Middleware::HandleResponseException
         connection.adapter Faraday.default_adapter

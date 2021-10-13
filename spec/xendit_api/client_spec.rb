@@ -3,8 +3,20 @@ require 'spec_helper'
 RSpec.describe XenditApi::Client do
   let(:auth_key) { 'FILTERED_AUTH_KEY' }
 
-  it 'retur ns expected base url' do
+  it 'returns expected base url' do
     expect(XenditApi::Client::BASE_URL).to eq 'https://api.xendit.co'
+  end
+
+  it 'returns expected custom logger' do
+    custom_logger = Class.new(Object)
+    XenditApi.configure do |config|
+      config.logger = custom_logger
+    end
+    expect(XenditApi.configuration.logger).to eq custom_logger
+    # cleaning up
+    XenditApi.configure do |config|
+      config.logger = nil
+    end
   end
 
   describe '#ewallet' do
