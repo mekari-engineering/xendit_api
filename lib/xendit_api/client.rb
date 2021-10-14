@@ -17,7 +17,19 @@ module XenditApi
         connection.request :json
         connection.response :json
 
-        connection.response :logger, logger, { headers: false, bodies: true } if logger && options[:disable_log] != true
+        if logger
+          connection.response :logger, logger, { headers: false, bodies: true } do |log|
+            filtered_logs = options[:filtered_logs]
+            if filtered_logs.respond_to?(:each)
+              filtered_logs.each do |filter|
+                # filter when data type was string
+                log.filter(/(#{filter}":")(\w+)/, '\1[FILTERED]')
+                # filter when data type wasnt string (maybe number, boolean, etc)
+                log.filter(/(#{filter}":)(\w+)/, '\1[FILTERED]')
+              end
+            end
+          end
+        end
         connection.use XenditApi::Middleware::HandleResponseException
         connection.adapter Faraday.default_adapter
       end

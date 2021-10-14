@@ -20,7 +20,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+
+### Create the client
+
+There is multiple ways to create the client. 
+
+```rb
+client = XenditApi::Client.new('secret_key')
+
+# when you need logs
+XenditApi.configure do |config|
+  config.logger = MyLogger.new
+end
+client = XenditApi::Client.new('secret_key')
+
+# when you need to filter logs due to PII or security
+client = XenditAPi::Client.new('secret_key', filtered_logs: [:card_cvv, :expected_amount])
+```
+
+When you need to filter logs, also make sure you already inject the logger object first, because we don't provide any default logger object. If you writing in Rails, you could use `Rails.logger`. 
 
 ## Development
 
