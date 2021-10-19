@@ -13,7 +13,7 @@ module XenditApi
 
     def initialize(authorization = nil, options = {})
       @connection = Faraday.new(url: BASE_URL) do |connection|
-        connection.basic_auth(authorization, '')
+        connection.request :basic_auth, authorization, ''
         connection.request :json
         connection.response :json
 
