@@ -17,7 +17,8 @@ module XenditApi
         connection.request :json
         connection.response :json
 
-        if find_logger(options[:logger])
+        logger = find_logger(options[:logger])
+        if logger
           connection.response :logger, logger, { headers: false, bodies: true } do |log|
             filtered_logs = options[:filtered_logs]
             if filtered_logs.respond_to?(:each)
