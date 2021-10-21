@@ -11,12 +11,25 @@ module XenditApi
   class Client
     BASE_URL = 'https://api.xendit.co'.freeze
 
-    def initialize(authorization = nil)
+    def initialize(authorization = nil, options = {})
       @connection = Faraday.new(url: BASE_URL) do |connection|
-        connection.basic_auth(authorization, '')
+        connection.request :basic_auth, authorization, ''
         connection.request :json
         connection.response :json
 
+        logger = find_logger(options[:logger])
+        if logger
+          connection.response :logger, logger, { headers: false, bodies: true } do |log|
+            filtered_logs = options[:filtered_logs]
+            if filtered_logs.respond_to?(:each)
+              filtered_logs.each do |filter|
+                log.filter(%r{(#{filter}=)([\w+-.?@:/]+)}, '\1[FILTERED]')
+                log.filter(%r{(#{filter}":")([\w+-.?@:/]+)}, '\1[FILTERED]')
+                log.filter(%r{(#{filter}":)([\w+-.?@:/]+)}, '\1[FILTERED]')
+              end
+            end
+          end
+        end
         connection.use XenditApi::Middleware::HandleResponseException
         connection.adapter Faraday.default_adapter
       end
@@ -59,6 +72,10 @@ module XenditApi
     def patch(url, params)
       response = @connection.patch(url, params)
       response.body
+    end
+
+    def find_logger(logger_option)
+      logger_option || XenditApi.configuration&.logger
     end
   end
 end

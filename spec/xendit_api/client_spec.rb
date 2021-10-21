@@ -3,7 +3,7 @@ require 'spec_helper'
 RSpec.describe XenditApi::Client do
   let(:auth_key) { 'FILTERED_AUTH_KEY' }
 
-  it 'retur ns expected base url' do
+  it 'returns expected base url' do
     expect(XenditApi::Client::BASE_URL).to eq 'https://api.xendit.co'
   end
 
