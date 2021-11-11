@@ -6,14 +6,12 @@ module XenditApi
     class VirtualAccount < XenditApi::Api::Base
       PATH = '/callback_virtual_accounts'.freeze
 
-      def create(external_id:, name:, amount:, bank_code:)
-        response = client.post(PATH,
-                               external_id: external_id,
-                               name: name,
-                               expected_amount: amount,
-                               is_closed: true,
-                               is_single_use: true,
-                               bank_code: bank_code)
+      def create(params)
+        params[:is_closed] = true if params[:is_closed].nil?
+        params[:is_single_use] = true if params[:is_single_use].nil?
+        params[:expected_amount] = params[:amount] unless params[:amount].nil?
+
+        response = client.post(PATH, params)
         virtual_account_params = permitted_virtual_account_params(response)
         XenditApi::Model::VirtualAccount.new(virtual_account_params)
       end
@@ -21,13 +19,20 @@ module XenditApi
       def update_to_expired(id)
         update_path = "#{PATH}/#{id}"
         one_year = 31_556_952
-        expired_date = Time.now + one_year
+        expired_date = Time.now - one_year
         virtual_account = find(id)
         response = client.patch(update_path,
                                 expected_amount: virtual_account.expected_amount,
                                 expiration_date: expired_date.iso8601)
         virtual_account_params = permitted_virtual_account_params(response)
         XenditApi::Model::VirtualAccount.new(virtual_account_params)
+      end
+
+      def update(id, params)
+        update_path = "#{PATH}/#{id}"
+        response = client.patch(update_path, params)
+        virtual_account_response = permitted_virtual_account_params(response)
+        XenditApi::Model::VirtualAccount.new(virtual_account_response)
       end
 
       def find(id)

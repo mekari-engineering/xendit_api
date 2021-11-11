@@ -17,9 +17,10 @@ module XenditApi
         end
       end
 
+      # Private: Set attribute with only defined resource attribute
       def assign_attribute(key, value)
         setter = :"#{key}="
-        public_send(setter, value)
+        public_send(setter, value) if respond_to?(setter)
       end
     end
   end

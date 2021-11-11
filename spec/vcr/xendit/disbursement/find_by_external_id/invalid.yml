@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.xendit.co/disbursements/?external_id=666
+    uri: https://api.xendit.co/disbursements/?external_id=d666
     body:
       encoding: US-ASCII
       string: ''
     headers:
       Authorization:
-      - Basic Og==
+      - Basic <AUTH KEY>
       User-Agent:
       - Faraday v1.3.0
       Accept-Encoding:
@@ -17,17 +17,17 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 404
+      message: Not Found
     headers:
       Cache-Control:
       - no-store, no-cache, must-revalidate, proxy-revalidate
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sat, 30 Jan 2021 07:23:44 GMT
+      - Sat, 31 Jul 2021 05:51:53 GMT
       Etag:
-      - W/"63-+jUwCeeDBe0RBtXaKFNHR0spPak"
+      - W/"5e-szzl1BgCBV0ooAVARKI1gKwkAWg"
       Expires:
       - '0'
       Pragma:
@@ -41,20 +41,20 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - incap_ses_1120_2182539=ofWTJdBBm1NQvzsXUgqLD38JFWAAAAAA5ZDOoe7wi8dzAD8lUys3cw==;
+      - incap_ses_1112_2182539=7o+YTyaj/C4YAZ6Bi55uD/jkBGEAAAAAH+rbTo2HxX7Zaaq90YKMWg==;
         path=/; Domain=.xendit.co
-      - nlbi_2182539=lShnZ+FO3CeUXtuQjjCKbQAAAAAcr+/2CIpwIFz57JvnuxmW; path=/; Domain=.xendit.co
-      - visid_incap_2182539=3wVYS8UGTT678UscTH0zf38JFWAAAAAAQUIPAAAAAACNE/tw2VWCKvahAfAbGRyd;
-        expires=Sat, 29 Jan 2022 11:33:05 GMT; HttpOnly; path=/; Domain=.xendit.co
+      - nlbi_2182539=Xka4INRAiQnf1q+yjjCKbQAAAABJbhRQc1ogN1sHE9AfJXIh; path=/; Domain=.xendit.co
+      - visid_incap_2182539=YqqY0LpTQGOmcYXLRnlHgPjkBGEAAAAAQUIPAAAAAAD+BokYYudOZzFer6AnJRgI;
+        expires=Sat, 30 Jul 2022 08:08:38 GMT; HttpOnly; path=/; Domain=.xendit.co
       X-Cdn:
-      - Incapsula
+      - Imperva
       Transfer-Encoding:
       - chunked
       X-Iinfo:
-      - 5-16791675-16696898 pNYN RT(1611991423757 14) q(0 0 0 -1) r(2 2) U16
+      - 11-5687903-5682993 pNYN RT(1627710711991 38) q(0 0 0 0) r(5 5) U16
     body:
       encoding: ASCII-8BIT
-      string: '{"error_code":"INVALID_API_KEY","message":"Please include your API
-        key as an Authorization header"}'
-  recorded_at: Sat, 30 Jan 2021 07:23:44 GMT
+      string: '{"error_code":"DIRECT_DISBURSEMENT_NOT_FOUND_ERROR","message":"Direct
+        disbursement not found"}'
+  recorded_at: Sat, 31 Jul 2021 05:51:53 GMT
 recorded_with: VCR 6.0.0

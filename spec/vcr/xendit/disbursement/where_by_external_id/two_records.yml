@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/disbursements/?external_id=sample-external-id
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 18 Aug 2021 03:26:19 GMT
+      Etag:
+      - W/"1cb-kG7D3Y3jVYTlBfZyl0tlPONZCMc"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1120_2182539=k3lhBq+zhVpiUJQOdQqLD9t9HGEAAAAA15AFHRxOBauGLoNWZsQRIw==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=FSbDZgW0aC1CWFK9jjCKbQAAAAAc83TXYLFO3GbvRASkH0kb; path=/; Domain=.xendit.co
+      - visid_incap_2182539=lQ3Wk88/Q2OrC+8FtG1Zitt9HGEAAAAAQUIPAAAAAAD+pQUZAxHMCv6+pnnX0P0E;
+        expires=Wed, 17 Aug 2022 13:22:19 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 13-41001618-40940312 pNYN RT(1629257179171 84) q(0 0 0 -1) r(6 6) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"status":"PENDING","user_id":"596d988e56b5a3c45be75e6e","external_id":"sample-external-id","amount":15000,"bank_code":"BCA","account_holder_name":"Bob
+        Jones","disbursement_description":"Payment","id":"611c7d118267c40017c1e1d6"},{"status":"PENDING","user_id":"596d988e56b5a3c45be75e6e","external_id":"sample-external-id","amount":15000,"bank_code":"BCA","account_holder_name":"Bob
+        Jones","disbursement_description":"Payment","id":"611c7d0b9d2d310018d113b9"}]'
+  recorded_at: Wed, 18 Aug 2021 03:26:20 GMT
+recorded_with: VCR 6.0.0

@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/disbursements/?external_id=sample-external-id
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 18 Aug 2021 04:52:05 GMT
+      Etag:
+      - W/"396-YcIajocLS71ybhaoGCXP2/mda2U"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1120_2182539=WqwoCwYYJml5PZ8OdQqLD/WRHGEAAAAAUI2IpR8X5A9Y/Aq9Je2pug==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=tpz3IzG4TiTwanLKjjCKbQAAAADUntDmiOY3y/IdNo7R8rLP; path=/; Domain=.xendit.co
+      - visid_incap_2182539=hoUyIKvQR828IciYEMEF7/WRHGEAAAAAQUIPAAAAAACvLAIxUVck3dlGj07TAu7x;
+        expires=Wed, 17 Aug 2022 13:22:20 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 9-13895075-13788617 pNYN RT(1629262324570 68) q(0 0 0 -1) r(5 5) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"status":"PENDING","user_id":"596d988e56b5a3c45be75e6e","external_id":"sample-external-id","amount":200000,"bank_code":"BCA","account_holder_name":"Bob
+        Jones","disbursement_description":"Payment","id":"611c9138adc5830024d3a018"},{"status":"PENDING","user_id":"596d988e56b5a3c45be75e6e","external_id":"sample-external-id","amount":15000,"bank_code":"BCA","account_holder_name":"Bob
+        Jones","disbursement_description":"Payment","id":"611c90e34656260017d4a03a"},{"status":"PENDING","user_id":"596d988e56b5a3c45be75e6e","external_id":"sample-external-id","amount":15000,"bank_code":"BCA","account_holder_name":"Bob
+        Jones","disbursement_description":"Payment","id":"611c7d118267c40017c1e1d6"},{"status":"PENDING","user_id":"596d988e56b5a3c45be75e6e","external_id":"sample-external-id","amount":15000,"bank_code":"BCA","account_holder_name":"Bob
+        Jones","disbursement_description":"Payment","id":"611c7d0b9d2d310018d113b9"}]'
+  recorded_at: Wed, 18 Aug 2021 04:52:05 GMT
+recorded_with: VCR 6.0.0

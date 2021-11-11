@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/qr_codes
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"sample-qr-code","type":"DYNAMIC","callback_url":"https://webhook.site/cc1e188a-cd5a-4a7e-b7f9-413a2289b580","amount":50000000}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 07 Sep 2021 06:56:20 GMT
+      Etag:
+      - W/"5d-8OpQXuIZuNg/rX+6vKA+LlfyfFU"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_932_2182539=yl3vdrdumRmdYYAJeyHvDBQNN2EAAAAA+IKK3qCcD9pvXIYQcyKmcg==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=t/hheaMu61y5mJ7ZjjCKbQAAAABm7V+m8OddCrJRVdkFSDpK; path=/; Domain=.xendit.co
+      - visid_incap_2182539=XD2VjuPZStC7OPRqUkJaoP4MN2EAAAAAQUIPAAAAAADPPf3h61/hfVFQKTMmWkyH;
+        expires=Tue, 06 Sep 2022 08:14:16 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 13-72452933-72451156 pNYN RT(1630997779070 100) q(0 0 0 0) r(11 11) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"API_VALIDATION_ERROR","message":"Amount must be within
+        range [1500, 5000000]"}'
+  recorded_at: Tue, 07 Sep 2021 06:56:20 GMT
+recorded_with: VCR 6.0.0
