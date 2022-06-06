@@ -35,6 +35,13 @@ RSpec.describe XenditApi::Client do
     end
   end
 
+  describe '#balance' do
+    it 'returns instance of XenditApi::Api::Balance' do
+      client = described_class.new(auth_key)
+      expect(client.balance).to be_instance_of XenditApi::Api::Balance
+    end
+  end
+
   describe '#v1_ewallet' do
     it 'returns instance of XenditApi::Api::Ewallet' do
       client = described_class.new(auth_key)
