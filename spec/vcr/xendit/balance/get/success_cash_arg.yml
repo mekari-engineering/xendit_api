@@ -1,0 +1,59 @@
+---
+http_interactions:
+  - request:
+      method: get
+      uri: https://api.xendit.co/balance?account_type=CASH
+      body:
+        encoding: US-ASCII
+        string: ""
+      headers:
+        User-Agent:
+          - Faraday v1.3.0
+        Authorization:
+          - Basic <AUTH_KEY>
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        Accept:
+          - "*/*"
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Cache-Control:
+          - no-store, no-cache, must-revalidate, proxy-revalidate
+        Content-Type:
+          - application/json; charset=utf-8
+        Date:
+          - Fri, 03 Jun 2022 09:30:36 GMT
+        Etag:
+          - W/"16-SHbkVWIvdgD9oPaycpvhMj4R3eA"
+        Expires:
+          - "0"
+        Pragma:
+          - no-cache
+        Request-Id:
+          - "8062228407549247415"
+        Strict-Transport-Security:
+          - max-age=2592000; includeSubDomains
+        Surrogate-Control:
+          - no-store
+        Vary:
+          - Accept-Encoding
+        Connection:
+          - keep-alive
+        Set-Cookie:
+          - incap_ses_1122_2182539=y4IAIJ8ChGng6Wc8oyWSD7vUmWIAAAAAk3srGcYVXu2Sczub7SJGNw==;
+            path=/; Domain=.xendit.co
+          - nlbi_2182539=LVUea2eVt0xyHNzKjjCKbQAAAAAVnl52hWJ51CZSju+lebx5; path=/; Domain=.xendit.co
+        X-Cdn:
+          - Imperva
+        Transfer-Encoding:
+          - chunked
+        X-Iinfo:
+          - 14-19784692-19654360 pNYN RT(1654248634053 76) q(0 0 0 -1) r(18 18) U16
+      body:
+        encoding: ASCII-8BIT
+        string: '{"balance":1000000000}'
+    recorded_at: Fri, 03 Jun 2022 09:30:36 GMT
+recorded_with: VCR 6.0.0

@@ -3,6 +3,7 @@ require 'xendit_api/middleware/handle_response_exception'
 require 'xendit_api/api/virtual_account'
 require 'xendit_api/api/ewallet'
 require 'xendit_api/api/credit_card'
+require 'xendit_api/api/balance'
 require 'xendit_api/api/disbursement'
 require 'xendit_api/api/v1/ewallet'
 require 'xendit_api/api/qr_code'
@@ -38,6 +39,10 @@ module XenditApi
 
     def ewallet
       @ewallet ||= XenditApi::Api::Ewallet.new(self)
+    end
+
+    def balance
+      @balance ||= XenditApi::Api::Balance.new(self)
     end
 
     def virtual_account
