@@ -105,6 +105,8 @@ module XenditApi
         else
           raise XenditApi::Errors::UnknownError.new(error_message, json_response)
         end
+      rescue JSON::ParserError
+        raise XenditApi::Errors::ServerError
       end
       # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize, Metrics/MethodLength
     end
