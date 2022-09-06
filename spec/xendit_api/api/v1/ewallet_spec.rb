@@ -75,9 +75,8 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
             params = { reference_id: '7f156109-5f7a-479a-84db-f59c5ab38766', amount: 10_101, mobile_number: '+6282310202012' }
             ewallet_api.post(params: params, payment_method: :ovo)
           end.to raise_error do |error|
-            expect(error).to be_kind_of XenditApi::Errors::V1::Ewallet::ChannelUnavailable
-            expect(error.message).to eq 'The payment channel requested is currently experiencing unexpected issues. The eWallet provider will be notified to resolve this issue.'
-            expect(error.payload).to eq({ 'error_code' => 'CHANNEL_UNAVAILABLE', 'message' => 'The payment channel requested is currently experiencing unexpected issues. The eWallet provider will be notified to resolve this issue.' })
+            expect(error).to be_kind_of XenditApi::Errors::ServerError
+            expect(error.message).to eq 'An unexpected error occurred, our team has been notified and will troubleshoot the issue.'
           end
         end
       end
@@ -91,7 +90,6 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
           end.to raise_error do |error|
             expect(error).to be_kind_of XenditApi::Errors::ServerError
             expect(error.message).to eq 'An unexpected error occurred, our team has been notified and will troubleshoot the issue.'
-            expect(error.payload).to eq({ 'error_code' => 'SERVER_ERROR', 'message' => 'An unexpected error occurred, our team has been notified and will troubleshoot the issue.' })
           end
         end
       end
