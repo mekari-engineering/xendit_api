@@ -5,9 +5,11 @@ module XenditApi
   module Api
     class Balance < XenditApi::Api::Base
       PATH = '/balance'.freeze
+      CASH = 'CASH'.freeze
+      CURRENCY = 'IDR'.freeze
 
-      def get(account_type = nil)
-        get_path = account_type.nil? ? PATH : "#{PATH}?account_type=#{account_type}"
+      def get(account_type = CASH, currency = CURRENCY)
+        get_path = "#{PATH}?account_type=#{account_type}&currency=#{currency}"
         response = @client.get(get_path)
         XenditApi::Model::Balance.new(response.merge(payload: response.to_json))
       end
