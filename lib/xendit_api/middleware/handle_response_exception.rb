@@ -3,6 +3,8 @@ module XenditApi
     class HandleResponseException < Faraday::Middleware
       def call(env)
         @app.call(env).on_complete do |response|
+          raise Xendit::Api::Errors::ServerError, 'Xendit server error' if response.status.to_s.start_with?('5')
+
           validate_response(response.body)
         end
       end
@@ -105,8 +107,6 @@ module XenditApi
         else
           raise XenditApi::Errors::UnknownError.new(error_message, json_response)
         end
-      rescue JSON::ParserError
-        raise XenditApi::Errors::ServerError
       end
       # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize, Metrics/MethodLength
     end
