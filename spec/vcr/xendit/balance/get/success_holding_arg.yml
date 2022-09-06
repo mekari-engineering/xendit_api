@@ -1,59 +1,60 @@
 ---
 http_interactions:
-  - request:
-      method: get
-      uri: https://api.xendit.co/balance?account_type=HOLDING
-      body:
-        encoding: US-ASCII
-        string: ""
-      headers:
-        User-Agent:
-          - Faraday v1.3.0
-        Authorization:
-          - Basic <AUTH_KEY>
-        Accept-Encoding:
-          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-        Accept:
-          - "*/*"
-    response:
-      status:
-        code: 200
-        message: OK
-      headers:
-        Cache-Control:
-          - no-store, no-cache, must-revalidate, proxy-revalidate
-        Content-Type:
-          - application/json; charset=utf-8
-        Date:
-          - Fri, 03 Jun 2022 09:31:54 GMT
-        Etag:
-          - W/"d-UvhwICR/od5x6JugSpKkY9Sn1Zs"
-        Expires:
-          - "0"
-        Pragma:
-          - no-cache
-        Request-Id:
-          - "1458978992179864819"
-        Strict-Transport-Security:
-          - max-age=2592000; includeSubDomains
-        Surrogate-Control:
-          - no-store
-        Vary:
-          - Accept-Encoding
-        Connection:
-          - keep-alive
-        Set-Cookie:
-          - incap_ses_7261_2182539=PUMxBX6YMHwG4/43GkHEZAnVmWIAAAAA/1/vSgJshHeUG0j9eZ55EQ==;
-            path=/; Domain=.xendit.co
-          - nlbi_2182539=22p0AMwQF33xbPYIjjCKbQAAAAD8PG8jWpV2d/W+uqUB5QdY; path=/; Domain=.xendit.co
-        X-Cdn:
-          - Imperva
-        Transfer-Encoding:
-          - chunked
-        X-Iinfo:
-          - 15-6801779-6767097 pNYN RT(1654248711647 55) q(0 0 0 0) r(18 18) U16
-      body:
-        encoding: ASCII-8BIT
-        string: '{"balance":100000}'
-    recorded_at: Fri, 03 Jun 2022 09:31:54 GMT
+- request:
+    method: get
+    uri: https://api.xendit.co/balance?account_type=HOLDING&currency=IDR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.0
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50X1BvMkNmT1VpZ2J5bm5KSnNlT0VaU3pURFl0UHg5TmQ1eFhLMStSeGovV0hROExXakJBSnloZz09Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 06 Sep 2022 09:18:37 GMT
+      Etag:
+      - W/"17-5UvIFNHYsl9H/Ev6KJr2dCcI5bs"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Request-Id:
+      - '3948172116085043672'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_966_2182539=VRbCacIb0xvWXdNskOxnDWwQF2MAAAAA7G1pzZH71eR0c0fcc5qRWw==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=cUaTSTkFC0VDgn5P/0ZNTgAAAAAuPKpKxbwBMqrQrnTqdbF/; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 0-3578548-3578551 NNYY CT(193 195 0) RT(1662455915322 88) q(0 0 0 -1) r(11
+        11) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '{"balance":100000}'
+  recorded_at: Tue, 06 Sep 2022 09:18:37 GMT
 recorded_with: VCR 6.0.0
