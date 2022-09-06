@@ -3,7 +3,7 @@ module XenditApi
     class HandleResponseException < Faraday::Middleware
       def call(env)
         @app.call(env).on_complete do |response|
-          raise Xendit::Api::Errors::ServerError, 'Xendit server error' if response.status.to_s.start_with?('5')
+          raise XenditApi::Errors::ServerError, 'An unexpected error occurred, our team has been notified and will troubleshoot the issue.' if response.status.to_s.start_with?('5')
 
           validate_response(response.body)
         end
@@ -42,8 +42,6 @@ module XenditApi
           raise XenditApi::Errors::OVO::PaymentNotFound.new(error_message, json_response)
         when 'CHANNEL_NOT_ACTIVATED'
           raise XenditApi::Errors::V1::Ewallet::ChannelNotActivated.new(error_message, json_response)
-        when 'CHANNEL_UNAVAILABLE'
-          raise XenditApi::Errors::V1::Ewallet::ChannelUnavailable.new(error_message, json_response)
         when 'DUPLICATE_ERROR'
           raise XenditApi::Errors::DuplicateError.new(error_message, json_response)
         when 'DATA_NOT_FOUND'
