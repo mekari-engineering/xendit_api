@@ -8,6 +8,7 @@ require 'xendit_api/api/disbursement'
 require 'xendit_api/api/v1/ewallet'
 require 'xendit_api/api/qr_code'
 require 'xendit_api/api/v2/invoice'
+require 'xendit_api/api/v2/account'
 
 module XenditApi
   class Client
