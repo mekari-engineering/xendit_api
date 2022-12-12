@@ -69,6 +69,10 @@ module XenditApi
       @invoice ||= XenditApi::Api::V2::Invoice.new(self)
     end
 
+    def account
+      @account ||= XenditApi::Api::V2::Account.new(self)
+    end
+
     def get(url, params = nil)
       response = @connection.get(url, params)
       response.body
