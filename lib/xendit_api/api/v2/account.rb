@@ -7,7 +7,7 @@ module XenditApi
       class Account < XenditApi::Api::Base
         PATH = '/v2/accounts'.freeze
 
-        def post(params:)
+        def create(params)
           response = client.post(PATH, params)
 
           XenditApi::Model::V2::Account.new(response)
