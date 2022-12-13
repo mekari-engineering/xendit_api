@@ -8,6 +8,8 @@ require 'xendit_api/api/disbursement'
 require 'xendit_api/api/v1/ewallet'
 require 'xendit_api/api/qr_code'
 require 'xendit_api/api/v2/invoice'
+require 'xendit_api/api/v2/account'
+require 'logger'
 
 module XenditApi
   class Client
@@ -21,7 +23,7 @@ module XenditApi
 
         logger = find_logger(options[:logger])
         if logger
-          connection.response :logger, logger, { headers: false, bodies: true } do |log|
+          connection.response :logger, logger, { headers: false, bodies: true, errors: true } do |log|
             filtered_logs = options[:filtered_logs]
             if filtered_logs.respond_to?(:each)
               filtered_logs.each do |filter|
@@ -32,7 +34,7 @@ module XenditApi
             end
           end
         end
-        connection.use XenditApi::Middleware::HandleResponseException
+        connection.use XenditApi::Middleware::HandleResponseException, logger
         connection.adapter Faraday.default_adapter
       end
     end
