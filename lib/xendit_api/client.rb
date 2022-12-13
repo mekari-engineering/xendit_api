@@ -80,7 +80,7 @@ module XenditApi
 
     def post(url, params, headers = nil)
       response = @connection.post(url) do |req|
-        req.headers = headers if headers.present?
+        req.headers = headers if headers
         req.body = params
       end
       response.body

@@ -6,7 +6,7 @@ module XenditApi
     class VirtualAccount < XenditApi::Api::Base
       PATH = '/callback_virtual_accounts'.freeze
 
-      def create(params, headers = {})
+      def create(params, headers = nil)
         params[:is_closed] = true if params[:is_closed].nil?
         params[:is_single_use] = true if params[:is_single_use].nil?
         params[:expected_amount] = params[:amount] unless params[:amount].nil?
