@@ -19,7 +19,6 @@ module XenditApi
       @connection = Faraday.new(url: BASE_URL) do |connection|
         connection.request :basic_auth, authorization, ''
         connection.request :json
-        connection.response :raise_error
         connection.response :json
 
         logger = find_logger(options[:logger])
