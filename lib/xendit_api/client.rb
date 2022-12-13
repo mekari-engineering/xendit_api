@@ -21,16 +21,7 @@ module XenditApi
         connection.request :json
         connection.response :json
 
-        connection.response :logger, ::Logger.new(STDOUT), { headers: false, bodies: true } do |log|
-          filtered_logs = options[:filtered_logs]
-          if filtered_logs.respond_to?(:each)
-            filtered_logs.each do |filter|
-              log.filter(%r{(#{filter}=)([\w+-.?@:/]+)}, '\1[FILTERED]')
-              log.filter(%r{(#{filter}":")([\w+-.?@:/]+)}, '\1[FILTERED]')
-              log.filter(%r{(#{filter}":)([\w+-.?@:/]+)}, '\1[FILTERED]')
-            end
-          end
-        end
+        connection.response :logger, ::Logger.new($stdout), { headers: false, bodies: true }
 
         # logger = find_logger(options[:logger])
         # if logger
