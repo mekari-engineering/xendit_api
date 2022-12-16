@@ -3,18 +3,19 @@ module XenditApi
     HandleResponseException = Struct.new(:app, :logger) do
       def call(env)
         app.call(env).on_complete do |response|
-          logger.info("#{env.method.upcase} #{env.url} #{env.body}") if logger&.info
+          if response.status.to_s.start_with?('5')
+            logger.info("#{env.method.upcase} #{env.url} #{env.body}") if logger&.info
+            raise XenditApi::Errors::ServerError, 'An unexpected error occurred, our team has been notified and will troubleshoot the issue.'
+          end
 
-          raise XenditApi::Errors::ServerError, 'An unexpected error occurred, our team has been notified and will troubleshoot the issue.' if response.status.to_s.start_with?('5')
-
-          validate_response(response.body)
+          validate_response(response.body, env)
         end
       end
 
       private
 
       # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize, Metrics/MethodLength
-      def validate_response(response)
+      def validate_response(response, env)
         return true if response.nil?
 
         json_response = JSON.parse(response)
@@ -22,6 +23,8 @@ module XenditApi
 
         return true if json_response.nil?
         return true if json_response['error_code'].nil?
+
+        logger.info("#{env.method.upcase} #{env.url} #{env.body}") if logger&.info
 
         error_message = json_response['message']
 

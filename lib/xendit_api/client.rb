@@ -9,6 +9,7 @@ require 'xendit_api/api/v1/ewallet'
 require 'xendit_api/api/qr_code'
 require 'xendit_api/api/v2/invoice'
 require 'xendit_api/api/v2/account'
+require 'xendit_api/api/transfer'
 require 'logger'
 
 module XenditApi
@@ -75,10 +76,12 @@ module XenditApi
       @account ||= XenditApi::Api::V2::Account.new(self)
     end
 
-    def get(url, params = nil, headers = {})
-      response = @connection.get(url, params) do |req|
-        req.headers = headers if headers
-      end
+    def transfer
+      @transfer || XenditApi::Api::Transfer.new(self)
+    end
+
+    def get(url, params = nil)
+      response = @connection.get(url, params)
       response.body
     end
 
