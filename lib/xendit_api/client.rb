@@ -75,8 +75,10 @@ module XenditApi
       @account ||= XenditApi::Api::V2::Account.new(self)
     end
 
-    def get(url, params = nil)
-      response = @connection.get(url, params)
+    def get(url, params = nil, headers = {})
+      response = @connection.get(url, params) do |req|
+        req.headers = headers if headers
+      end
       response.body
     end
 
