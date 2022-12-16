@@ -6,7 +6,6 @@ module XenditApi
       def initialize(message = nil, payload = nil)
         @message = message
         @payload = payload
-        super(@payload) unless @payload.nil?
         super(@message) unless @message.nil?
       end
     end
