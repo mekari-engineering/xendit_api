@@ -80,7 +80,7 @@ module XenditApi
       @transfer || XenditApi::Api::Transfer.new(self)
     end
 
-    def get(url, params = nil, headers = nil)
+    def get(url, params = nil, headers = {})
       response = @connection.get(url, params, headers)
       response.body
     end
