@@ -76,9 +76,8 @@ module XenditApi
     end
 
     def get(url, params = nil, headers = {})
-      response = @connection.get(url) do |req|
+      response = @connection.get(url, params) do |req|
         req.headers = headers if headers
-        req.body = params
       end
       response.body
     end
