@@ -14,16 +14,18 @@ module XenditApi
           XenditApi::Model::V1::Ewallet.new(response)
         end
 
-        def post(params:, payment_method:)
+        def post(params:, payment_method:, headers: {})
           channel_code = find_channel_code(payment_method)
           channel_properties = get_channel_properties(channel_code, params)
-          response = client.post(PATH,
-                                 reference_id: params[:reference_id],
-                                 currency: CURRENCY,
-                                 amount: params[:amount],
-                                 checkout_method: CHECKOUT_METHOD,
-                                 channel_code: channel_code,
-                                 channel_properties: channel_properties)
+          params = {
+            reference_id: params[:reference_id],
+            currency: CURRENCY,
+            amount: params[:amount],
+            checkout_method: CHECKOUT_METHOD,
+            channel_code: channel_code,
+            channel_properties: channel_properties
+          }
+          response = client.post(PATH, params, headers)
 
           XenditApi::Model::V1::Ewallet.new(response)
         end
