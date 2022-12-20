@@ -7,8 +7,8 @@ module XenditApi
     class QrCode < XenditApi::Api::Base
       PATH = '/qr_codes'.freeze
 
-      def create(params)
-        response = @client.post(PATH, params)
+      def create(params, headers = {})
+        response = @client.post(PATH, params, headers)
         XenditApi::Model::QrCode.new(response.merge(payload: response.to_json))
       end
 
