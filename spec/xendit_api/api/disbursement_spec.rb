@@ -29,6 +29,32 @@ RSpec.describe XenditApi::Api::Disbursement do
           expect(response.id).not_to be_nil
         end
       end
+
+      it 'returns expected response with for-user-id' do
+        VCR.use_cassette('xendit/disbursement/create/for_user_id') do
+          disbursement_api = described_class.new(client)
+          for_user_id = '5785e6334d7b410667d355c4'
+          response = disbursement_api.create(
+            { external_id: SecureRandom.uuid,
+              amount: 15_000,
+              bank_code: 'BCA',
+              account_holder_name: 'Bob Jones',
+              account_number: '1111111111',
+              disbursement_description: 'Payment' },
+            for_user_id
+          )
+          expect(response).to be_instance_of XenditApi::Model::Disbursement
+          expect(response).to have_attributes(
+            amount: 15_000,
+            bank_code: 'BCA',
+            account_holder_name: 'Bob Jones',
+            status: 'PENDING',
+            disbursement_description: 'sample disbursement'
+          )
+          expect(response.external_id).not_to be_nil
+          expect(response.id).not_to be_nil
+        end
+      end
     end
 
     context 'with invalid params' do
