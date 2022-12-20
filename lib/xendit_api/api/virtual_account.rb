@@ -16,21 +16,20 @@ module XenditApi
         XenditApi::Model::VirtualAccount.new(virtual_account_params)
       end
 
-      def update_to_expired(id)
+      def update_to_expired(id, headers = {})
         update_path = "#{PATH}/#{id}"
         one_year = 31_556_952
         expired_date = Time.now - one_year
         virtual_account = find(id)
-        response = client.patch(update_path,
-                                expected_amount: virtual_account.expected_amount,
-                                expiration_date: expired_date.iso8601)
+        params = { expected_amount: virtual_account.expected_amount, expiration_date: expired_date.iso8601 }
+        response = client.patch(update_path, params, headers)
         virtual_account_params = permitted_virtual_account_params(response)
         XenditApi::Model::VirtualAccount.new(virtual_account_params)
       end
 
-      def update(id, params)
+      def update(id, params, headers = {})
         update_path = "#{PATH}/#{id}"
-        response = client.patch(update_path, params)
+        response = client.patch(update_path, params, headers)
         virtual_account_response = permitted_virtual_account_params(response)
         XenditApi::Model::VirtualAccount.new(virtual_account_response)
       end

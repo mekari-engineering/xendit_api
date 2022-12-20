@@ -93,8 +93,11 @@ module XenditApi
       response.body
     end
 
-    def patch(url, params)
-      response = @connection.patch(url, params)
+    def patch(url, params, headers = {})
+      response = @connection.patch(url) do |req|
+        req.headers = headers if headers
+        req.body = params
+      end
       response.body
     end
 
