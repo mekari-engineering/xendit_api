@@ -7,8 +7,8 @@ module XenditApi
     class CreditCard < XenditApi::Api::Base
       PATH = '/credit_card_charges'.freeze
 
-      def charge(params)
-        response = client.post(PATH, params)
+      def charge(params, headers = {})
+        response = client.post(PATH, params, headers)
         credit_card_params = permitted_credit_card_params(response)
         XenditApi::Model::CreditCard.new(credit_card_params)
       end
