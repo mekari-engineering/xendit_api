@@ -33,7 +33,8 @@ RSpec.describe XenditApi::Api::Disbursement do
       it 'returns expected response with for-user-id' do
         VCR.use_cassette('xendit/disbursement/create/for_user_id') do
           disbursement_api = described_class.new(client)
-          for_user_id = '5785e6334d7b410667d355c4'
+          headers = { for_user_id: '5785e6334d7b410667d355c4' }
+
           response = disbursement_api.create(
             { external_id: SecureRandom.uuid,
               amount: 15_000,
@@ -41,7 +42,7 @@ RSpec.describe XenditApi::Api::Disbursement do
               account_holder_name: 'Bob Jones',
               account_number: '1111111111',
               disbursement_description: 'Payment' },
-            for_user_id
+            headers
           )
           expect(response).to be_instance_of XenditApi::Model::Disbursement
           expect(response).to have_attributes(

@@ -6,8 +6,7 @@ module XenditApi
     class Disbursement < XenditApi::Api::Base
       PATH = '/disbursements'.freeze
 
-      def create(params, for_user_id = nil)
-        headers = for_user_id ? { 'for-user-id': for_user_id } : {}
+      def create(params, headers = {})
         response = client.post PATH, params, headers
         XenditApi::Model::Disbursement.new(response.merge(payload: response.to_json))
       end
