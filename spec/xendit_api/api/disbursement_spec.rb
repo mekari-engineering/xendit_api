@@ -250,7 +250,7 @@ RSpec.describe XenditApi::Api::Disbursement do
           disbursement_api = described_class.new(client)
 
           expect do
-            disbursement_api.find_by_external_id('d666')
+            disbursement_api.find_by_external_id('d666', {})
           end.to raise_error do |error|
             expect(error).to be_kind_of XenditApi::Errors::Disbursement::DirectDisbursementNotFound
             expect(error.message).to eq 'Direct disbursement not found'
@@ -265,7 +265,7 @@ RSpec.describe XenditApi::Api::Disbursement do
     it 'returns expected disbursements' do
       VCR.use_cassette('xendit/disbursement/where_by_external_id/two_records') do
         disbursement_api = described_class.new(client)
-        disbursements = disbursement_api.where_by_external_id('sample-external-id')
+        disbursements = disbursement_api.where_by_external_id('sample-external-id', {})
         expect(disbursements.size).to eq 2
         first_disbursement = disbursements.first
         expect(first_disbursement).to be_kind_of XenditApi::Model::Disbursement
@@ -295,7 +295,7 @@ RSpec.describe XenditApi::Api::Disbursement do
         error_payload = { 'error_code' => 'DIRECT_DISBURSEMENT_NOT_FOUND_ERROR', 'message' => 'Direct disbursement not found' }
         disbursement_api = described_class.new(client)
         expect do
-          disbursement_api.where_by_external_id('d666')
+          disbursement_api.where_by_external_id('d666', {})
         end.to raise_error do |error|
           expect(error).to be_kind_of XenditApi::Errors::Disbursement::DirectDisbursementNotFound
           expect(error.message).to eq 'Direct disbursement not found'

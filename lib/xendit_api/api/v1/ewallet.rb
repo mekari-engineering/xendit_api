@@ -9,8 +9,8 @@ module XenditApi
         CHECKOUT_METHOD = 'ONE_TIME_PAYMENT'.freeze
         CURRENCY = 'IDR'.freeze
 
-        def get(id)
-          response = client.get("#{PATH}/#{id}")
+        def get(id, headers = {})
+          response = client.get("#{PATH}/#{id}", headers)
           XenditApi::Model::V1::Ewallet.new(response)
         end
 

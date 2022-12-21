@@ -12,15 +12,15 @@ module XenditApi
         XenditApi::Model::QrCode.new(response.merge(payload: response.to_json))
       end
 
-      def find(external_id)
+      def find(external_id, headers = {})
         find_path = "#{PATH}/#{external_id}"
-        response = @client.get(find_path)
+        response = @client.get(find_path, headers)
         XenditApi::Model::QrCode.new(response.merge(payload: response.to_json))
       end
 
-      def find_payments(external_id)
+      def find_payments(external_id, headers = {})
         find_payments_path = "#{PATH}/payments?external_id=#{external_id}"
-        response = @client.get(find_payments_path)
+        response = @client.get(find_payments_path, headers)
         response.map do |payment|
           XenditApi::Model::QrCodePayment.new(payment.merge(payload: payment.to_json))
         end
