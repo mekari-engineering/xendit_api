@@ -7,7 +7,7 @@ module XenditApi
       PATH = '/disbursements'.freeze
 
       def create(params, headers = {})
-        response = client.post PATH, params, headers
+        response = client.post(PATH, params, headers)
         XenditApi::Model::Disbursement.new(response.merge(payload: response.to_json))
       end
 
