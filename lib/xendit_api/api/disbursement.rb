@@ -15,7 +15,7 @@ module XenditApi
         where_by_external_id(external_id, headers).first
       end
 
-      def where_by_external_id(external_id, headers)
+      def where_by_external_id(external_id, headers = {})
         response = client.get("#{self.class::PATH}/?external_id=#{external_id}", headers)
         disbursements = []
         response.each do |disbursement|
