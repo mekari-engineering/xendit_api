@@ -20,7 +20,7 @@ module XenditApi
         update_path = "#{PATH}/#{id}"
         one_year = 31_556_952
         expired_date = Time.now - one_year
-        params = { expiration_date: expired_date.utc.iso8601 }
+        params = { expiration_date: expired_date.iso8601 }
         response = client.patch(update_path, params, headers)
         virtual_account_params = permitted_virtual_account_params(response)
         XenditApi::Model::VirtualAccount.new(virtual_account_params)
