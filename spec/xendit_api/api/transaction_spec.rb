@@ -8,7 +8,6 @@ RSpec.describe XenditApi::Api::Transaction do
       VCR.use_cassette('xendit_api/api/transactions/transactions') do
         transaction = described_class.new(client)
         transactions = transaction.list
-        # binding.pry
         expect(transactions.data.size).to eq 10
         expect(transactions.next_query).to eq 'currency=IDR&limit=10&after_id=txn_0811c413-12c4-470a-be62-dfd1bf3c280d'
         transaction = transactions.data.last
@@ -34,13 +33,14 @@ RSpec.describe XenditApi::Api::Transaction do
       end
     end
 
-    # it 'returns expected when Transaction was blank' do
-    #   VCR.use_cassette('xendit_api/api/transactions/blank_transactions') do
-    #     transaction = described_class.new(client)
-    #     transactions = transaction.list('sample-qr-code-valid')
-    #     expect(transactions).to eq []
-    #   end
-    # end
+    it 'returns expected when Transaction was blank' do
+      VCR.use_cassette('xendit_api/api/transactions/blank_transactions') do
+        transaction = described_class.new(client)
+        transactions = transaction.list('statuses=VOIDED')
+        expect(transactions.data).to eq []
+        expect(transactions.next_query).to eq nil
+      end
+    end
 
     # it 'raise error when find transactions with invalid external-id' do
     #   VCR.use_cassette('xendit_api/api/transactions/not_found_data_99999') do
