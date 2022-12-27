@@ -42,12 +42,11 @@ RSpec.describe XenditApi::Api::Transaction do
       end
     end
 
-    # it 'raise error when find transactions with invalid external-id' do
-    #   VCR.use_cassette('xendit_api/api/transactions/not_found_data_99999') do
-    #     transaction = described_class.new(client)
-    #     transactions = transaction.list('not_found_data_99999')
-    #     expect(transactions).to eq []
-    #   end
-    # end
+    it 'raise error when query is invalid' do
+      VCR.use_cassette('xendit_api/api/transactions/query_invalid') do
+        transaction = described_class.new(client)
+        expect { transaction.list('invalid_query') }.to raise_error(XenditApi::Errors::ApiValidation)
+      end
+    end
   end
 end
