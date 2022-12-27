@@ -14,9 +14,15 @@ module XenditApi
           XenditApi::Model::Transaction.new(transaction)
         end
 
-        next_query = response['has_more'] ? URI.parse(response['links'].find { |link| link['rel'] == 'next' }['href']).query : nil
+        next_query = response['has_more'] ? URI.parse(execute_next_data(response['links'])).query : nil
 
         OpenStruct.new(data: data, next_query: next_query)
+      end
+
+      private
+
+      def execute_next_data(links)
+        links.find { |link| link['rel'] == 'next' }['href']
       end
     end
   end
