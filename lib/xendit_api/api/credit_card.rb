@@ -15,7 +15,7 @@ module XenditApi
 
       def find(id, headers = {})
         find_path = "#{PATH}/#{id}"
-        response = client.get(find_path, headers)
+        response = client.get(find_path, nil, headers)
         credit_card_params = permitted_credit_card_params(response)
         XenditApi::Model::CreditCard.new(credit_card_params)
       end
