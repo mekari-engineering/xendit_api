@@ -10,6 +10,7 @@ require 'xendit_api/api/qr_code'
 require 'xendit_api/api/v2/invoice'
 require 'xendit_api/api/v2/account'
 require 'xendit_api/api/transfer'
+require 'xendit_api/api/transaction'
 require 'logger'
 
 module XenditApi
@@ -78,6 +79,10 @@ module XenditApi
 
     def transfer
       @transfer || XenditApi::Api::Transfer.new(self)
+    end
+
+    def transaction
+      @transaction || XenditApi::Api::Transaction.new(self)
     end
 
     def get(url, params = nil, headers = {})

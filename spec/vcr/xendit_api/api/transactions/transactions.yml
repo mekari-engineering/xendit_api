@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/transactions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50X080NkpmT3R5Z2VmOWtNTnNLK1pQR1QrWlo5YjNvb0Y0dzNEbitSMWsrMmZULzdHbENBTjNqZz09Ojo=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 27 Dec 2022 03:49:43 GMT
+      Etag:
+      - W/"1a2a-cfCulY5hcHHSp9RM4tbYjd5nDnQ"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Rate-Limit-Limit:
+      - '3000'
+      Rate-Limit-Remaining:
+      - '2995'
+      Rate-Limit-Reset:
+      - '1.11'
+      Request-Id:
+      - '8622343692433230874'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1220_2182539=iGBnMWp79nGABDmuX1DuEFdrqmMAAAAAyVDs3uABEeZ3d8rRUNWbCA==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=IBJPB3eAGBJkM8NL/0ZNTgAAAACC1kzus/Agx43D087WeJIs; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 13-588627785-588617801 pNYN RT(1672112982222 97) q(0 0 0 -1) r(10 10) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '{"has_more":true,"data":[{"id":"txn_c89ffd4d-4012-48d1-b446-4490d0f647ee","product_id":"disb-47c7db3b-2714-4839-b0de-7f1779d8c17a","type":"DISBURSEMENT","status":"SUCCESS","channel_category":"EWALLET","channel_code":"ID_DANA","reference_id":"000111111","account_identifier":"000000000","currency":"IDR","amount":1001,"net_amount":6551,"cashflow":"MONEY_OUT","settlement_status":null,"estimated_settlement_time":null,"business_id":"57fdbb445eec38910d3a4c47","created":"2022-12-20T08:19:57.857Z","updated":"2022-12-20T08:20:05.546Z","fee":{"xendit_fee":5000,"value_added_tax":550,"xendit_withholding_tax":0,"third_party_withholding_tax":0,"status":"COMPLETED"}},{"id":"txn_8c7410f3-2d86-4048-bccf-2fe95543a8ac","product_id":"disb-372d4e97-a4f1-4719-8a09-e836e058a15a","type":"DISBURSEMENT","status":"SUCCESS","channel_category":"BANK","channel_code":"ID_BCA","reference_id":"sample-successful-create-php-payout","account_identifier":"0000000000","currency":"IDR","amount":1,"net_amount":5551,"cashflow":"MONEY_OUT","settlement_status":null,"estimated_settlement_time":null,"business_id":"57fdbb445eec38910d3a4c47","created":"2022-12-19T06:53:59.851Z","updated":"2022-12-19T06:54:06.059Z","fee":{"xendit_fee":5000,"value_added_tax":550,"xendit_withholding_tax":0,"third_party_withholding_tax":0,"status":"COMPLETED"}},{"id":"txn_23d9571c-6374-4603-b8d9-f56f3000f84b","product_id":"f0b7c575-7189-4863-8afb-24c4f91adeb9","type":"PAYMENT","status":"SUCCESS","channel_category":"EWALLET","channel_code":"ID_DANA","reference_id":"payment-link-example","account_identifier":null,"currency":"IDR","amount":100000,"net_amount":98335,"cashflow":"MONEY_IN","settlement_status":"SETTLED","estimated_settlement_time":"2022-12-18T17:00:00.000Z","business_id":"57fdbb445eec38910d3a4c47","created":"2022-12-15T15:51:09.749Z","updated":"2022-12-18T17:03:51.640Z","fee":{"xendit_fee":1500,"value_added_tax":165,"xendit_withholding_tax":0,"third_party_withholding_tax":0,"status":"COMPLETED"}},{"id":"txn_e52131ad-9df5-4df5-9180-0a01e6e3addf","product_id":"8fa26a11-3b13-442d-98eb-c95d6a23b255","type":"PAYMENT","status":"SUCCESS","channel_category":"EWALLET","channel_code":"ID_DANA","reference_id":"payment-link-example","account_identifier":null,"currency":"IDR","amount":100000,"net_amount":98335,"cashflow":"MONEY_IN","settlement_status":"SETTLED","estimated_settlement_time":"2022-12-18T17:00:00.000Z","business_id":"57fdbb445eec38910d3a4c47","created":"2022-12-15T15:36:33.437Z","updated":"2022-12-18T17:04:28.947Z","fee":{"xendit_fee":1500,"value_added_tax":165,"xendit_withholding_tax":0,"third_party_withholding_tax":0,"status":"COMPLETED"}},{"id":"txn_5d753ac6-21af-4749-a26c-d1aab6359e79","product_id":"ff378334-9e2e-4325-809e-69db1eff0513","type":"PAYMENT","status":"SUCCESS","channel_category":"EWALLET","channel_code":"ID_DANA","reference_id":"payment-link-example","account_identifier":null,"currency":"IDR","amount":100000,"net_amount":98335,"cashflow":"MONEY_IN","settlement_status":"SETTLED","estimated_settlement_time":"2022-12-18T17:00:00.000Z","business_id":"57fdbb445eec38910d3a4c47","created":"2022-12-15T12:35:10.208Z","updated":"2022-12-18T17:03:48.402Z","fee":{"xendit_fee":1500,"value_added_tax":165,"xendit_withholding_tax":0,"third_party_withholding_tax":0,"status":"COMPLETED"}},{"id":"txn_65ff3378-1057-4ec6-96c5-cdcc7636518f","product_id":"b20de545-0406-4c00-b0bd-1e0c2933b02b","type":"PAYMENT","status":"SUCCESS","channel_category":"EWALLET","channel_code":"ID_DANA","reference_id":"payment-link-example","account_identifier":null,"currency":"IDR","amount":100000,"net_amount":98335,"cashflow":"MONEY_IN","settlement_status":"SETTLED","estimated_settlement_time":"2022-12-18T17:00:00.000Z","business_id":"57fdbb445eec38910d3a4c47","created":"2022-12-15T12:35:09.983Z","updated":"2022-12-18T17:05:59.516Z","fee":{"xendit_fee":1500,"value_added_tax":165,"xendit_withholding_tax":0,"third_party_withholding_tax":0,"status":"COMPLETED"}},{"id":"txn_c3de85a1-76b0-4e55-a5d5-85305471e122","product_id":"639addb4b771ea001aad16e4","type":"PAYMENT","status":"SUCCESS","channel_category":"CARDS","channel_code":"VISA","reference_id":"payment-link-example","account_identifier":"400000XXXXXX1091","currency":"IDR","amount":100000,"net_amount":93229,"cashflow":"MONEY_IN","settlement_status":"PENDING","estimated_settlement_time":"2022-12-16T17:00:00.000Z","business_id":"57fdbb445eec38910d3a4c47","created":"2022-12-15T08:41:26.159Z","updated":"2022-12-15T08:41:26.159Z","fee":{"xendit_fee":6100,"value_added_tax":671,"xendit_withholding_tax":0,"third_party_withholding_tax":0,"status":"PENDING"}},{"id":"txn_e9a0886b-9946-492e-8fa4-a3f4ad8755e5","product_id":"6396998c9825f2001b76cb8b","type":"PAYMENT","status":"SUCCESS","channel_category":"CARDS","channel_code":"MASTERCARD","reference_id":"recurring_12345-1670814089519","account_identifier":"510458XXXXXX9459","currency":"IDR","amount":100000,"net_amount":93229,"cashflow":"MONEY_IN","settlement_status":"PENDING","estimated_settlement_time":"2022-12-13T17:00:00.000Z","business_id":"57fdbb445eec38910d3a4c47","created":"2022-12-12T03:01:38.913Z","updated":"2022-12-12T03:01:38.913Z","fee":{"xendit_fee":6100,"value_added_tax":671,"xendit_withholding_tax":0,"third_party_withholding_tax":0,"status":"PENDING"}},{"id":"txn_4b6c542b-3ab8-4939-95d6-4476013af1d2","product_id":"638597bfa49924417c264961","type":"DISBURSEMENT","status":"SUCCESS","channel_category":"BANK","channel_code":"ID_BRI","reference_id":"disb-1475459775872","account_identifier":"062301012491532","currency":"IDR","amount":90000,"net_amount":95550,"cashflow":"MONEY_OUT","settlement_status":null,"estimated_settlement_time":null,"business_id":"57fdbb445eec38910d3a4c47","created":"2022-11-29T05:25:20.433Z","updated":"2022-11-29T05:25:59.021Z","fee":{"xendit_fee":5000,"value_added_tax":550,"xendit_withholding_tax":0,"third_party_withholding_tax":0,"status":"COMPLETED"}},{"id":"txn_0811c413-12c4-470a-be62-dfd1bf3c280d","product_id":"6371dd104374b900a2c4b1bb","type":"PAYMENT","status":"SUCCESS","channel_category":"VIRTUAL_ACCOUNT","channel_code":"BNI","reference_id":"payment-link-example1","account_identifier":"8808999921687033","currency":"IDR","amount":10000,"net_amount":5560,"cashflow":"MONEY_IN","settlement_status":"SETTLED","estimated_settlement_time":"2022-11-14T06:15:42.605Z","business_id":"57fdbb445eec38910d3a4c47","created":"2022-11-14T06:15:44.977Z","updated":"2022-11-14T06:15:44.977Z","fee":{"xendit_fee":4000,"value_added_tax":440,"xendit_withholding_tax":0,"third_party_withholding_tax":0,"status":"COMPLETED"}}],"links":[{"href":"/transactions?currency=IDR&limit=10&after_id=txn_0811c413-12c4-470a-be62-dfd1bf3c280d","method":"GET","rel":"next"}]}'
+  recorded_at: Tue, 27 Dec 2022 03:49:43 GMT
+recorded_with: VCR 6.0.0
