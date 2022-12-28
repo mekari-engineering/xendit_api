@@ -10,7 +10,7 @@ module XenditApi
         CURRENCY = 'IDR'.freeze
 
         def get(id, headers = {})
-          response = client.get("#{PATH}/#{id}", headers)
+          response = client.get("#{PATH}/#{id}", nil, headers)
           XenditApi::Model::V1::Ewallet.new(response)
         end
 
