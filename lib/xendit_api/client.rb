@@ -23,7 +23,7 @@ module XenditApi
         connection.request :basic_auth, authorization, ''
         connection.request :json
         connection.response :json
-        connection.options.timeout = options[:timeout] if option.key?(:timeout)
+        connection.options.timeout = options[:timeout] if options.key?(:timeout)
 
         logger = find_logger(options[:logger])
         if logger
