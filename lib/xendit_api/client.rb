@@ -11,6 +11,7 @@ require 'xendit_api/api/v2/invoice'
 require 'xendit_api/api/v2/account'
 require 'xendit_api/api/transfer'
 require 'xendit_api/api/transaction'
+require 'xendit_api/api/fee_rule'
 require 'logger'
 
 module XenditApi
@@ -22,6 +23,7 @@ module XenditApi
         connection.request :basic_auth, authorization, ''
         connection.request :json
         connection.response :json
+        connection.options.timeout = options[:timeout] if options[:timeout].present?
 
         logger = find_logger(options[:logger])
         if logger
@@ -83,6 +85,10 @@ module XenditApi
 
     def transaction
       @transaction || XenditApi::Api::Transaction.new(self)
+    end
+
+    def fee_rule
+      @fee_rule || XenditApi::Api::FeeRule.new(self)
     end
 
     def get(url, params = nil, headers = {})
