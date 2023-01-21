@@ -12,11 +12,11 @@ module XenditApi
 
           XenditApi::Model::V2::Invoice.new(response)
         end
-        
+
         def get_by_external_id(external_id)
           response = client.get(PATH, {
-            external_id: external_id
-          })
+                                  external_id: external_id
+                                })
 
           response.map do |invoice|
             XenditApi::Model::V2::Invoice.new(invoice)

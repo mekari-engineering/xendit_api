@@ -12,14 +12,14 @@ RSpec.describe XenditApi::Api::V2::Invoice do
       let(:params) do
         {
           external_id: 'eacd7788-8864-421c-a39c-9c59c3ee875c',
-          amount: 100_000,
+          amount: 100_000
         }
       end
 
       it 'returns success response' do
         VCR.use_cassette('xendit/v2/invoice/success') do
           response = invoice_api.post(params: params)
-          
+
           expect(response).to be_instance_of XenditApi::Model::V2::Invoice
           expect(response.external_id).to eq 'eacd7788-8864-421c-a39c-9c59c3ee875c'
           expect(response.amount).to eq 100_000
@@ -31,7 +31,7 @@ RSpec.describe XenditApi::Api::V2::Invoice do
       let(:params) do
         {
           external_id: nil,
-          amount: 100_000,
+          amount: 100_000
         }
       end
 
