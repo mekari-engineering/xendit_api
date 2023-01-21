@@ -1,7 +1,7 @@
 module XenditApi
   module Errors
     module CreditCard
-      class ResponseError < StandardError; end
+      class ResponseError < XenditApi::Errors::ResponseError; end
 
       class ChargeError < ResponseError; end
 

@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/transactions?invalid_query
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50X080NkpmT3R5Z2VmOWtNTnNLK1pQR1QrWlo5YjNvb0Y0dzNEbitSMWsrMmZULzdHbENBTjNqZz09Ojo=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 27 Dec 2022 05:10:38 GMT
+      Etag:
+      - W/"f8-5+LnPYeUvrrb8XbhHL8Fq/4oiEY"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Rate-Limit-Limit:
+      - '3000'
+      Rate-Limit-Remaining:
+      - '2999'
+      Rate-Limit-Reset:
+      - '60'
+      Request-Id:
+      - '6344918688314148814'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1220_2182539=g8x4Dv8Cv2MVpkauX1DuEE1+qmMAAAAAa3HD80tXlREBMGZ4SdZdSQ==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=mWq7MAkgLGfMLNnK/0ZNTgAAAACF+cbhKW19Agrju2m4hl1a; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 14-687869481-687552528 pNYN RT(1672117836837 100) q(0 0 0 1) r(10 10) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '{"message":"Unknown query parameter ''invalid_query''","error":"API_VALIDATION_ERROR","error_code":"API_VALIDATION_ERROR","status_code":400,"validation":{"errors":[{"path":".query.invalid_query","message":"Unknown
+        query parameter ''invalid_query''"}]}}'
+  recorded_at: Tue, 27 Dec 2022 05:10:38 GMT
+recorded_with: VCR 6.0.0

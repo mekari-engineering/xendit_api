@@ -6,15 +6,22 @@ module XenditApi
     class Disbursement < XenditApi::Api::Base
       PATH = '/disbursements'.freeze
 
-      def create(params)
-        response = client.post(PATH, params)
+      def create(params, headers = {})
+        response = client.post(PATH, params, headers)
         XenditApi::Model::Disbursement.new(response.merge(payload: response.to_json))
       end
 
-      def find_by_external_id(external_id)
-        response = client.get("#{self.class::PATH}/?external_id=#{external_id}", {})
+      def find_by_external_id(external_id, headers = {})
+        where_by_external_id(external_id, headers).first
+      end
 
-        XenditApi::Model::Disbursement.new(response[0])
+      def where_by_external_id(external_id, headers = {})
+        response = client.get("#{self.class::PATH}/?external_id=#{external_id}", nil, headers)
+        disbursements = []
+        response.each do |disbursement|
+          disbursements << XenditApi::Model::Disbursement.new(disbursement.merge(payload: response.to_json))
+        end
+        disbursements
       end
     end
   end

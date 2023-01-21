@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/transactions?statuses=VOIDED
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50X080NkpmT3R5Z2VmOWtNTnNLK1pQR1QrWlo5YjNvb0Y0dzNEbitSMWsrMmZULzdHbENBTjNqZz09Ojo=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 27 Dec 2022 05:00:01 GMT
+      Etag:
+      - W/"27-dSpvLr4ZRv4wIzm75wbRsjnwz6s"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Rate-Limit-Limit:
+      - '3000'
+      Rate-Limit-Remaining:
+      - '2998'
+      Rate-Limit-Reset:
+      - '20.231'
+      Request-Id:
+      - '1422453466251929690'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1220_2182539=aWeqSrxZsjE4c0SuX1DuENF7qmMAAAAAW8CGsYh3V9LOj47sgzpNCQ==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=jXrUV34XVU7EnWO3/0ZNTgAAAAAgT2IiNmLqvQPjiht8JW9O; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 10-422344174-421960351 pNYN RT(1672117200413 89) q(0 0 0 -1) r(11 11) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '{"has_more":false,"data":[],"links":[]}'
+  recorded_at: Tue, 27 Dec 2022 05:00:02 GMT
+recorded_with: VCR 6.0.0

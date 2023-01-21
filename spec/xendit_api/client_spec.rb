@@ -1,10 +1,9 @@
 require 'spec_helper'
-require 'xendit_api/errors/ovo'
 
 RSpec.describe XenditApi::Client do
   let(:auth_key) { 'FILTERED_AUTH_KEY' }
 
-  it 'retur ns expected base url' do
+  it 'returns expected base url' do
     expect(XenditApi::Client::BASE_URL).to eq 'https://api.xendit.co'
   end
 
@@ -33,6 +32,20 @@ RSpec.describe XenditApi::Client do
     it 'returns instance of XenditApi::Api::Disbursement' do
       client = described_class.new(auth_key)
       expect(client.disbursement).to be_instance_of XenditApi::Api::Disbursement
+    end
+  end
+
+  describe '#balance' do
+    it 'returns instance of XenditApi::Api::Balance' do
+      client = described_class.new(auth_key)
+      expect(client.balance).to be_instance_of XenditApi::Api::Balance
+    end
+  end
+
+  describe '#v1_ewallet' do
+    it 'returns instance of XenditApi::Api::Ewallet' do
+      client = described_class.new(auth_key)
+      expect(client.v1_ewallet).to be_instance_of XenditApi::Api::V1::Ewallet
     end
   end
 
@@ -106,6 +119,13 @@ RSpec.describe XenditApi::Client do
           client.get('/ewallets', external_id: nil)
         end.to raise_error(XenditApi::Errors::OVO::PaymentNotFound)
       end
+    end
+  end
+
+  describe '#qr_code' do
+    it 'returns expected instance' do
+      client = described_class.new(auth_key)
+      expect(client.qr_code).to be_instance_of XenditApi::Api::QrCode
     end
   end
 end

@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/disbursements/?external_id=d666
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 18 Aug 2021 03:35:39 GMT
+      Etag:
+      - W/"5e-szzl1BgCBV0ooAVARKI1gKwkAWg"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1120_2182539=7FLKF+3vmSlpZZUOdQqLDwuAHGEAAAAAgjG8hWftgtp3f6300/Ts1g==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=xWnJHKgEJyFc45oxjjCKbQAAAAAxeKUUpo+u91PRlra9C8y7; path=/; Domain=.xendit.co
+      - visid_incap_2182539=jOhc8vJvT8G2qhOMDoZzOwuAHGEAAAAAQUIPAAAAAACZI6Dz591B7owbhL5EDXvk;
+        expires=Wed, 17 Aug 2022 13:22:18 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 3-18110357-18103345 pNYN RT(1629257739152 48) q(0 1 1 -1) r(5 5) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"DIRECT_DISBURSEMENT_NOT_FOUND_ERROR","message":"Direct
+        disbursement not found"}'
+  recorded_at: Wed, 18 Aug 2021 03:35:39 GMT
+recorded_with: VCR 6.0.0

@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/disbursements/?external_id=d28aac6a-03c8-46d0-ac03-43b6278b35eb
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 31 Jul 2021 05:57:10 GMT
+      Etag:
+      - W/"11f-3+UVlkK0pGjl3VvLUb2HwWTIkd4"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1112_2182539=39bBPGU75C9XlJ6Bi55uDzbmBGEAAAAA6D0VTWANeEPlvGt+I5JD6Q==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=ukcfGUnuNVoFm8QgjjCKbQAAAAD0wCeFxH3y27iLXjfI8z0y; path=/; Domain=.xendit.co
+      - visid_incap_2182539=bAGplKaAS2qydNMNG92SmDbmBGEAAAAAQUIPAAAAAACb46wSxmJCu1RBtawhLqt5;
+        expires=Sat, 30 Jul 2022 08:08:38 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 5-9823368-9591682 pNYN RT(1627711029689 75) q(0 0 0 -1) r(5 5) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"status":"COMPLETED","user_id":"596d988e56b5a3c45be75e6e","external_id":"d28aac6a-03c8-46d0-ac03-43b6278b35eb","amount":90000,"bank_code":"BNI","account_holder_name":"Jesse
+        Pinkman","disbursement_description":"Disbursement July 2021","is_instant":true,"id":"6103db4e48f6e8002177468b"}]'
+  recorded_at: Sat, 31 Jul 2021 05:57:11 GMT
+recorded_with: VCR 6.0.0

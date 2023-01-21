@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/qr_codes
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"sample-qr-code","type":"DYNAMIC","callback_url":"https://webhook.site/cc1e188a-cd5a-4a7e-b7f9-413a2289b580","amount":100000}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 409
+      message: Conflict
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 07 Sep 2021 06:45:49 GMT
+      Etag:
+      - W/"7b-/VZUuBlNr/bVpgT4rHwxNv5GB8I"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_932_2182539=La5gc0+CLhuZV34JeyHvDJ0KN2EAAAAAwbWQIjY8dGeBPpYc6Q7O1g==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=OAZPUq58VUBXk+HdjjCKbQAAAABusXVLH5Wpm5n3lEcntUg1; path=/; Domain=.xendit.co
+      - visid_incap_2182539=o6Hu3lN3Sh+EeuT0gZJ9lp0KN2EAAAAAQUIPAAAAAACn9B9beaGd5TZkhmPkYGXX;
+        expires=Tue, 06 Sep 2022 08:14:17 GMT; HttpOnly; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 10-31959455-31959471 nNYN RT(1630997147790 145) q(0 0 2 -1) r(3 13) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"DUPLICATE_ERROR","message":"Duplicated external_id sample-qr-code,
+        external_id must be unique per request."}'
+  recorded_at: Tue, 07 Sep 2021 06:45:49 GMT
+recorded_with: VCR 6.0.0

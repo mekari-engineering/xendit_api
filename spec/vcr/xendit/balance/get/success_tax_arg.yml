@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/balance?account_type=TAX&currency=IDR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.0
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50X1BvMkNmT1VpZ2J5bm5KSnNlT0VaU3pURFl0UHg5TmQ1eFhLMStSeGovV0hROExXakJBSnloZz09Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 06 Sep 2022 09:18:38 GMT
+      Etag:
+      - W/"d-UvhwICR/od5x6JugSpKkY9Sn1Zs"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Request-Id:
+      - '2745410957596909051'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_966_2182539=kVnfSZwbThtJX9NskOxnDW0QF2MAAAAAUyHnYCk8LYI9n7l7YWivNg==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=yYkeTQFgsVxgbtTS/0ZNTgAAAACYww1xSDRWZCb51w/LoF9J; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 6-20569099-20569107 NNYY CT(192 193 0) RT(1662455916759 78) q(0 0 0 -1) r(10
+        10) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '{"balance":200000}'
+  recorded_at: Tue, 06 Sep 2022 09:18:38 GMT
+recorded_with: VCR 6.0.0

@@ -11,6 +11,9 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/MultilineBlockChain:
+  Enabled: false
+
 Metrics/AbcSize:
   Max: 30
 
@@ -33,4 +36,4 @@ RSpec/InstanceVariable:
   Enabled: false
 
 RSpec/MultipleExpectations:
-  Max: 10
+  Enabled: false

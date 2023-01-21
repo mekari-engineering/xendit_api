@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'xendit_api/api/credit_card'
 require 'securerandom'
 
 RSpec.describe XenditApi::Api::CreditCard do
@@ -117,11 +116,30 @@ RSpec.describe XenditApi::Api::CreditCard do
       expect(credit_card_response).to be_instance_of XenditApi::Model::CreditCard
       expect(credit_card_response.status).to eq 'CAPTURED'
     end
+
+    it 'raise expected exception' do
+      VCR.use_cassette('xendit/credit_card/error_charge') do
+        error_payload = { 'error_code' => 'INVALID_TOKEN_ID_ERROR', 'message' => 'Invalid charge' }
+        api_charge = described_class.new(client)
+        params = {
+          token: SecureRandom.hex,
+          card_cvv: '123',
+          external_id: SecureRandom.hex
+        }
+        expect do
+          api_charge.charge(params)
+        end.to raise_error do |error|
+          expect(error).to be_kind_of XenditApi::Errors::CreditCard::ChargeError
+          expect(error.message).to eq 'Invalid charge'
+          expect(error.payload).to eq error_payload
+        end
+      end
+    end
   end
 
   private
 
   def stub_client_post_to(response)
-    allow_any_instance_of(XenditApi::Client).to receive(:post).and_return(response)
+    allow_any_instance_of(Faraday::Connection).to receive(:post).and_return(OpenStruct.new(body: response))
   end
 end

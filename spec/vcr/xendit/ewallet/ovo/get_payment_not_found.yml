@@ -17,8 +17,8 @@ http_interactions:
           - "*/*"
     response:
       status:
-        code: 500
-        message: Internal Server Error
+        code: 404
+        message: Not Found
       headers:
         Cache-Control:
           - no-store, no-cache, must-revalidate, proxy-revalidate

@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'xendit_api/model/ewallet'
 
 RSpec.describe XenditApi::Model::Ewallet do
   it 'returns expected attributes' do
