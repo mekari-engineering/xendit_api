@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/v2/invoices
+    body:
+      encoding: UTF-8
+      string: '{"external_id":null,"amount":100000}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 21 Jan 2023 15:14:03 GMT
+      Etag:
+      - W/"de-K+pO6hvykqXICBT0yPVyKX3M1XE"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Rate-Limit-Limit:
+      - '3000'
+      Rate-Limit-Remaining:
+      - '2998'
+      Rate-Limit-Reset:
+      - '58.039'
+      Request-Id:
+      - '1147887848225246304'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_7254_2182539=/DoPLcSRlEJWwvL2yGKrZDoBzGMAAAAAZ3I2tiMfVcsG+Bhusa3OMA==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=hglHbZwhajiJmiANNAqKSgAAAACmG0n49rT/tmEDzRgnWM90; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 17-27528828-27522522 pNYN RT(1674314041639 9) q(0 0 0 -1) r(11 11) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"message":"Invalid input data. Please check your request","error_code":"API_VALIDATION_ERROR","errors":[{"field":["external_id"],"location":"body","messages":["\"external_id\"
+        must be a string"],"types":["string.base"]}]}'
+  recorded_at: Sat, 21 Jan 2023 15:14:03 GMT
+recorded_with: VCR 6.0.0

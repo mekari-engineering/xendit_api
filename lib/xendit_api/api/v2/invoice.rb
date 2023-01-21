@@ -7,10 +7,20 @@ module XenditApi
       class Invoice < XenditApi::Api::Base
         PATH = '/v2/invoices'.freeze
 
-        def get(params)
-          response = client.get(PATH, params)
+        def get(invoice_id)
+          response = client.get("#{PATH}/#{invoice_id}")
 
           XenditApi::Model::V2::Invoice.new(response)
+        end
+        
+        def get_by_external_id(external_id)
+          response = client.get(PATH, {
+            external_id: external_id
+          })
+
+          response.map do |invoice|
+            XenditApi::Model::V2::Invoice.new(invoice)
+          end
         end
 
         def post(params:)

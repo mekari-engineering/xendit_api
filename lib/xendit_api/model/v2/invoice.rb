@@ -11,6 +11,7 @@ module XenditApi
                       :merchant_name,
                       :merchant_profile_picture_url,
                       :amount,
+                      :paid_amount,
                       :payer_email,
                       :description,
                       :invoice_url,
