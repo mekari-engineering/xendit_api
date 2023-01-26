@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/v2/invoices/63c9dadfbc62165502c6e8cd
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - Basic <AUTH KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 21 Jan 2023 15:14:04 GMT
+      Etag:
+      - W/"88f-AH6k4pZIv+18qY0f5i0PNZyxuD0"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Rate-Limit-Limit:
+      - '3000'
+      Rate-Limit-Remaining:
+      - '2999'
+      Rate-Limit-Reset:
+      - '60'
+      Request-Id:
+      - '3052364590939383596'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_7254_2182539=8oZgF8byaDqIw/L2yGKrZDsBzGMAAAAAyTDGypYJDb6Yj1IUbW62Cg==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=SxuhY5AD21qbW3g5NAqKSgAAAACSnbNChoaDzD4FkdKJUA9e; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 5-2184672-2171398 pNYN RT(1674314042771 7) q(0 0 0 -1) r(9 9) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"63c9dadfbc62165502c6e8cd","external_id":"5e4d5893-ba9d-4bde-a2a3-1f54e271c335","user_id":"614726785b5db94a38bb48b0","payment_method":"BANK_TRANSFER","status":"SETTLED","merchant_name":"Tanamangenic","merchant_profile_picture_url":"https://du8nwjtfkinx.cloudfront.net/xendit.png","amount":91000,"paid_amount":91000,"bank_code":"BCA","paid_at":"2023-01-20T00:06:00.535Z","expiry_date":"2023-01-21T00:05:51.812Z","invoice_url":"https://checkout-staging.xendit.co/web/63c9dadfbc62165502c6e8cd","available_banks":[{"bank_code":"MANDIRI","collection_type":"POOL","transfer_amount":91000,"bank_branch":"Virtual
+        Account","account_holder_name":"TANAMANGENIC","identity_amount":0},{"bank_code":"BRI","collection_type":"POOL","transfer_amount":91000,"bank_branch":"Virtual
+        Account","account_holder_name":"TANAMANGENIC","identity_amount":0},{"bank_code":"BNI","collection_type":"POOL","transfer_amount":91000,"bank_branch":"Virtual
+        Account","account_holder_name":"TANAMANGENIC","identity_amount":0},{"bank_code":"PERMATA","collection_type":"POOL","transfer_amount":91000,"bank_branch":"Virtual
+        Account","account_holder_name":"TANAMANGENIC","identity_amount":0},{"bank_code":"BCA","collection_type":"POOL","bank_account_number":"1076681665325","transfer_amount":91000,"bank_branch":"Virtual
+        Account","account_holder_name":"TANAMANGENIC","identity_amount":0}],"available_retail_outlets":[{"retail_outlet_name":"ALFAMART"},{"retail_outlet_name":"INDOMARET"}],"available_ewallets":[{"ewallet_type":"OVO"},{"ewallet_type":"DANA"},{"ewallet_type":"SHOPEEPAY"},{"ewallet_type":"LINKAJA"}],"available_qr_codes":[{"qr_code_type":"QRIS"}],"available_direct_debits":[{"direct_debit_type":"DD_BRI"}],"available_paylaters":[],"should_exclude_credit_card":false,"should_send_email":false,"success_redirect_url":"http://localhost:3000/payments?transaction_id=5e4d5893-ba9d-4bde-a2a3-1f54e271c335&status=success","failure_redirect_url":"http://localhost:3000/payments?transaction_id=5e4d5893-ba9d-4bde-a2a3-1f54e271c335&status=failure","created":"2023-01-20T00:05:52.550Z","updated":"2023-01-20T00:06:00.685Z","currency":"IDR","initial_amount":91000,"payment_channel":"BCA","payment_destination":"1076681665325"}'
+  recorded_at: Sat, 21 Jan 2023 15:14:04 GMT
+recorded_with: VCR 6.0.0

@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/v2/invoices/6e86bc62165502ccd3c9dadf
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50X1I0Q0NyTDk0bGhzQ1dkMVBUaWFla2dPY0h6bmltMWJVbndMN2plNDhoVlc4Z3YzM090N2F6Z2s0RGJCNVZFbVM6
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 21 Jan 2023 15:18:58 GMT
+      Etag:
+      - W/"6a-wlr/q6lmDiPIAcHc3HNggoS12WU"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Rate-Limit-Limit:
+      - '3000'
+      Rate-Limit-Remaining:
+      - '2999'
+      Rate-Limit-Reset:
+      - '60'
+      Request-Id:
+      - '1200575763156465081'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_7254_2182539=tKHMf/y4Gj6gJvT2yGKrZGECzGMAAAAAmJh5u5CYllWKOw54A8Zxtg==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=Xs3kGvNGbhV9Y5w2NAqKSgAAAACXqN5csgV9hhwIBWtLauHa; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 15-15645982-15586887 pNYN RT(1674314336690 40) q(0 0 0 -1) r(10 10) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"INVOICE_NOT_FOUND_ERROR","message":"Could not find invoice
+        by id 6e86bc62165502ccd3c9dadf"}'
+  recorded_at: Sat, 21 Jan 2023 15:18:58 GMT
+recorded_with: VCR 6.0.0
