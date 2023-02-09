@@ -1,4 +1,5 @@
 module XenditApi
+  # rubocop:disable Metrics/ModuleLength
   module Middleware
     HandleResponseException = Struct.new(:app, :logger) do
       def call(env)
@@ -116,4 +117,5 @@ module XenditApi
       # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize, Metrics/MethodLength
     end
   end
+  # rubocop:enable Metrics/ModuleLength
 end

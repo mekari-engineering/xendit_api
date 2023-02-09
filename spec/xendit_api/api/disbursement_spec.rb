@@ -83,13 +83,13 @@ RSpec.describe XenditApi::Api::Disbursement do
       it 'raise error when got INVALID_DESTINATION' do
         VCR.use_cassette('xendit/disbursement/create/invalid_destination_error') do
           error_payload = { 'error_code' => 'INVALID_DESTINATION', 'message' => 'Invalid destination' }
-          response = double("response", success?: false, error_payload: error_payload)
+          instance_double('response', success?: false, error_payload: error_payload)
           disbursement_api = described_class.new(client)
-        
+
           allow(disbursement_api).to receive(:create).and_raise(
-            XenditApi::Errors::Disbursement::InvalidDestination.new("Invalid destination", error_payload)
+            XenditApi::Errors::Disbursement::InvalidDestination.new('Invalid destination', error_payload)
           )
-        
+
           expect do
             disbursement_api.create(
               external_id: SecureRandom.uuid,
