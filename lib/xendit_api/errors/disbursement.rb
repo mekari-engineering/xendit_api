@@ -10,6 +10,7 @@ module XenditApi
       class MaximumTransferLimitError < Error; end
       class BankCodeNotSupported < Error; end
       class DirectDisbursementNotFound < Error; end
+      class InvalidDestination < Error; end
     end
   end
 end

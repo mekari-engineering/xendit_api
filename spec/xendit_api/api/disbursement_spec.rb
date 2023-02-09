@@ -80,6 +80,33 @@ RSpec.describe XenditApi::Api::Disbursement do
         end
       end
 
+      it 'raise error when got INVALID_DESTINATION' do
+        VCR.use_cassette('xendit/disbursement/create/invalid_destination_error') do
+          error_payload = { 'error_code' => 'INVALID_DESTINATION', 'message' => 'Invalid destination' }
+          instance_double('response', success?: false, error_payload: error_payload)
+          disbursement_api = described_class.new(client)
+
+          allow(disbursement_api).to receive(:create).and_raise(
+            XenditApi::Errors::Disbursement::InvalidDestination.new('Invalid destination', error_payload)
+          )
+
+          expect do
+            disbursement_api.create(
+              external_id: SecureRandom.uuid,
+              amount: 10_000_000,
+              bank_code: 'MANDIRI',
+              account_holder_name: 'Rizky',
+              account_number: '7654321',
+              disbursement_description: 'sample disbursement'
+            )
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::Disbursement::InvalidDestination
+            expect(error.message).to eq 'Invalid destination'
+            expect(error.payload).to eq error_payload
+          end
+        end
+      end
+
       it 'raise errors when got DISBURSEMENT_DESCRIPTION_NOT_FOUND_ERROR' do
         error_payload = { 'error_code' => 'DISBURSEMENT_DESCRIPTION_NOT_FOUND_ERROR', 'message' => 'Direct disbursement not found' }
         VCR.use_cassette('xendit/disbursement/create/disbursement_description_not_found_error') do
