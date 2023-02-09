@@ -105,6 +105,8 @@ module XenditApi
           raise XenditApi::Errors::Disbursement::MaximumTransferLimitError.new(error_message, json_response)
         when 'BANK_CODE_NOT_SUPPORTED_ERROR'
           raise XenditApi::Errors::Disbursement::BankCodeNotSupported.new(error_message, json_response)
+        when 'INVALID_DESTINATION'
+          raise XenditApi::Errors::Disbursement::InvalidDestination.new(error_message, json_response)
         when 'SERVER_ERROR'
           raise XenditApi::Errors::ServerError.new(error_message, json_response)
         else

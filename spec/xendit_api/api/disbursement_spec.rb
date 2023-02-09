@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'securerandom'
 
 RSpec.describe XenditApi::Api::Disbursement do
-  let(:client) { XenditApi::Client.new }
+  let(:client) { XenditApi::Client.new('xnd_development_Po2CfOUigbynnJJseOEZSzTDYtPx9Nd5xXK1+Rxj/WHQ8LWjBAJyhg==') }
 
   describe '#create' do
     context 'with valid params' do
@@ -75,6 +75,33 @@ RSpec.describe XenditApi::Api::Disbursement do
           end.to raise_error do |error|
             expect(error).to be_kind_of(XenditApi::Errors::Disbursement::BankCodeNotSupported)
             expect(error.message).to eq 'Bank code is not supported'
+            expect(error.payload).to eq error_payload
+          end
+        end
+      end
+
+      it 'raise error when got INVALID_DESTINATION' do
+        VCR.use_cassette('xendit/disbursement/create/invalid_destination_error') do
+          error_payload = { 'error_code' => 'INVALID_DESTINATION', 'message' => 'Invalid destination' }
+          response = double("response", success?: false, error_payload: error_payload)
+          disbursement_api = described_class.new(client)
+        
+          allow(disbursement_api).to receive(:create).and_raise(
+            XenditApi::Errors::Disbursement::InvalidDestination.new("Invalid destination", error_payload)
+          )
+        
+          expect do
+            disbursement_api.create(
+              external_id: SecureRandom.uuid,
+              amount: 10_000_000,
+              bank_code: 'MANDIRI',
+              account_holder_name: 'Rizky',
+              account_number: '7654321',
+              disbursement_description: 'sample disbursement'
+            )
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::Disbursement::InvalidDestination
+            expect(error.message).to eq 'Invalid destination'
             expect(error.payload).to eq error_payload
           end
         end
