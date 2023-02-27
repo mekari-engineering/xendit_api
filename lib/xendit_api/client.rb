@@ -102,6 +102,8 @@ module XenditApi
         req.body = params
       end
       response.body
+    rescue Faraday::ConnectionFailed
+      raise XenditApi::Errors::Timeout.new('Connection timeout', {})
     end
 
     def patch(url, params, headers = {})

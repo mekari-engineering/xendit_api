@@ -15,5 +15,6 @@ module XenditApi
     class ServerError < ResponseError; end
     class DuplicateError < ResponseError; end
     class DataNotFound < ResponseError; end
+    class Timeout < ResponseError; end
   end
 end

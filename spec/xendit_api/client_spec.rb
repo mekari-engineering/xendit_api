@@ -93,6 +93,14 @@ RSpec.describe XenditApi::Client do
           end.to raise_error(XenditApi::Errors::ApiValidation)
         end
       end
+
+      it 'raise timeout error' do
+        allow_any_instance_of(Faraday::Connection).to receive(:post).and_raise(Faraday::ConnectionFailed, 'Connection timeout')
+        expect do
+          client = described_class.new(auth_key)
+          client.post('/disbursement', params)
+        end.to raise_error(XenditApi::Errors::Timeout)
+      end
     end
   end
 
