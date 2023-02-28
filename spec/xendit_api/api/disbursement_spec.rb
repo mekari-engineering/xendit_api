@@ -232,6 +232,153 @@ RSpec.describe XenditApi::Api::Disbursement do
           end
         end
       end
+
+      it 'raise error when got SWITCHING_NETWORK_ERROR' do
+        error_payload = { 'error_code' => 'SWITCHING_NETWORK_ERROR', 'message' => 'Switching network error' }
+        VCR.use_cassette('xendit/disbursement/create/switching_network_error') do
+          disbursement_api = described_class.new(client)
+          expect do
+            disbursement_api.create(
+              external_id: SecureRandom.uuid,
+              amount: 10_000_000,
+              bank_code: 'MANDIRI',
+              account_holder_name: 'Siti',
+              account_number: '12121212',
+              disbursement_description: 'sample disbursement'
+            )
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::Disbursement::SwitchingNetworkError
+            expect(error.message).to eq 'Switching network error'
+            expect(error.payload).to eq error_payload
+          end
+        end
+      end
+
+      it 'raise error when got UNKNOWN_BANK_NETWORK_ERROR' do
+        error_payload = { 'error_code' => 'UNKNOWN_BANK_NETWORK_ERROR', 'message' => 'Unknown bank network error' }
+        VCR.use_cassette('xendit/disbursement/create/unkown_bank_network_error') do
+          disbursement_api = described_class.new(client)
+          expect do
+            disbursement_api.create(
+              external_id: SecureRandom.uuid,
+              amount: 10_000_000,
+              bank_code: 'MANDIRI',
+              account_holder_name: 'Andri',
+              account_number: '987654321',
+              disbursement_description: 'sample disbursement'
+            )
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::Disbursement::UnknownBankNetworkError
+            expect(error.message).to eq 'Unknown bank network error'
+            expect(error.payload).to eq error_payload
+          end
+        end
+      end
+
+      it 'raise error when got TEMPORARY_BANK_NETWORK_ERROR' do
+        error_payload = { 'error_code' => 'TEMPORARY_BANK_NETWORK_ERROR', 'message' => 'Temporary bank network error' }
+        VCR.use_cassette('xendit/disbursement/create/temporary_bank_network_error') do
+          disbursement_api = described_class.new(client)
+          expect do
+            disbursement_api.create(
+              external_id: SecureRandom.uuid,
+              amount: 10_000_000,
+              bank_code: 'MANDIRI',
+              account_holder_name: 'Yono',
+              account_number: '321321321',
+              disbursement_description: 'sample disbursement'
+            )
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::Disbursement::TemporaryBankNetworkError
+            expect(error.message).to eq 'Temporary bank network error'
+            expect(error.payload).to eq error_payload
+          end
+        end
+      end
+
+      it 'raise error when got REJECTED_BY_BANK' do
+        error_payload = { 'error_code' => 'REJECTED_BY_BANK', 'message' => 'Rejected by bank error' }
+        VCR.use_cassette('xendit/disbursement/create/rejected_by_bank_error') do
+          disbursement_api = described_class.new(client)
+          expect do
+            disbursement_api.create(
+              external_id: SecureRandom.uuid,
+              amount: 10_000_000,
+              bank_code: 'MANDIRI',
+              account_holder_name: 'Budi',
+              account_number: '8787878',
+              disbursement_description: 'sample disbursement'
+            )
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::Disbursement::RejectedByBank
+            expect(error.message).to eq 'Rejected by bank error'
+            expect(error.payload).to eq error_payload
+          end
+        end
+      end
+
+      it 'raise error when got TRANSFER_ERROR' do
+        error_payload = { 'error_code' => 'TRANSFER_ERROR', 'message' => 'Transfer error' }
+        VCR.use_cassette('xendit/disbursement/create/transfer_error') do
+          disbursement_api = described_class.new(client)
+          expect do
+            disbursement_api.create(
+              external_id: SecureRandom.uuid,
+              amount: 10_000_000,
+              bank_code: 'MANDIRI',
+              account_holder_name: 'Adnin',
+              account_number: '1351357',
+              disbursement_description: 'sample disbursement'
+            )
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::Disbursement::TransferError
+            expect(error.message).to eq 'Transfer error'
+            expect(error.payload).to eq error_payload
+          end
+        end
+      end
+
+      it 'raise error when got TEMPORARY_TRANSFER_ERROR' do
+        error_payload = { 'error_code' => 'TEMPORARY_TRANSFER_ERROR', 'message' => 'Temporary transfer error' }
+        VCR.use_cassette('xendit/disbursement/create/temporary_transfer_error') do
+          disbursement_api = described_class.new(client)
+          expect do
+            disbursement_api.create(
+              external_id: SecureRandom.uuid,
+              amount: 10_000_000,
+              bank_code: 'MANDIRI',
+              account_holder_name: 'Sutiono',
+              account_number: '868686',
+              disbursement_description: 'sample disbursement'
+            )
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::Disbursement::TemporaryTransferError
+            expect(error.message).to eq 'Temporary transfer error'
+            expect(error.payload).to eq error_payload
+          end
+        end
+      end
+
+      it 'raise error when got INSUFFICIENT_BALANCE' do
+        error_payload = { 'error_code' => 'INSUFFICIENT_BALANCE', 'message' => 'Insufficient balance' }
+        VCR.use_cassette('xendit/disbursement/create/insufficient_balance') do
+          disbursement_api = described_class.new(client)
+          expect do
+            disbursement_api.create(
+              external_id: SecureRandom.uuid,
+              amount: 10_000_000,
+              bank_code: 'MANDIRI',
+              account_holder_name: 'Sutiono',
+              account_number: '868686',
+              disbursement_description: 'sample disbursement'
+            )
+          end.to raise_error do |error|
+            expect(error).to be_kind_of XenditApi::Errors::Disbursement::NotEnoughBalance
+            expect(error.message).to eq 'Insufficient balance'
+            expect(error.payload).to eq error_payload
+          end
+        end
+      end
     end
   end
 

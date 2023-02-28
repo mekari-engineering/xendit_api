@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/disbursements
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"3c26c4d8-de8e-4245-bdfa-6bc78dd101cb","amount":10000000,"bank_code":"MANDIRI","account_holder_name":"Sutiono","account_number":"868686","disbursement_description":"sample
+        disbursement"}'
+    headers:
+      Authorization:
+      - Basic Og==
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 28 Feb 2023 03:17:00 GMT
+      Etag:
+      - W/"107-gNIqqEF/o10rc0PiyA2bDaLXVzg"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Request-Id:
+      - '1759126654048523828'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1114_2182539=zekUWu1LjyH5vDGX8bl1Dyxy/WMAAAAAUpQADiIdb/heh27izN9hyg==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=Dy08Y/vv9VNnTF3UNAqKSgAAAACI1VuOBhUmRphT8FVz08NY; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 5-19518855-19518558 PNYy RT(1677554220535 11) q(0 0 0 -1) r(2 2) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"TEMPORARY_TRANSFER_ERROR","message":"Temporary transfer error"}'
+  recorded_at: Tue, 28 Feb 2023 03:17:00 GMT
+recorded_with: VCR 6.0.0

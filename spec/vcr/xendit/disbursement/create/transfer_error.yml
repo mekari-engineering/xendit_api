@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/disbursements
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"dbf1568c-4a78-48fe-be6d-1688f14e3a0e","amount":10000000,"bank_code":"MANDIRI","account_holder_name":"Adnin","account_number":"1351357","disbursement_description":"sample
+        disbursement"}'
+    headers:
+      Authorization:
+      - Basic Og==
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 28 Feb 2023 03:17:00 GMT
+      Etag:
+      - W/"107-gNIqqEF/o10rc0PiyA2bDaLXVzg"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Request-Id:
+      - '5508820776539408195'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1114_2182539=Y47YHlTn5xp/vDGX8bl1Dyxy/WMAAAAAs0fVC5WFRcJEm1+s/jxEOQ==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=hsnsV7FS4TwxaaX7NAqKSgAAAAC5wCumfr+fWteLIR507O0g; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 1-6760607-6760608 NNYY CT(221 223 0) RT(1677554220257 11) q(0 0 0 -1) r(3
+        3) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"TRANSFER_ERROR","message":"Transfer error"}'
+  recorded_at: Tue, 28 Feb 2023 03:17:00 GMT
+recorded_with: VCR 6.0.0
