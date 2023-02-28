@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/disbursements
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"45c454fa-7fa5-44a9-a8a0-153f8548b6d9","amount":10000000,"bank_code":"MANDIRI","account_holder_name":"Sutiono","account_number":"868686","disbursement_description":"sample
+        disbursement"}'
+    headers:
+      Authorization:
+      - Basic Og==
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 28 Feb 2023 03:17:00 GMT
+      Etag:
+      - W/"107-gNIqqEF/o10rc0PiyA2bDaLXVzg"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Request-Id:
+      - '6634103751945830268'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1114_2182539=C0DgeawdrBV7vTGX8bl1Dy1y/WMAAAAAXeua3oZCjmeXaJfOCFY6Hg==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=r+UpR02oJH0R1dSWNAqKSgAAAAASoiT9WsYPl5E9PSE9txDk; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 14-35378674-35378675 NNYY CT(221 222 0) RT(1677554220826 13) q(0 0 0 -1) r(2
+        2) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"INSUFFICIENT_BALANCE","message":"Insufficient balance"}'
+  recorded_at: Tue, 28 Feb 2023 03:17:01 GMT
+recorded_with: VCR 6.0.0

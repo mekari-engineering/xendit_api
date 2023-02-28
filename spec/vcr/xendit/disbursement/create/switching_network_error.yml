@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/disbursements
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"7eaf7911-7818-430c-8a1b-e8c849594d8b","amount":10000000,"bank_code":"MANDIRI","account_holder_name":"Siti","account_number":"12121212","disbursement_description":"sample
+        disbursement"}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 28 Feb 2023 02:51:09 GMT
+      Etag:
+      - W/"107-gNIqqEF/o10rc0PiyA2bDaLXVzg"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Request-Id:
+      - '4777931375404114000'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1114_2182539=J0zIFShaRDl1oSaX8bl1Dx1s/WMAAAAAR2Gwf5dZfxbJZDq6+/MrEw==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=3QsMLqp3ZlXVUnjQNAqKSgAAAADqkpbJFGzVWydMgZacxrCZ; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 5-19417931-19417936 NNYN CT(210 425 0) RT(1677552668459 13) q(0 0 7 1) r(9
+        9) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"SWITCHING_NETWORK_ERROR","message":"Switching network error"}'
+  recorded_at: Tue, 28 Feb 2023 02:51:09 GMT
+recorded_with: VCR 6.0.0

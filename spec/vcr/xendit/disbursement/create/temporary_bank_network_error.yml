@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/disbursements
+    body:
+      encoding: UTF-8
+      string: '{"external_id":"c1262e65-0e3f-4e23-96ce-2a597ad5759c","amount":10000000,"bank_code":"MANDIRI","account_holder_name":"Yono","account_number":"321321321","disbursement_description":"sample
+        disbursement"}'
+    headers:
+      Authorization:
+      - Basic <AUTH KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 28 Feb 2023 03:12:39 GMT
+      Etag:
+      - W/"107-gNIqqEF/o10rc0PiyA2bDaLXVzg"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Request-Id:
+      - '3366296139310595170'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_1114_2182539=7TKZeIi6oiSJ4C+X8bl1Dydx/WMAAAAAoGEiq0D2j1md+jr3EZAt1A==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=/TrIfry/WivhP2C2NAqKSgAAAAB6FMgF0yNvmAEyAx9vKAov; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 14-35351851-35280242 pNYN RT(1677553959202 14) q(0 0 0 -1) r(2 2) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"TEMPORARY_BANK_NETWORK_ERROR","message":"Temporary bank network error"}'
+  recorded_at: Tue, 28 Feb 2023 03:12:39 GMT
+recorded_with: VCR 6.0.0
