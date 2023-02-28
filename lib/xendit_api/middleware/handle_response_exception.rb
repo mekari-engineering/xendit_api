@@ -110,6 +110,20 @@ module XenditApi
           raise XenditApi::Errors::Disbursement::InvalidDestination.new(error_message, json_response)
         when 'SERVER_ERROR'
           raise XenditApi::Errors::ServerError.new(error_message, json_response)
+        when 'SWITCHING_NETWORK_ERROR'
+          raise XenditApi::Errors::Disbursement::SwitchingNetworkError.new(error_message, json_response)
+        when 'UNKNOWN_BANK_NETWORK_ERROR'
+          raise XenditApi::Errors::Disbursement::UnknownBankNetworkError.new(error_message, json_response)
+        when 'TEMPORARY_BANK_NETWORK_ERROR'
+          raise XenditApi::Errors::Disbursement::TemporaryBankNetworkError.new(error_message, json_response)
+        when 'REJECTED_BY_BANK'
+          raise XenditApi::Errors::Disbursement::RejectedByBank.new(error_message, json_response)
+        when 'TRANSFER_ERROR'
+          raise XenditApi::Errors::Disbursement::TransferError.new(error_message, json_response)
+        when 'TEMPORARY_TRANSFER_ERROR'
+          raise XenditApi::Errors::Disbursement::TemporaryTransferError.new(error_message, json_response)
+        when 'INSUFFICIENT_BALANCE'
+          raise XenditApi::Errors::Disbursement::NotEnoughBalance.new(error_message, json_response)
         else
           raise XenditApi::Errors::UnknownError.new(error_message, json_response)
         end
