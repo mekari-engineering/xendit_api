@@ -16,7 +16,8 @@ module XenditApi
                     :email_to,
                     :email_cc,
                     :email_bcc,
-                    :payload
+                    :payload,
+                    :request_id
     end
   end
 end

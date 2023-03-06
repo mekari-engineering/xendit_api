@@ -12,7 +12,7 @@ module XenditApi
         params[:expected_amount] = params[:amount] unless params[:amount].nil?
 
         response = client.post(PATH, params, headers)
-        virtual_account_params = permitted_virtual_account_params(response)
+        virtual_account_params = permitted_virtual_account_params(response.headers, response.body)
         XenditApi::Model::VirtualAccount.new(virtual_account_params)
       end
 
@@ -22,28 +22,29 @@ module XenditApi
         expired_date = Time.now - one_year
         params = { expiration_date: expired_date.iso8601 }
         response = client.patch(update_path, params, headers)
-        virtual_account_params = permitted_virtual_account_params(response)
+        virtual_account_params = permitted_virtual_account_params(response.headers, response.body)
         XenditApi::Model::VirtualAccount.new(virtual_account_params)
       end
 
       def update(id, params, headers = {})
         update_path = "#{PATH}/#{id}"
         response = client.patch(update_path, params, headers)
-        virtual_account_response = permitted_virtual_account_params(response)
+        virtual_account_response = permitted_virtual_account_params(response.headers, response.body)
         XenditApi::Model::VirtualAccount.new(virtual_account_response)
       end
 
       def find(id, headers = {})
         find_path = "#{PATH}/#{id}"
         response = client.get(find_path, nil, headers)
-        virtual_account_params = permitted_virtual_account_params(response)
+        virtual_account_params = permitted_virtual_account_params(response.headers, response.body)
         XenditApi::Model::VirtualAccount.new(virtual_account_params)
       end
 
       private
 
-      def permitted_virtual_account_params(response = {})
+      def permitted_virtual_account_params(headers = {}, response = {})
         {
+          request_id: headers['request-id'],
           owner_id: response['owner_id'],
           id: response['id'],
           external_id: response['external_id'],

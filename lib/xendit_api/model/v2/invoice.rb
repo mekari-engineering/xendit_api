@@ -26,7 +26,8 @@ module XenditApi
                       :currency,
                       :fixed_va,
                       :items,
-                      :fees
+                      :fees,
+                      :request_id
       end
     end
   end

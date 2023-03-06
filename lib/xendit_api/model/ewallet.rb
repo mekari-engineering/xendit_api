@@ -10,7 +10,8 @@ module XenditApi
                     :external_id,
                     :ewallet_type,
                     :created,
-                    :status
+                    :status,
+                    :request_id
     end
   end
 end

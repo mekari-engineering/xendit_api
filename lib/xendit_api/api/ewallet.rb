@@ -8,7 +8,7 @@ module XenditApi
 
       def get(params)
         response = client.get(PATH, params)
-        XenditApi::Model::Ewallet.new(response)
+        XenditApi::Model::Ewallet.new(response.body.merge(request_id: response.headers['request-id']))
       end
 
       def post(params:, ewallet_type:)
@@ -18,7 +18,7 @@ module XenditApi
                                phone: params[:phone],
                                ewallet_type: ewallet_type)
 
-        XenditApi::Model::Ewallet.new(response)
+        XenditApi::Model::Ewallet.new(response.body.merge(request_id: response.headers['request-id']))
       end
     end
   end

@@ -29,7 +29,8 @@ module XenditApi
                     :authorization_id,
                     :issuing_bank_name,
                     :cvn_code,
-                    :card_fingerprint
+                    :card_fingerprint,
+                    :request_id
     end
   end
 end

@@ -9,20 +9,20 @@ module XenditApi
 
       def charge(params, headers = {})
         response = client.post(PATH, params, headers)
-        credit_card_params = permitted_credit_card_params(response)
+        credit_card_params = permitted_credit_card_params(response.headers, response.body)
         XenditApi::Model::CreditCard.new(credit_card_params)
       end
 
       def find(id, headers = {})
         find_path = "#{PATH}/#{id}"
         response = client.get(find_path, nil, headers)
-        credit_card_params = permitted_credit_card_params(response)
+        credit_card_params = permitted_credit_card_params(response.headers, response.body)
         XenditApi::Model::CreditCard.new(credit_card_params)
       end
 
       private
 
-      def permitted_credit_card_params(response = {})
+      def permitted_credit_card_params(headers = {}, response = {})
         {
           id: response['id'],
           xid: response['xid'],
@@ -48,7 +48,8 @@ module XenditApi
           issuing_bank_name: response['issuing_bank_name'],
           cvn_code: response['cvn_code'],
           card_fingerprint: response['card_fingerprint'],
-          payload: response.to_json
+          payload: response.to_json,
+          request_id: headers['request-id']
         }
       end
     end

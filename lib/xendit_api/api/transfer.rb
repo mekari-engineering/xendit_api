@@ -8,7 +8,7 @@ module XenditApi
 
       def create(params)
         response = client.post(PATH, params)
-        XenditApi::Model::Transfer.new(response)
+        XenditApi::Model::Transfer.new(response.body.merge(request_id: response.headers['request-id']))
       end
     end
   end

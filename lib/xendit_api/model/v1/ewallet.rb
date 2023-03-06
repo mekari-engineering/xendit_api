@@ -25,7 +25,8 @@ module XenditApi
                       :refunded_amount,
                       :checkout_method,
                       :customer_id,
-                      :failure_code
+                      :failure_code,
+                      :request_id
       end
     end
   end

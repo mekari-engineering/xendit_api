@@ -10,7 +10,8 @@ module XenditApi
                       :status,
                       :public_profile,
                       :created,
-                      :updated
+                      :updated,
+                      :request_id
       end
     end
   end

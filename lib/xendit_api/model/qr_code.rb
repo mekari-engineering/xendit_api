@@ -14,7 +14,8 @@ module XenditApi
                     :created,
                     :updated,
                     :metadata,
-                    :payload
+                    :payload,
+                    :request_id
     end
   end
 end

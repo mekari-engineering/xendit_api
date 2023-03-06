@@ -10,7 +10,7 @@ module XenditApi
         def get(invoice_id)
           response = client.get("#{PATH}/#{invoice_id}")
 
-          XenditApi::Model::V2::Invoice.new(response)
+          XenditApi::Model::V2::Invoice.new(response.body.merge(request_id: response.headers['request-id']))
         end
 
         def get_by_external_id(external_id)
@@ -18,15 +18,15 @@ module XenditApi
                                   external_id: external_id
                                 })
 
-          response.map do |invoice|
-            XenditApi::Model::V2::Invoice.new(invoice)
+          response.body.map do |invoice|
+            XenditApi::Model::V2::Invoice.new(invoice.merge(request_id: response.headers['request-id']))
           end
         end
 
         def post(params:)
           response = client.post(PATH, params)
 
-          XenditApi::Model::V2::Invoice.new(response)
+          XenditApi::Model::V2::Invoice.new(response.body.merge(request_id: response.headers['request-id']))
         end
       end
     end

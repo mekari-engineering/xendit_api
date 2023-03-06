@@ -93,7 +93,7 @@ module XenditApi
 
     def get(url, params = nil, headers = {})
       response = @connection.get(url, params, headers)
-      response.body
+      response
     end
 
     def post(url, params, headers = {})
@@ -101,7 +101,7 @@ module XenditApi
         req.headers = headers if headers
         req.body = params
       end
-      response.body
+      response
     end
 
     def patch(url, params, headers = {})
@@ -109,7 +109,7 @@ module XenditApi
         req.headers = headers if headers
         req.body = params
       end
-      response.body
+      response
     end
 
     def find_logger(logger_option)

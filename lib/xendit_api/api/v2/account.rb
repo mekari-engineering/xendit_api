@@ -10,7 +10,7 @@ module XenditApi
         def create(params)
           response = client.post(PATH, params)
 
-          XenditApi::Model::V2::Account.new(response)
+          XenditApi::Model::V2::Account.new(response.body.merge(request_id: response.headers['request-id']))
         end
       end
     end

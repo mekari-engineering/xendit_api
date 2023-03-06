@@ -8,7 +8,7 @@ module XenditApi
 
       def create(params, headers = {})
         response = client.post(PATH, params, headers)
-        XenditApi::Model::Disbursement.new(response.merge(payload: response.to_json))
+        XenditApi::Model::Disbursement.new(response.body.merge(payload: response.body.to_json, request_id: response.headers['request-id']))
       end
 
       def find_by_external_id(external_id, headers = {})
@@ -18,8 +18,8 @@ module XenditApi
       def where_by_external_id(external_id, headers = {})
         response = client.get("#{self.class::PATH}/?external_id=#{external_id}", nil, headers)
         disbursements = []
-        response.each do |disbursement|
-          disbursements << XenditApi::Model::Disbursement.new(disbursement.merge(payload: response.to_json))
+        response.body.each do |disbursement|
+          disbursements << XenditApi::Model::Disbursement.new(disbursement.merge(payload: response.body.to_json, request_id: response.headers['request-id']))
         end
         disbursements
       end

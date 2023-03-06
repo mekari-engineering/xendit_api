@@ -11,7 +11,7 @@ module XenditApi
 
         def get(id, headers = {})
           response = client.get("#{PATH}/#{id}", nil, headers)
-          XenditApi::Model::V1::Ewallet.new(response)
+          XenditApi::Model::V1::Ewallet.new(response.body.merge(request_id: response.headers['request-id']))
         end
 
         def post(params:, payment_method:, headers: {})
@@ -27,7 +27,7 @@ module XenditApi
           }
           response = client.post(PATH, params, headers)
 
-          XenditApi::Model::V1::Ewallet.new(response)
+          XenditApi::Model::V1::Ewallet.new(response.body.merge(request_id: response.headers['request-id']))
         end
 
         private
