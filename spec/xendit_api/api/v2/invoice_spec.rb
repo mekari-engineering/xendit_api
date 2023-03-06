@@ -23,6 +23,7 @@ RSpec.describe XenditApi::Api::V2::Invoice do
           expect(response).to be_instance_of XenditApi::Model::V2::Invoice
           expect(response.external_id).to eq 'eacd7788-8864-421c-a39c-9c59c3ee875c'
           expect(response.amount).to eq 100_000
+          expect(response.request_id).to eq '2058046740276122221'
         end
       end
     end
@@ -58,6 +59,7 @@ RSpec.describe XenditApi::Api::V2::Invoice do
           expect(response).to be_instance_of XenditApi::Model::V2::Invoice
           expect(response.paid_amount).to eq 91_000
           expect(response.id).to eq id
+          expect(response.request_id).to eq '3052364590939383596'
         end
       end
     end

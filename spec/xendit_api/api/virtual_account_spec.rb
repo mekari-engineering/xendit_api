@@ -18,7 +18,8 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           status: 'ACTIVE',
           bank_code: 'MANDIRI',
           is_closed: true,
-          is_single_use: true
+          is_single_use: true,
+          request_id: '2058046740276123321'
         )
         expect(virtual_account.merchant_code).not_to be_nil
         expect(virtual_account.account_number).not_to be_nil
@@ -40,7 +41,8 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           status: 'PENDING',
           bank_code: 'BRI',
           is_closed: true,
-          is_single_use: true
+          is_single_use: true,
+          request_id: '2058046740276123322'
         )
         expect(virtual_account.merchant_code).not_to be_nil
         expect(virtual_account.account_number).not_to be_nil
@@ -61,7 +63,8 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           name: 'Nobu nagawa',
           status: 'PENDING',
           bank_code: 'BNI',
-          is_closed: true
+          is_closed: true,
+          request_id: '2058046740276123323'
         )
         expect(virtual_account.merchant_code).not_to be_nil
         expect(virtual_account.account_number).not_to be_nil
@@ -107,7 +110,8 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           is_closed: true,
           is_single_use: true,
           currency: nil,
-          status: 'ACTIVE'
+          status: 'ACTIVE',
+          request_id: '5218007115702023677'
         )
       end
     end
@@ -138,7 +142,8 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           is_closed: true,
           is_single_use: true,
           currency: 'IDR',
-          status: 'PENDING'
+          status: 'PENDING',
+          request_id: '5218007115702023678'
         )
       end
     end
@@ -173,7 +178,8 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           is_closed: true,
           is_single_use: true,
           currency: nil,
-          status: 'ACTIVE'
+          status: 'ACTIVE',
+          request_id: '5218007115702023679'
         )
       end
     end
@@ -204,7 +210,8 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           is_closed: true,
           is_single_use: true,
           currency: 'IDR',
-          status: 'PENDING'
+          status: 'PENDING',
+          request_id: '5218007115702023680'
         )
       end
     end
@@ -235,7 +242,8 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           expected_amount: 500_000,
           is_closed: true,
           currency: 'IDR',
-          status: 'PENDING'
+          status: 'PENDING',
+          request_id: '5218007115702023681'
         )
       end
     end
@@ -266,7 +274,8 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           is_closed: true,
           is_single_use: true,
           currency: 'IDR',
-          status: 'PENDING'
+          status: 'PENDING',
+          request_id: '5218007115702023682'
         )
       end
     end
@@ -298,7 +307,8 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           is_closed: false,
           is_single_use: false,
           currency: nil,
-          status: 'ACTIVE'
+          status: 'ACTIVE',
+          request_id: '5218007115702023683'
         )
       end
     end
@@ -396,8 +406,11 @@ RSpec.describe XenditApi::Api::VirtualAccount do
             bank_code: 'MANDIRI'
           )
           expect(find_year(create_response.expiration_date)).to eq fake_time.year + 31
+          expect(create_response.request_id).to eq '5218007115702023684'
           update_response = virtual_account_api.update_to_expired(create_response.id)
+          puts update_response.request_id
           expect(find_year(update_response.expiration_date)).to eq fake_time.year - 1
+          expect(update_response.request_id).to eq '5218007115702023686'
         end
       end
     end
@@ -416,8 +429,10 @@ RSpec.describe XenditApi::Api::VirtualAccount do
         params = {
           expected_amount: 100_000
         }
+        expect(create_response.request_id).to eq '5218007115702023687'
         update_response = virtual_account_api.update(create_response.id, params)
         expect(update_response.expected_amount).to eq 100_000
+        expect(update_response.request_id).to eq '5218007115702023688'
       end
     end
 
@@ -430,11 +445,13 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           amount: 500_000,
           bank_code: 'MANDIRI'
         )
+        expect(create_response.request_id).to eq '5218007115702023710'
         params = {
           expiration_date: '2019-11-12T23:46:00.000Z'
         }
         update_response = virtual_account_api.update(create_response.id, params)
         expect(update_response.expiration_date).to eq '2019-11-12T23:46:00.000Z'
+        expect(update_response.request_id).to eq '5218007115702023711'
       end
     end
 
@@ -447,11 +464,13 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           amount: 500_000,
           bank_code: 'MANDIRI'
         )
+        expect(create_response.request_id).to eq '5218007115702023716'
         params = {
           expected_amount: 100_000,
           expiration_date: '2019-11-12T23:46:00.000Z'
         }
         update_response = virtual_account_api.update(create_response.id, params)
+        expect(update_response.request_id).to eq '5218007115702023717'
         expect(update_response.expected_amount).to eq 100_000
         expect(update_response.expiration_date).to eq '2019-11-12T23:46:00.000Z'
       end
@@ -466,6 +485,7 @@ RSpec.describe XenditApi::Api::VirtualAccount do
           amount: 500_000,
           bank_code: 'MANDIRI'
         )
+        expect(create_response.request_id).to eq '5218007115702023091'
         params = {
           expected_amount: -100_000
         }

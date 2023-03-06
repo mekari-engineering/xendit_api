@@ -8,6 +8,7 @@ RSpec.describe XenditApi::Api::Transaction do
       VCR.use_cassette('xendit_api/api/transactions/transactions') do
         transaction = described_class.new(client)
         transactions = transaction.list
+
         expect(transactions.data.size).to eq 10
         expect(transactions.next_query).to eq 'currency=IDR&limit=10&after_id=txn_0811c413-12c4-470a-be62-dfd1bf3c280d'
         transaction = transactions.data.last
@@ -30,6 +31,7 @@ RSpec.describe XenditApi::Api::Transaction do
         expect(transaction.status).to eq 'SUCCESS'
         expect(transaction.type).to eq 'PAYMENT'
         expect(transaction.updated).to eq '2022-11-14T06:15:44.977Z'
+        expect(transactions.request_id).to eq '8622343692433230874'
       end
     end
 
@@ -39,6 +41,7 @@ RSpec.describe XenditApi::Api::Transaction do
         transactions = transaction.list('statuses=VOIDED')
         expect(transactions.data).to eq []
         expect(transactions.next_query).to eq nil
+        expect(transactions.request_id).to eq '1422453466251929690'
       end
     end
 

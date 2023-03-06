@@ -12,6 +12,7 @@ RSpec.describe XenditApi::Api::Balance do
 
         expect(response).not_to be_nil
         expect(response.balance).to eq 1_000_000_000
+        expect(response.request_id).to eq '8353901370249765966'
       end
     end
 
@@ -22,6 +23,7 @@ RSpec.describe XenditApi::Api::Balance do
 
         expect(response).not_to be_nil
         expect(response.balance).to eq 1_000_000_000
+        expect(response.request_id).to eq '4926327090049152759'
       end
     end
 
@@ -32,6 +34,7 @@ RSpec.describe XenditApi::Api::Balance do
 
         expect(response).not_to be_nil
         expect(response.balance).to eq 100_000
+        expect(response.request_id).to eq '3948172116085043672'
       end
     end
 
@@ -42,6 +45,7 @@ RSpec.describe XenditApi::Api::Balance do
 
         expect(response).not_to be_nil
         expect(response.balance).to eq 200_000
+        expect(response.request_id).to eq '2745410957596909051'
       end
     end
   end

@@ -22,6 +22,8 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Request-Id:
+      - '5218007115702023679'
       Cache-Control:
       - no-store, no-cache, must-revalidate, proxy-revalidate
       Content-Type:

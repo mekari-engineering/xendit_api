@@ -22,6 +22,8 @@ http_interactions:
       code: 400
       message: Bad Request
     headers:
+      Request-Id:
+      - '7262070017331640590'
       Content-Type:
       - application/json; charset=utf-8
       Date:

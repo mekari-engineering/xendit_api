@@ -64,7 +64,7 @@ RSpec.describe XenditApi::Client do
         VCR.use_cassette('xendit/ewallet/ovo/success') do
           client = described_class.new(auth_key)
           response = client.post('/ewallets', params)
-          expect(response).to eq({
+          expect(response.body).to eq({
                                    'transaction_date' => '2019-04-07T01:35:46.658Z',
                                    'amount' => 1000,
                                    'external_id' => 'nobu@mekari.com',
@@ -101,7 +101,7 @@ RSpec.describe XenditApi::Client do
       VCR.use_cassette('xendit/ewallet/ovo/get_complete_payment') do
         client = described_class.new(auth_key)
         response = client.get('/ewallets', external_id: '12345')
-        expect(response).to eq({
+        expect(response.body).to eq({
                                  'amount' => 1_000,
                                  'external_id' => '12345',
                                  'transaction_date' => '2019-04-07T01:35:46.658Z',

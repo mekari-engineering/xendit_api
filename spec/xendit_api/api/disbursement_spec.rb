@@ -23,7 +23,8 @@ RSpec.describe XenditApi::Api::Disbursement do
             bank_code: 'BCA',
             account_holder_name: 'Bob Jones',
             status: 'PENDING',
-            disbursement_description: 'sample disbursement'
+            disbursement_description: 'sample disbursement',
+            request_id: '835390137024976621'
           )
           expect(response.external_id).not_to be_nil
           expect(response.id).not_to be_nil
@@ -50,7 +51,8 @@ RSpec.describe XenditApi::Api::Disbursement do
             bank_code: 'BCA',
             account_holder_name: 'Bob Jones',
             status: 'PENDING',
-            disbursement_description: 'sample disbursement'
+            disbursement_description: 'sample disbursement',
+            request_id: '835390137024976622'
           )
           expect(response.external_id).not_to be_nil
           expect(response.id).not_to be_nil
@@ -397,6 +399,7 @@ RSpec.describe XenditApi::Api::Disbursement do
           expect(disbursement.status).not_to be_nil
           expect(disbursement.id).not_to be_nil
           expect(disbursement.payload).not_to be_nil
+          expect(disbursement.request_id).to eq '835390137024976645'
         end
       end
 
@@ -451,6 +454,7 @@ RSpec.describe XenditApi::Api::Disbursement do
         expect(first_disbursement.status).not_to be_nil
         expect(first_disbursement.id).not_to be_nil
         expect(first_disbursement.payload).not_to be_nil
+        expect(first_disbursement.request_id).to eq '835390137024976646'
         second_disbursement = disbursements.last
         expect(second_disbursement).to be_kind_of XenditApi::Model::Disbursement
         expect(second_disbursement.external_id).to eq 'sample-external-id'
@@ -461,6 +465,7 @@ RSpec.describe XenditApi::Api::Disbursement do
         expect(second_disbursement.status).not_to be_nil
         expect(second_disbursement.id).not_to be_nil
         expect(second_disbursement.payload).not_to be_nil
+        expect(second_disbursement.request_id).to eq '835390137024976646'
       end
     end
 

@@ -27,6 +27,7 @@ RSpec.describe XenditApi::Api::QrCode do
         expect(response.updated).to eq '2021-09-07T06:37:28.827Z'
         expect(response.metadata).to eq nil
         expect(response.payload).not_to eq nil
+        expect(response.request_id).to eq '835390137024978821'
       end
     end
 
@@ -53,6 +54,7 @@ RSpec.describe XenditApi::Api::QrCode do
         expect(response.updated).to eq '2021-09-07T06:37:28.827Z'
         expect(response.metadata).to eq nil
         expect(response.payload).not_to eq nil
+        expect(response.request_id).to eq '835390137024978822'
       end
     end
 
@@ -110,6 +112,7 @@ RSpec.describe XenditApi::Api::QrCode do
         expect(response.updated).to eq '2021-09-07T06:37:28.827Z'
         expect(response.metadata).to eq nil
         expect(response.payload).not_to eq nil
+        expect(response.request_id).to eq '835390137024978881'
       end
     end
 
@@ -137,6 +140,7 @@ RSpec.describe XenditApi::Api::QrCode do
         expect(payment.amount).to eq 100_000
         expect(payment.created).to eq '2021-09-07T08:40:52.876Z'
         expect(payment.status).to eq 'COMPLETED'
+        expect(payment.request_id).to eq '835390137024978881'
       end
     end
 
