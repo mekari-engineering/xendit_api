@@ -27,7 +27,6 @@ RSpec.describe XenditApi::Api::V1::Ewallet do
           expect(response.capture_amount).to eq 1_000
           expect(response.channel_code).to eq 'ID_OVO'
           expect(response.business_id).not_to be_nil
-          expect(response.request_id).to eq '835390137024976658'
         end
       end
     end

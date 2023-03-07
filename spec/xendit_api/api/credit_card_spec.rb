@@ -44,7 +44,6 @@ RSpec.describe XenditApi::Api::CreditCard do
       credit_card_response = api_charge.charge(params)
 
       expect(credit_card_response).to be_instance_of XenditApi::Model::CreditCard
-      expect(credit_card_response.request_id).to eq '7262070017331640587'
     end
 
     it 'returns expected credit card model when there is removed attribute' do
@@ -85,7 +84,6 @@ RSpec.describe XenditApi::Api::CreditCard do
       credit_card_response = api_charge.charge(params)
       expect(credit_card_response).to be_instance_of XenditApi::Model::CreditCard
       expect(credit_card_response.status).to eq 'CAPTURED'
-      expect(credit_card_response.request_id).to eq '7262070017331640588'
     end
 
     it 'returns expected credit card model when there is new attribute' do
@@ -127,7 +125,6 @@ RSpec.describe XenditApi::Api::CreditCard do
       credit_card_response = api_charge.charge(params)
       expect(credit_card_response).to be_instance_of XenditApi::Model::CreditCard
       expect(credit_card_response.status).to eq 'CAPTURED'
-      expect(credit_card_response.request_id).to eq '7262070017331640589'
     end
 
     it 'raise expected exception' do

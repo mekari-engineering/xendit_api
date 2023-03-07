@@ -8,21 +8,21 @@ module XenditApi
       PATH = '/qr_codes'.freeze
 
       def create(params, headers = {})
-        response = @client.post_response(PATH, params, headers)
-        XenditApi::Model::QrCode.new(response.body.merge(payload: response.body.to_json, request_id: response.headers['request-id']))
+        response = @client.post(PATH, params, headers)
+        XenditApi::Model::QrCode.new(response.merge(payload: response.to_json))
       end
 
       def find(external_id, headers = {})
         find_path = "#{PATH}/#{external_id}"
-        response = @client.get_response(find_path, nil, headers)
-        XenditApi::Model::QrCode.new(response.body.merge(payload: response.body.to_json, request_id: response.headers['request-id']))
+        response = @client.get(find_path, nil, headers)
+        XenditApi::Model::QrCode.new(response.merge(payload: response.to_json))
       end
 
       def find_payments(external_id, headers = {})
         find_payments_path = "#{PATH}/payments?external_id=#{external_id}"
-        response = @client.get_response(find_payments_path, nil, headers)
-        response.body.map do |payment|
-          XenditApi::Model::QrCodePayment.new(payment.merge(payload: payment.to_json, request_id: response.headers['request-id']))
+        response = @client.get(find_payments_path, nil, headers)
+        response.map do |payment|
+          XenditApi::Model::QrCodePayment.new(payment.merge(payload: payment.to_json))
         end
       end
     end

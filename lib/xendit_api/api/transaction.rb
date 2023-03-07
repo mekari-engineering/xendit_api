@@ -8,15 +8,15 @@ module XenditApi
 
       def list(query_string = '', headers = {})
         transactions_path = query_string.to_s.empty? ? PATH : "#{PATH}?#{query_string}"
-        response = @client.get_response(transactions_path, nil, headers)
+        response = @client.get(transactions_path, nil, headers)
 
-        data = response.body['data'].map do |transaction|
+        data = response['data'].map do |transaction|
           XenditApi::Model::Transaction.new(transaction)
         end
 
-        next_query = response.body['has_more'] ? URI.parse(execute_next_data(response.body['links'])).query : nil
+        next_query = response['has_more'] ? URI.parse(execute_next_data(response['links'])).query : nil
 
-        OpenStruct.new(data: data, next_query: next_query, request_id: response.headers['request-id'])
+        OpenStruct.new(data: data, next_query: next_query)
       end
 
       private

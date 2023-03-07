@@ -10,8 +10,8 @@ module XenditApi
         CURRENCY = 'IDR'.freeze
 
         def get(id, headers = {})
-          response = client.get_response("#{PATH}/#{id}", nil, headers)
-          XenditApi::Model::V1::Ewallet.new(response.body.merge(request_id: response.headers['request-id']))
+          response = client.get("#{PATH}/#{id}", nil, headers)
+          XenditApi::Model::V1::Ewallet.new(response)
         end
 
         def post(params:, payment_method:, headers: {})
@@ -25,9 +25,9 @@ module XenditApi
             channel_code: channel_code,
             channel_properties: channel_properties
           }
-          response = client.post_response(PATH, params, headers)
+          response = client.post(PATH, params, headers)
 
-          XenditApi::Model::V1::Ewallet.new(response.body.merge(request_id: response.headers['request-id']))
+          XenditApi::Model::V1::Ewallet.new(response)
         end
 
         private

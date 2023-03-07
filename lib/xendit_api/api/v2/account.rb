@@ -8,9 +8,9 @@ module XenditApi
         PATH = '/v2/accounts'.freeze
 
         def create(params)
-          response = client.post_response(PATH, params)
+          response = client.post(PATH, params)
 
-          XenditApi::Model::V2::Account.new(response.body.merge(request_id: response.headers['request-id']))
+          XenditApi::Model::V2::Account.new(response)
         end
       end
     end

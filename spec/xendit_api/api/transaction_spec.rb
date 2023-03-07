@@ -31,7 +31,6 @@ RSpec.describe XenditApi::Api::Transaction do
         expect(transaction.status).to eq 'SUCCESS'
         expect(transaction.type).to eq 'PAYMENT'
         expect(transaction.updated).to eq '2022-11-14T06:15:44.977Z'
-        expect(transactions.request_id).to eq '8622343692433230874'
       end
     end
 
@@ -41,7 +40,6 @@ RSpec.describe XenditApi::Api::Transaction do
         transactions = transaction.list('statuses=VOIDED')
         expect(transactions.data).to eq []
         expect(transactions.next_query).to eq nil
-        expect(transactions.request_id).to eq '1422453466251929690'
       end
     end
 
