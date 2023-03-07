@@ -9,8 +9,7 @@ module XenditApi
                     :routes,
                     :created,
                     :updated,
-                    :metadata,
-                    :request_id
+                    :metadata
     end
   end
 end

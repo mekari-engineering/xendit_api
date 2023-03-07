@@ -4,8 +4,7 @@ module XenditApi
   module Model
     class Balance < XenditApi::Model::Base
       attr_accessor :balance,
-                    :payload,
-                    :request_id
+                    :payload
     end
   end
 end

@@ -9,8 +9,7 @@ module XenditApi
                     :source_user_id,
                     :destination_user_id,
                     :status,
-                    :amount,
-                    :request_id
+                    :amount
     end
   end
 end

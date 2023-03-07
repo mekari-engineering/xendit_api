@@ -8,8 +8,7 @@ module XenditApi
                     :amount,
                     :created,
                     :status,
-                    :payload,
-                    :request_id
+                    :payload
 
       attr_writer :qr_code
 
