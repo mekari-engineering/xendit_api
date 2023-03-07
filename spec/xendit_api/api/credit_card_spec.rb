@@ -32,13 +32,17 @@ RSpec.describe XenditApi::Api::CreditCard do
         'created' => '2021-01-22T04:39:20.001Z',
         'id' => '600a56f8e4d6190020220bc7'
       }
+      headers = {
+        'request-id' => '7262070017331640587'
+      }
       params = {
         token: SecureRandom.hex,
         card_cvv: '123',
         external_id: SecureRandom.hex
       }
-      stub_client_post_to(response)
+      stub_client_post_to(headers, response)
       credit_card_response = api_charge.charge(params)
+
       expect(credit_card_response).to be_instance_of XenditApi::Model::CreditCard
     end
 
@@ -68,12 +72,15 @@ RSpec.describe XenditApi::Api::CreditCard do
         'created' => '2021-01-22T04:39:20.001Z',
         'id' => '600a56f8e4d6190020220bc7'
       }
+      headers = {
+        'request-id' => '7262070017331640588'
+      }
       params = {
         token: SecureRandom.hex,
         card_cvv: '123',
         external_id: SecureRandom.hex
       }
-      stub_client_post_to(response)
+      stub_client_post_to(headers, response)
       credit_card_response = api_charge.charge(params)
       expect(credit_card_response).to be_instance_of XenditApi::Model::CreditCard
       expect(credit_card_response.status).to eq 'CAPTURED'
@@ -106,12 +113,15 @@ RSpec.describe XenditApi::Api::CreditCard do
         'id' => '600a56f8e4d6190020220bc7',
         'new_attribute' => 'Hello, world!'
       }
+      headers = {
+        'request-id' => '7262070017331640589'
+      }
       params = {
         token: SecureRandom.hex,
         card_cvv: '123',
         external_id: SecureRandom.hex
       }
-      stub_client_post_to(response)
+      stub_client_post_to(headers, response)
       credit_card_response = api_charge.charge(params)
       expect(credit_card_response).to be_instance_of XenditApi::Model::CreditCard
       expect(credit_card_response.status).to eq 'CAPTURED'
@@ -139,7 +149,7 @@ RSpec.describe XenditApi::Api::CreditCard do
 
   private
 
-  def stub_client_post_to(response)
-    allow_any_instance_of(Faraday::Connection).to receive(:post).and_return(OpenStruct.new(body: response))
+  def stub_client_post_to(headers, response)
+    allow_any_instance_of(Faraday::Connection).to receive(:post).and_return(OpenStruct.new(body: response, headers: headers))
   end
 end

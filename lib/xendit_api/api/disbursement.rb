@@ -7,8 +7,8 @@ module XenditApi
       PATH = '/disbursements'.freeze
 
       def create(params, headers = {})
-        response = client.post(PATH, params, headers)
-        XenditApi::Model::Disbursement.new(response.merge(payload: response.to_json))
+        response = client.post_response(PATH, params, headers)
+        XenditApi::Model::Disbursement.new(response.body.merge(payload: response.body.to_json, request_id: response.headers['request-id']))
       end
 
       def find_by_external_id(external_id, headers = {})

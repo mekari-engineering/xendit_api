@@ -23,6 +23,8 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Request-Id:
+      - '835390137024976621'
       Cache-Control:
       - no-store, no-cache, must-revalidate, proxy-revalidate
       Content-Type:
@@ -59,6 +61,6 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"status":"PENDING","user_id":"596d988e56b5a3c45be75e6e","external_id":"7eef4979-190c-4c89-9fa8-9b78ee26f8c4","amount":15000,"bank_code":"BCA","account_holder_name":"Bob
         Jones","disbursement_description":"sample disbursement","id":"5e981a1a7547f00016613fc3"}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 16 Apr 2020 08:40:58 GMT
 recorded_with: VCR 4.0.0

@@ -17,7 +17,8 @@ module XenditApi
                     :expiration_date,
                     :is_closed,
                     :currency,
-                    :payload
+                    :payload,
+                    :request_id
     end
   end
 end

@@ -23,7 +23,8 @@ RSpec.describe XenditApi::Api::Disbursement do
             bank_code: 'BCA',
             account_holder_name: 'Bob Jones',
             status: 'PENDING',
-            disbursement_description: 'sample disbursement'
+            disbursement_description: 'sample disbursement',
+            request_id: '835390137024976621'
           )
           expect(response.external_id).not_to be_nil
           expect(response.id).not_to be_nil
@@ -50,7 +51,8 @@ RSpec.describe XenditApi::Api::Disbursement do
             bank_code: 'BCA',
             account_holder_name: 'Bob Jones',
             status: 'PENDING',
-            disbursement_description: 'sample disbursement'
+            disbursement_description: 'sample disbursement',
+            request_id: '835390137024976622'
           )
           expect(response.external_id).not_to be_nil
           expect(response.id).not_to be_nil

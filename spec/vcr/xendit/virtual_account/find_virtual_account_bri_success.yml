@@ -20,6 +20,8 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Request-Id:
+      - '2058046740276123322'
       Cache-Control:
       - no-store, no-cache, must-revalidate, proxy-revalidate
       Content-Type:
@@ -56,6 +58,6 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"is_closed":true,"status":"PENDING","currency":"IDR","owner_id":"5ddce91d9c5c2f7670ebf42a","external_id":"sample-mandiri-demo","bank_code":"BRI","merchant_code":"26215","name":"Nobu
         nagawa","account_number":"262159999653354","suggested_amount":100000,"expected_amount":100000,"is_single_use":true,"expiration_date":"2051-03-05T17:00:00.000Z","id":"5e61e9c77f26b138b0580d89"}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 05 May 2020 00:00:00 GMT
 recorded_with: VCR 4.0.0
