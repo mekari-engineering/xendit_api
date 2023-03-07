@@ -7,12 +7,12 @@ module XenditApi
       PATH = '/ewallets'.freeze
 
       def get(params)
-        response = client.get(PATH, params)
+        response = client.get_response(PATH, params)
         XenditApi::Model::Ewallet.new(response.body.merge(request_id: response.headers['request-id']))
       end
 
       def post(params:, ewallet_type:)
-        response = client.post(PATH,
+        response = client.post_response(PATH,
                                external_id: params[:external_id],
                                amount: params[:amount],
                                phone: params[:phone],

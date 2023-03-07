@@ -93,6 +93,11 @@ module XenditApi
 
     def get(url, params = nil, headers = {})
       response = @connection.get(url, params, headers)
+      response.body
+    end
+
+    def get_response(url, params = nil, headers = {})
+      response = @connection.get(url, params, headers)
       response
     end
 
@@ -101,10 +106,26 @@ module XenditApi
         req.headers = headers if headers
         req.body = params
       end
+      response.body
+    end
+
+    def post_response(url, params, headers = {})
+      response = @connection.post(url) do |req|
+        req.headers = headers if headers
+        req.body = params
+      end
       response
     end
 
     def patch(url, params, headers = {})
+      response = @connection.patch(url) do |req|
+        req.headers = headers if headers
+        req.body = params
+      end
+      response.body
+    end
+
+    def patch_response(url, params, headers = {})
       response = @connection.patch(url) do |req|
         req.headers = headers if headers
         req.body = params

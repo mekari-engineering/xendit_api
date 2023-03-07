@@ -8,14 +8,14 @@ module XenditApi
       PATH = '/credit_card_charges'.freeze
 
       def charge(params, headers = {})
-        response = client.post(PATH, params, headers)
+        response = client.post_response(PATH, params, headers)
         credit_card_params = permitted_credit_card_params(response.headers, response.body)
         XenditApi::Model::CreditCard.new(credit_card_params)
       end
 
       def find(id, headers = {})
         find_path = "#{PATH}/#{id}"
-        response = client.get(find_path, nil, headers)
+        response = client.get_response(find_path, nil, headers)
         credit_card_params = permitted_credit_card_params(response.headers, response.body)
         XenditApi::Model::CreditCard.new(credit_card_params)
       end

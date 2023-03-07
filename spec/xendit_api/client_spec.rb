@@ -64,6 +64,19 @@ RSpec.describe XenditApi::Client do
         VCR.use_cassette('xendit/ewallet/ovo/success') do
           client = described_class.new(auth_key)
           response = client.post('/ewallets', params)
+          expect(response).to eq({
+                                   'transaction_date' => '2019-04-07T01:35:46.658Z',
+                                   'amount' => 1000,
+                                   'external_id' => 'nobu@mekari.com',
+                                   'ewallet_type' => 'OVO',
+                                   'business_id' => '12121212'
+                                 })
+        end
+      end
+      it 'returns expected response when using post_response' do
+        VCR.use_cassette('xendit/ewallet/ovo/success') do
+          client = described_class.new(auth_key)
+          response = client.post_response('/ewallets', params)
           expect(response.body).to eq({
                                    'transaction_date' => '2019-04-07T01:35:46.658Z',
                                    'amount' => 1000,
@@ -101,6 +114,21 @@ RSpec.describe XenditApi::Client do
       VCR.use_cassette('xendit/ewallet/ovo/get_complete_payment') do
         client = described_class.new(auth_key)
         response = client.get('/ewallets', external_id: '12345')
+        expect(response).to eq({
+                                 'amount' => 1_000,
+                                 'external_id' => '12345',
+                                 'transaction_date' => '2019-04-07T01:35:46.658Z',
+                                 'business_id' => '12121212',
+                                 'ewallet_type' => 'OVO',
+                                 'status' => 'COMPLETED'
+                               })
+      end
+    end
+
+    it 'returns complete payment when using get_response' do
+      VCR.use_cassette('xendit/ewallet/ovo/get_complete_payment') do
+        client = described_class.new(auth_key)
+        response = client.get_response('/ewallets', external_id: '12345')
         expect(response.body).to eq({
                                  'amount' => 1_000,
                                  'external_id' => '12345',
