@@ -13,6 +13,7 @@ module XenditApi
                       :amount,
                       :paid_amount,
                       :payer_email,
+                      :payment_method,
                       :description,
                       :invoice_url,
                       :expiry_date,
