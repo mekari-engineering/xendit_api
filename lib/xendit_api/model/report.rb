@@ -15,10 +15,6 @@ module XenditApi
                     :business_id,
                     :created,
                     :updated
-
-      attribute :filter do |object|
-        
-      end
     end
   end
 end

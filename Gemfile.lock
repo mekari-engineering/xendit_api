@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    xendit_api (0.1.0)
+    xendit_api (0.2.0)
       faraday (~> 1.0)
       faraday_middleware (~> 1.0)
 
@@ -15,7 +15,7 @@ GEM
     crack (0.4.5)
       rexml
     diff-lcs (1.4.4)
-    faraday (1.10.2)
+    faraday (1.10.3)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -42,7 +42,7 @@ GEM
       faraday (~> 1.0)
     hashdiff (1.0.1)
     method_source (1.0.0)
-    multipart-post (2.2.3)
+    multipart-post (2.3.0)
     parallel (1.20.1)
     parser (3.0.0.0)
       ast (~> 2.4.1)
