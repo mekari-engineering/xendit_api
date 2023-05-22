@@ -125,6 +125,8 @@ module XenditApi
           raise XenditApi::Errors::Disbursement::TemporaryTransferError.new(error_message, json_response)
         when 'INSUFFICIENT_BALANCE'
           raise XenditApi::Errors::Disbursement::NotEnoughBalance.new(error_message, json_response)
+        when 'DATE_RANGE_TOO_BIG'
+          raise XenditApi::Errors::Report::InvalidDateRange.new(error_message, json_response)
         else
           raise XenditApi::Errors::UnknownError.new(error_message, json_response)
         end
