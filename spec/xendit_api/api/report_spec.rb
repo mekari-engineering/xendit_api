@@ -40,7 +40,7 @@ RSpec.describe XenditApi::Api::Report do
 
         expect do
           report_api.create(params)
-        end.to raise_error XenditApi::Errors::Report::FeatureNotAvailable
+        end.to raise_error XenditApi::Errors::RequestForbidden
       end
     end
   end

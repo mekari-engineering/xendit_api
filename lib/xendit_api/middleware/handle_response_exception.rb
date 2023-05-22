@@ -86,9 +86,7 @@ module XenditApi
         when 'MINIMUM_EXPECTED_AMOUNT_ERROR'
           raise XenditApi::Errors::VirtualAccount::MinimumExpectedAmount.new(error_message, json_response)
         when 'REQUEST_FORBIDDEN_ERROR'
-          raise XenditApi::Errors::Report::FeatureNotAvailable.new(error_message, json_response) if env.url.to_s.include?('reports')
-
-          raise XenditApi::Errors::VirtualAccount::RequestForbidden.new(error_message, json_response)
+          raise XenditApi::Errors::RequestForbidden.new(error_message, json_response)
         # credit cards
         when 'INVALID_TOKEN_ID_ERROR'
           raise XenditApi::Errors::CreditCard::ChargeError.new(error_message, json_response)
