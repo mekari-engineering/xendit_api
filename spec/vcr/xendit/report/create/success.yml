@@ -8,7 +8,7 @@ http_interactions:
       string: '{"type":"BALANCE_HISTORY"}'
     headers:
       Authorization:
-      - Basic eG5kX2RldmVsb3BtZW50X0FPUXJ5b1ExSjVTelNGek1FSjI0c1lxV1VEdWNEZmVLVnpqSWJ0ZWdMWUs3dDFZc0J3NEpNbTlIOUxIdm06
+      - Basic 
       Content-Type:
       - application/json
       Accept-Encoding:
