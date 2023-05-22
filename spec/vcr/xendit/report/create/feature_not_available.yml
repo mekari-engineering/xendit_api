@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/reports
+    body:
+      encoding: UTF-8
+      string: '{"type":"BALANCE_HISTORY"}'
+    headers:
+      Authorization:
+      - Basic eG5kX2RldmVsb3BtZW50X0lNN2NzeUc0bTNjeVBPVWJwUG02VU51MHozWmtBZXNGR3dnbXVjdXk4NFBRS1NSS2xuWUdlNllqMkphNVVtQjo=
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 22 May 2023 06:24:28 GMT
+      Etag:
+      - W/"148-tH3W4WaeGkPuFaVmGUxuMA/91BE"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Request-Id:
+      - '5510577167572670002'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_7260_2182539=TJbDMUuXc1SaPQxx2rPAZJwKa2QAAAAAXOOc2V3LpCuKcKWh/OJr9Q==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=EdfbAQsyhx3EKE5EtAof7AAAAACiZ6NLQ8pSj6f7JwLXaTno; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 10-3205758-3205759 nNYN RT(1684736667265 20) q(0 0 6 0) r(9 9) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"REQUEST_FORBIDDEN_ERROR","message":"The API key is forbidden
+        to perform this request. This is usually because the API key doesn''t have
+        sufficient permissions to access the API. Check the required permissions to
+        access this API in the API Reference and adjust your API key permission accordingly
+        in the Dashboard"}'
+  recorded_at: Mon, 22 May 2023 06:24:28 GMT
+recorded_with: VCR 6.0.0
