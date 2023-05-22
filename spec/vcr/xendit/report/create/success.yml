@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.xendit.co/reports
+    body:
+      encoding: UTF-8
+      string: '{"type":"BALANCE_HISTORY"}'
+    headers:
+      Authorization: FILTERED_AUTH_TOKEN
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 22 May 2023 08:14:21 GMT
+      Etag:
+      - W/"140-IihD2ityro7La9jfgsp8g/dhuRQ"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Rate-Limit-Limit:
+      - '3000'
+      Rate-Limit-Remaining:
+      - '2998'
+      Rate-Limit-Reset:
+      - '19.546'
+      Request-Id:
+      - '7230865280938256599'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_7260_2182539=Va1lUJ/5nxTmLSxx2rPAZF0ka2QAAAAAVU4JuQXF+w+LlSSOapFmyA==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539=ECQZJggkMShyXxwatAof7AAAAAD8esXnVl+9m/ii6H+W1P3a; path=/; Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 18-63598865-63025188 pNYN RT(1684743259983 13) q(0 0 0 -1) r(12 12) U6
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"report_a832c748-09f8-407e-ae01-0b56aa524113","type":"BALANCE_HISTORY","status":"PENDING","filter":{"from":"2023-05-21T08:14:21.372Z","to":"2023-05-22T08:14:21.372Z"},"format":"CSV","currency":"IDR","business_id":"596d988e56b5a3c45be75e6e","created":"2023-05-22T08:14:21.371Z","updated":"2023-05-22T08:14:21.371Z"}'
+  recorded_at: Mon, 22 May 2023 08:14:21 GMT
+recorded_with: VCR 6.0.0

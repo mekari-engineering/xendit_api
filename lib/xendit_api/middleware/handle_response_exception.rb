@@ -86,7 +86,7 @@ module XenditApi
         when 'MINIMUM_EXPECTED_AMOUNT_ERROR'
           raise XenditApi::Errors::VirtualAccount::MinimumExpectedAmount.new(error_message, json_response)
         when 'REQUEST_FORBIDDEN_ERROR'
-          raise XenditApi::Errors::VirtualAccount::RequestForbidden.new(error_message, json_response)
+          raise XenditApi::Errors::RequestForbidden.new(error_message, json_response)
         # credit cards
         when 'INVALID_TOKEN_ID_ERROR'
           raise XenditApi::Errors::CreditCard::ChargeError.new(error_message, json_response)
@@ -125,6 +125,8 @@ module XenditApi
           raise XenditApi::Errors::Disbursement::TemporaryTransferError.new(error_message, json_response)
         when 'INSUFFICIENT_BALANCE'
           raise XenditApi::Errors::Disbursement::NotEnoughBalance.new(error_message, json_response)
+        when 'DATE_RANGE_TOO_BIG'
+          raise XenditApi::Errors::Report::InvalidDateRange.new(error_message, json_response)
         else
           raise XenditApi::Errors::UnknownError.new(error_message, json_response)
         end

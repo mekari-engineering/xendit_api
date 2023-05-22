@@ -7,8 +7,10 @@ require 'vcr'
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/vcr/'
   config.hook_into :webmock
-  VCR.configure do |c|
-    c.filter_sensitive_data('<AUTH_KEY>') { 'FILTERED_AUTH_KEY' }
+  # Replace <AUTH_KEY> with your actual secret key when doing testing
+  config.filter_sensitive_data('<AUTH_KEY>', 'FILTERED_AUTH_KEY')
+  config.before_record do |interaction|
+    interaction.request.headers['Authorization'] = 'FILTERED_AUTH_KEY'
   end
 end
 
