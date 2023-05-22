@@ -91,6 +91,10 @@ module XenditApi
       @fee_rule || XenditApi::Api::FeeRule.new(self)
     end
 
+    def report
+      @report || XenditApi::Api::Report.new(self)
+    end
+
     def get(url, params = nil, headers = {})
       response = @connection.get(url, params, headers)
       response.body
