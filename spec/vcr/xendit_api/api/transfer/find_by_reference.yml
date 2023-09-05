@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/transfers/reference=Automation-ref-1692074901
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.3
+      Authorization: FILTERED_AUTH_KEY
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Tue, 05 Sep 2023 07:08:20 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Rate-Limit-Limit:
+      - '3000'
+      Rate-Limit-Remaining:
+      - '2999'
+      Rate-Limit-Reset:
+      - '60'
+      Request-Id:
+      - '3543436896965015015'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      Surrogate-Control:
+      - no-store
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - incap_ses_7245_2182539=1QRMCSowBR7olqu0n2mLZOTT9mQAAAAAzMn0Fp1EL6jPYq+Ic6FaNQ==;
+        path=/; Domain=.xendit.co
+      - nlbi_2182539_2037854=sQD5B7gYhWa6q8titAof7AAAAADU2AP76mssmxLVUOFjo+5G; path=/;
+        Domain=.xendit.co
+      X-Cdn:
+      - Imperva
+      Transfer-Encoding:
+      - chunked
+      X-Iinfo:
+      - 16-63530251-63529813 pNYy RT(1693897700416 95) q(0 0 0 -1) r(1 1) U16
+    body:
+      encoding: ASCII-8BIT
+      string: '{"transfer_id":"76f3df37-42c0-416d-ad12-ad4a83a5016c","source_user_id":"64b11b9ced2bdbd698bb8042","destination_user_id":"64be49141c09d491c945e056","amount":10000,"reference":"Automation-ref-1692074901","status":"SUCCESSFUL","created":"2023-08-15T04:48:21.724061Z"}
+
+        '
+  recorded_at: Tue, 05 Sep 2023 07:08:20 GMT
+recorded_with: VCR 6.0.0
