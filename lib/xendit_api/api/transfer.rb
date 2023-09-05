@@ -10,6 +10,11 @@ module XenditApi
         response = client.post(PATH, params)
         XenditApi::Model::Transfer.new(response)
       end
+
+      def find_by_reference(reference)
+        response = client.get("#{PATH}/reference=#{reference}")
+        XenditApi::Model::Transfer.new(response)
+      end
     end
   end
 end
