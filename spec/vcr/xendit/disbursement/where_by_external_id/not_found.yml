@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.xendit.co/disbursements/?external_id=d666
+    uri: https://api.xendit.co/disbursements?external_id=d666
     body:
       encoding: US-ASCII
       string: ''
