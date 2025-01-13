@@ -4,6 +4,7 @@ module XenditApi
       class ResponseError < XenditApi::Errors::ResponseError; end
 
       class ChargeError < ResponseError; end
+      class CreditCardChargeNotFoundError < ResponseError; end
 
       class CardDeclined < ResponseError
         def message
