@@ -147,9 +147,89 @@ RSpec.describe XenditApi::Api::CreditCard do
     end
   end
 
+  describe '#find' do
+    it 'returns expected credit card model' do
+      api_find = described_class.new(client)
+      response = {
+        'status' => 'CAPTURED',
+        'authorized_amount' => 500_000,
+        'capture_amount' => 500_000,
+        'currency' => 'IDR',
+        'credit_card_token_id' => '600a56e7e4d6190020220bc4',
+        'business_id' => '596d988e56b5a3c45be75e6e',
+        'merchant_id' => 'xendit_ctv_agg',
+        'merchant_reference_code' => '600a56e6a1ba47c821f21830',
+        'external_id' => 'e9035d73-4069-4235-8eea-7dd0eb614595',
+        'eci' => '05',
+        'charge_type' => 'SINGLE_USE_TOKEN',
+        'masked_card_number' => '400000XXXXXX0002',
+        'card_brand' => 'VISA',
+        'card_type' => 'CREDIT',
+        'xid' => 'S1lNYXFSMjZWQ1lGV21JUzRRUjA=',
+        'cavv' => 'AAABAWFlmQAAAABjRWWZEEFgFz+=',
+        'descriptor' => 'XENDIT*JURNAL',
+        'authorization_id' => '600a56f7e4d6190020220bc6',
+        'bank_reconciliation_id' => '6112903593156915303012',
+        'cvn_code' => 'M',
+        'approval_code' => '831000',
+        'created' => '2021-01-22T04:39:20.001Z',
+        'id' => '600a56f8e4d6190020220bc7'
+      }
+      headers = {
+        'request-id' => '7262070017331640590'
+      }
+      id = '600a56f8e4d6190020220bc7'
+      stub_client_get_to(headers, response)
+      credit_card_response = api_find.find(id)
+
+      expect(credit_card_response).to be_instance_of XenditApi::Model::CreditCard
+    end
+
+    it 'returns expected credit card model with specified id type' do
+      api_find = described_class.new(client)
+      response = {
+        'status' => 'CAPTURED',
+        'authorized_amount' => 500_000,
+        'capture_amount' => 500_000,
+        'currency' => 'IDR',
+        'credit_card_token_id' => '600a56e7e4d6190020220bc4',
+        'business_id' => '596d988e56b5a3c45be75e6e',
+        'merchant_id' => 'xendit_ctv_agg',
+        'merchant_reference_code' => '600a56e6a1ba47c821f21830',
+        'external_id' => 'e9035d73-4069-4235-8eea-7dd0eb614595',
+        'eci' => '05',
+        'charge_type' => 'SINGLE_USE_TOKEN',
+        'masked_card_number' => '400000XXXXXX0002',
+        'card_brand' => 'VISA',
+        'card_type' => 'CREDIT',
+        'xid' => 'S1lNYXFSMjZWQ1lGV21JUzRRUjA=',
+        'cavv' => 'AAABAWFlmQAAAABjRWWZEEFgFz+=',
+        'descriptor' => 'XENDIT*JURNAL',
+        'authorization_id' => '600a56f7e4d6190020220bc6',
+        'bank_reconciliation_id' => '6112903593156915303012',
+        'cvn_code' => 'M',
+        'approval_code' => '831000',
+        'created' => '2021-01-22T04:39:20.001Z',
+        'id' => '600a56f8e4d6190020220bc7'
+      }
+      headers = {
+        'request-id' => '7262070017331640590'
+      }
+      id = '600a56f8e4d6190020220bc7'
+      stub_client_get_to(headers, response)
+      credit_card_response = api_find.find(id, {}, 'external')
+
+      expect(credit_card_response).to be_instance_of XenditApi::Model::CreditCard
+    end
+  end
+
   private
 
   def stub_client_post_to(headers, response)
     allow_any_instance_of(Faraday::Connection).to receive(:post).and_return(OpenStruct.new(body: response, headers: headers))
+  end
+
+  def stub_client_get_to(headers, response)
+    allow_any_instance_of(Faraday::Connection).to receive(:get).and_return(OpenStruct.new(body: response, headers: headers))
   end
 end
