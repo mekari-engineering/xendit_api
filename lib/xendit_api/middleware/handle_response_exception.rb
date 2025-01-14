@@ -90,6 +90,8 @@ module XenditApi
         # credit cards
         when 'INVALID_TOKEN_ID_ERROR'
           raise XenditApi::Errors::CreditCard::ChargeError.new(error_message, json_response)
+        when 'CREDIT_CARD_CHARGE_NOT_FOUND_ERROR'
+          raise XenditApi::Errors::CreditCard::CreditCardChargeNotFoundError.new(error_message, json_response)
         # disbursements
         when 'DISBURSEMENT_DESCRIPTION_NOT_FOUND_ERROR'
           raise XenditApi::Errors::Disbursement::DescriptionNotFound.new(error_message, json_response)

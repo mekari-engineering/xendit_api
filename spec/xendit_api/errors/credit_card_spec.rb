@@ -54,4 +54,10 @@ RSpec.describe XenditApi::Errors::CreditCard do
       expect(described_class::InvalidCvn.superclass).to eq(XenditApi::Errors::CreditCard::ResponseError)
     end
   end
+
+  describe 'CreditCardChargeNotFoundError' do
+    it 'is expected parent class' do
+      expect(described_class::CreditCardChargeNotFoundError.superclass).to eq(XenditApi::Errors::CreditCard::ResponseError)
+    end
+  end
 end
