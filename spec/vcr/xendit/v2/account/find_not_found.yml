@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/v2/accounts/6395b67e1d1c372abc34bde9
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.3
+      Authorization: FILTERED_AUTH_KEY
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Thu, 13 Feb 2025 10:00:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Etag:
+      - W/"61-Wh0h20CIysGLA6eMlsZT5Ui8kSU"
+      Rate-Limit-Limit:
+      - '60'
+      Rate-Limit-Remaining:
+      - '58'
+      Rate-Limit-Reset:
+      - '59.871'
+      Request-Id:
+      - 67adc2b6000000001ce271b9c03870f1
+      Vary:
+      - Origin
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=bJClEBGBamtQD4tc.2seSOcgT_.aKdZQSuZ61XOy5cU-1739440822-1.0.1.1-TwF5AS_8TUWgDUKghERCTHQUwbydJq6PDj9tHRzfDdN_vDRGWRS.JRgGBX2slZoGDeKG.Ku3UcXM74BZYfmB0Q;
+        path=/; expires=Thu, 13-Feb-25 10:30:22 GMT; domain=.xendit.co; HttpOnly;
+        Secure; SameSite=None
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9113f89209459daa-SIN
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code":"DATA_NOT_FOUND","message":"Account with this ID does
+        not exist on your Platform."}'
+  recorded_at: Thu, 13 Feb 2025 10:00:22 GMT
+recorded_with: VCR 6.1.0
