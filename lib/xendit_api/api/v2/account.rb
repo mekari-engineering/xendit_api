@@ -12,6 +12,12 @@ module XenditApi
 
           XenditApi::Model::V2::Account.new(response)
         end
+
+        def find(id)
+          response = client.get(PATH + "/#{id}")
+
+          XenditApi::Model::V2::Account.new(response)
+        end
       end
     end
   end

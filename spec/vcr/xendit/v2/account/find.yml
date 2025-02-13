@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.xendit.co/v2/accounts/6395b67e1d1c372abc34bde8
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.3
+      Authorization: FILTERED_AUTH_KEY
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 13 Feb 2025 10:00:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Etag:
+      - W/"fa-5BJrm+Edvg8fOi0rtLp4Ge2hMIk"
+      Rate-Limit-Limit:
+      - '60'
+      Rate-Limit-Remaining:
+      - '59'
+      Rate-Limit-Reset:
+      - '60'
+      Request-Id:
+      - 67adc2b50000000032d1965e43314967
+      Vary:
+      - Origin
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=F6bFgolimwpfI2goeR7U7DrzHipBpz2wewTQEya_hys-1739440821-1.0.1.1-6qanwerwPl6mtX6StREfsNpMQx115pJ9X2eEcbeVWXVwi4TO349eza34VlfGCoS3m0NsnHyIXQLx5Fz5Bi8MgA;
+        path=/; expires=Thu, 13-Feb-25 10:30:21 GMT; domain=.xendit.co; HttpOnly;
+        Secure; SameSite=None
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9113f8913e809daa-SIN
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"6395b67e1d1c372abc34bde8","created":"2022-12-11T10:52:46.586Z","updated":"2022-12-11T10:52:48.272Z","email":"philip.lambok+testingapi@mekari.com","type":"OWNED","public_profile":{"business_name":"Philip
+        Lambok"},"country":"ID","status":"LIVE"}'
+  recorded_at: Thu, 13 Feb 2025 10:00:21 GMT
+recorded_with: VCR 6.1.0
