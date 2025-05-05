@@ -8,15 +8,17 @@ module XenditApi
         PATH = '/v2/invoices'.freeze
 
         def get(invoice_id)
-          response = client.get("#{PATH}/#{invoice_id}")
+          headers = { 'Path-Group' => "#{PATH}/{invoice_id}" }
+          response = client.get("#{PATH}/#{invoice_id}", nil, headers)
 
           XenditApi::Model::V2::Invoice.new(response)
         end
 
         def get_by_external_id(external_id)
+          headers = { 'Path-Group' => PATH }
           response = client.get(PATH, {
                                   external_id: external_id
-                                })
+                                }, headers)
 
           response.map do |invoice|
             XenditApi::Model::V2::Invoice.new(invoice)
@@ -24,7 +26,8 @@ module XenditApi
         end
 
         def post(params:)
-          response = client.post(PATH, params)
+          headers = { 'Path-Group' => PATH }
+          response = client.post(PATH, params, headers)
 
           XenditApi::Model::V2::Invoice.new(response)
         end

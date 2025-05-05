@@ -8,7 +8,8 @@ module XenditApi
         PATH = '/v2/accounts'.freeze
 
         def create(params)
-          response = client.post(PATH, params)
+          headers = { 'Path-Group' => "#{PATH}/{id}" }
+          response = client.post(PATH, params, headers)
 
           XenditApi::Model::V2::Account.new(response)
         end

@@ -7,6 +7,7 @@ module XenditApi
       PATH = '/reports'.freeze
 
       def create(params, headers = {})
+        headers = headers.merge({ 'Path-Group' => PATH })
         response = client.post(PATH, params, headers)
         XenditApi::Model::Report.new(response)
       end

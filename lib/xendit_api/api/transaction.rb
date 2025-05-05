@@ -8,6 +8,7 @@ module XenditApi
 
       def list(query_string = '', headers = {})
         transactions_path = query_string.to_s.empty? ? PATH : "#{PATH}?#{query_string}"
+        headers = headers.merge({ 'Path-Group' => PATH })
         response = @client.get(transactions_path, nil, headers)
 
         data = response['data'].map do |transaction|

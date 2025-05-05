@@ -11,6 +11,7 @@ module XenditApi
       def get(account_type = nil, currency = CURRENCY, headers = {})
         account_type = account_type.nil? ? CASH : account_type
         get_path = "#{PATH}?account_type=#{account_type}&currency=#{currency}"
+        headers = headers.merge({ 'Path-Group' => PATH })
         response = @client.get(get_path, nil, headers)
         XenditApi::Model::Balance.new(response.merge(payload: response.to_json))
       end
