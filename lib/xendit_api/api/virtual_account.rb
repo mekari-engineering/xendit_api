@@ -11,6 +11,7 @@ module XenditApi
         params[:is_single_use] = true if params[:is_single_use].nil?
         params[:expected_amount] = params[:amount] unless params[:amount].nil?
 
+        headers = headers.merge({ 'Path-Group' => PATH })
         response = client.post_response(PATH, params, headers)
         virtual_account_params = permitted_virtual_account_params(response.headers, response.body)
         XenditApi::Model::VirtualAccount.new(virtual_account_params)
@@ -21,6 +22,7 @@ module XenditApi
         one_year = 31_556_952
         expired_date = Time.now - one_year
         params = { expiration_date: expired_date.iso8601 }
+        headers = headers.merge({ 'Path-Group' => "#{PATH}/{id}" })
         response = client.patch(update_path, params, headers)
         virtual_account_params = permitted_virtual_account_params({}, response)
         XenditApi::Model::VirtualAccount.new(virtual_account_params)
@@ -28,6 +30,7 @@ module XenditApi
 
       def update(id, params, headers = {})
         update_path = "#{PATH}/#{id}"
+        headers = { 'Path-Group' => "#{PATH}/{id}" }.merge(headers)
         response = client.patch(update_path, params, headers)
         virtual_account_response = permitted_virtual_account_params({}, response)
         XenditApi::Model::VirtualAccount.new(virtual_account_response)
@@ -35,6 +38,7 @@ module XenditApi
 
       def find(id, headers = {})
         find_path = "#{PATH}/#{id}"
+        headers = { 'Path-Group' => "#{PATH}/{id}" }.merge(headers)
         response = client.get(find_path, nil, headers)
         virtual_account_params = permitted_virtual_account_params({}, response)
         XenditApi::Model::VirtualAccount.new(virtual_account_params)

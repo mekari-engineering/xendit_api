@@ -7,12 +7,14 @@ module XenditApi
       PATH = '/transfers'.freeze
 
       def create(params)
-        response = client.post(PATH, params)
+        headers = { 'Path-Group' => PATH }
+        response = client.post(PATH, params, headers)
         XenditApi::Model::Transfer.new(response)
       end
 
       def find_by_reference(reference)
-        response = client.get("#{PATH}/reference=#{reference}")
+        headers = { 'Path-Group' => "#{PATH}/reference" }
+        response = client.get("#{PATH}/reference=#{reference}", nil, headers)
         XenditApi::Model::Transfer.new(response)
       end
     end

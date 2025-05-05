@@ -7,7 +7,8 @@ module XenditApi
       PATH = '/fee_rules'.freeze
 
       def create(params)
-        response = client.post(PATH, params)
+        headers = { 'Path-Group' => PATH }
+        response = client.post(PATH, params, headers)
         XenditApi::Model::FeeRule.new(response)
       end
     end

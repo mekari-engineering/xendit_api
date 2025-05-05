@@ -8,6 +8,7 @@ module XenditApi
       PATH = '/credit_card_charges'.freeze
 
       def charge(params, headers = {})
+        headers = headers.merge({ 'Path-Group' => PATH })
         response = client.post(PATH, params, headers)
         credit_card_params = permitted_credit_card_params(response)
         XenditApi::Model::CreditCard.new(credit_card_params)
@@ -16,6 +17,7 @@ module XenditApi
       def find(id, headers = {}, id_type = nil)
         find_path = "#{PATH}/#{id}"
         find_path = "#{find_path}?id_type=#{id_type}" unless id_type.nil?
+        headers = headers.merge({ 'Path-Group' => "#{PATH}/{id}" })
         response = client.get(find_path, nil, headers)
         credit_card_params = permitted_credit_card_params(response)
         XenditApi::Model::CreditCard.new(credit_card_params)

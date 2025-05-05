@@ -23,6 +23,7 @@ module XenditApi
       @connection = Faraday.new(url: BASE_URL) do |connection|
         connection.request :basic_auth, authorization, ''
         connection.request :json
+        connection.request :instrumentation, name: options[:instrumentation_name] if options[:instrumentation_name]
         connection.response :json
         connection.options.timeout = options[:timeout] if options.key?(:timeout)
 
