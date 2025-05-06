@@ -38,7 +38,6 @@ module XenditApi
                 log.filter(/(#{filter}":\s*")(.*?)(")/i, '\1[FILTERED]\3')
                 log.filter(/(#{filter}":\s*)(\d+(?:\.\d+)?|true|false)/i, '\1[FILTERED]')
                 log.filter(/(#{filter}":\s*)(\[.*?\])/i, '\1[FILTERED]')
-                log.filter(%r{(#{filter}=)([\w+-.?@:/]+)}, '\1[FILTERED]')
               end
             end
           end
