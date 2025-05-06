@@ -16,6 +16,7 @@ require 'xendit_api/api/report'
 require 'logger'
 
 module XenditApi
+  # rubocop:disable Metrics/ClassLength
   class Client
     BASE_URL = 'https://api.xendit.co'.freeze
 
@@ -33,16 +34,9 @@ module XenditApi
             filtered_logs = options[:filtered_logs]
             if filtered_logs.respond_to?(:each)
               filtered_logs.each do |filter|
-                # Fix URL parameter style filtering
                 log.filter(%r{(#{filter}=)([\w+-.?@:/]+)}, '\1[FILTERED]')
-
-                # Fix JSON double-quoted style with proper spacing
                 log.filter(/(#{filter}":\s*")(.*?)(")/i, '\1[FILTERED]\3')
-
-                # Fix JSON numeric/boolean values (no quotes)
                 log.filter(/(#{filter}":\s*)(\d+(?:\.\d+)?|true|false)/i, '\1[FILTERED]')
-
-                # Fix array values in JSON
                 log.filter(/(#{filter}":\s*)(\[.*?\])/i, '\1[FILTERED]')
               end
             end
@@ -148,4 +142,5 @@ module XenditApi
       logger_option || XenditApi.configuration&.logger
     end
   end
+  # rubocop:enable Metrics/ClassLength
 end
