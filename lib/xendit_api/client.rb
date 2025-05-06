@@ -16,6 +16,7 @@ require 'xendit_api/api/report'
 require 'logger'
 
 module XenditApi
+  # rubocop:disable Metrics/ClassLength
   class Client
     BASE_URL = 'https://api.xendit.co'.freeze
 
@@ -142,4 +143,5 @@ module XenditApi
       logger_option || XenditApi.configuration&.logger
     end
   end
+  # rubocop:enable Metrics/ClassLength
 end
