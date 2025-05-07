@@ -20,13 +20,28 @@ module XenditApi
     def to_hash
       return @data if @mask_params.empty? && @full_hide_params.empty?
 
-      filter(@data)
+      case @data
+      when Array
+        @data.map do |item|
+          if item.is_a?(Hash)
+            XenditApi::JsonMasker.new(item, @options).to_hash
+          else
+            item
+          end
+        end
+      when Hash
+        filter(@data)
+      else
+        @data
+      end
     end
 
     private
 
     # rubocop:disable Style/CaseLikeIf
     def filter(output)
+      return output unless output.is_a?(Hash)
+
       output.each do |key, value|
         output[key] = if value.is_a?(Hash)
                         XenditApi::JsonMasker.new(value, @options).to_hash

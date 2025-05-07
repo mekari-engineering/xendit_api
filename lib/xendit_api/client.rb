@@ -30,12 +30,10 @@ module XenditApi
 
         logger = find_logger(options[:logger])
         if logger
-          connection.response :logger, logger, { headers: false, bodies: true, errors: true } do |_log|
-            faraday.response :logger, {
-              full_hide_params: options[:filtered_logs] || [],
-              mask_params: options[:mask_params] || []
-            }, formatter: FaradayLogFormatter
-          end
+          connection.response :logger, logger,
+                              full_hide_params: options[:filtered_logs] || [],
+                              mask_params: options[:mask_params] || [],
+                              formatter: XenditApi::Middleware::FaradayLogFormatter
         end
         connection.use XenditApi::Middleware::HandleResponseException, logger
         connection.adapter Faraday.default_adapter
