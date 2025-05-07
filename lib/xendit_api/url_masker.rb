@@ -2,30 +2,30 @@ module XenditApi
   class UrlMasker
     def self.mask(url, options = {})
       return url unless url.is_a?(String)
-      return url if url.blank?
-  
+      return url if url.empty?
+
       url = URI.parse(url)
-      UrlMasker.new(url, options).to_s
+      XenditApi::UrlMasker.new(url, options).to_s
     rescue URI::Error
       url
     end
-  
+
     def initialize(url, options = {})
       @url = url
       @mask_params = options[:mask_params] || []
       @full_hide_params = options[:full_hide_params] || []
     end
-  
+
     def to_s
       filter(@url)
     end
-  
+
     private
-  
+
     def filter(url)
       query_params = URI.decode_www_form(url.query || '').to_h
-      return url.to_s if query_params.blank?
-  
+      return url.to_s if query_params.empty?
+
       query_params.each do |key, value|
         if @full_hide_params.include?(key)
           query_params[key] = '*****'
@@ -35,7 +35,7 @@ module XenditApi
             query_params[key] = '*****'
             next
           end
-  
+
           unmasked = value[0..2]
           masked = value[3..-1].gsub(/./, '*')
           query_params[key] = "#{unmasked}#{masked}"
