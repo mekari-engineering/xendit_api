@@ -42,7 +42,7 @@ module XenditApi
 
     private
 
-    # rubocop:disable Style/CaseLikeIf, Metrics/PerceivedComplexity
+    # rubocop:disable Style/CaseLikeIf
     def filter(output)
       output.each do |key, value|
         output[key] = if value.is_a?(Hash)
@@ -60,7 +60,7 @@ module XenditApi
                       end
       end
     end
-    # rubocop:enable Style/CaseLikeIf, Metrics/PerceivedComplexity
+    # rubocop:enable Style/CaseLikeIf
 
     def mask_value(key, value)
       return '*****' if @full_hide_params.include?(key)
