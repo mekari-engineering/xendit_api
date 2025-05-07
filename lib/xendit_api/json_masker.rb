@@ -5,7 +5,7 @@ module XenditApi
       return json if json.empty?
 
       output = JSON.parse(json)
-      XenditApi::JsonMasker.new(output, options).to_hash
+      XenditApi::JsonMasker.new(output, options).to_masked
     rescue JSON::ParserError
       json
     end
@@ -17,7 +17,7 @@ module XenditApi
       @full_hide_params = options[:full_hide_params] || []
     end
 
-    def to_hash
+    def to_masked
       return @data if @mask_params.empty? && @full_hide_params.empty?
 
       case @data
@@ -36,12 +36,14 @@ module XenditApi
       end
     end
 
+    def to_hash
+      filter(@data)
+    end
+
     private
 
-    # rubocop:disable Style/CaseLikeIf
+    # rubocop:disable Style/CaseLikeIf, Metrics/PerceivedComplexity
     def filter(output)
-      return output unless output.is_a?(Hash)
-
       output.each do |key, value|
         output[key] = if value.is_a?(Hash)
                         XenditApi::JsonMasker.new(value, @options).to_hash
@@ -58,7 +60,7 @@ module XenditApi
                       end
       end
     end
-    # rubocop:enable Style/CaseLikeIf
+    # rubocop:enable Style/CaseLikeIf, Metrics/PerceivedComplexity
 
     def mask_value(key, value)
       return '*****' if @full_hide_params.include?(key)
