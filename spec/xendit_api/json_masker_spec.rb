@@ -51,6 +51,42 @@ RSpec.describe XenditApi::JsonMasker do
       expect(output).to eq(masked)
     end
 
+    it 'returns expected when data is an array and attribute symbol' do
+      parsed = [
+        {
+          card_number: '123456789012',
+          cvv: '123',
+          address: 'Jakarta',
+          email: 'hello@email.com'
+        },
+        {
+          card_number: '123456789012',
+          cvv: '123',
+          address: 'Jakarta',
+          email: 'hello@email.com'
+        }
+      ]
+
+      masked = [
+        {
+          'card_number' => '*****',
+          'cvv' => '*****',
+          'address' => 'Jakarta',
+          'email' => 'hel************'
+        },
+        {
+          'card_number' => '*****',
+          'cvv' => '*****',
+          'address' => 'Jakarta',
+          'email' => 'hel************'
+        }
+      ]
+
+      output = described_class.mask(parsed.to_json, mask_params: %i[email], full_hide_params: %i[card_number cvv])
+
+      expect(output).to eq(masked)
+    end
+
     it 'returns expected with valid JSON' do
       parsed = {
         card_number: '1234567890123456',

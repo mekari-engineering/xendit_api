@@ -63,8 +63,10 @@ module XenditApi
     # rubocop:enable Style/CaseLikeIf
 
     def mask_value(key, value)
-      return '*****' if @full_hide_params.include?(key)
-      return value if @mask_params.include?(key) == false
+      full_hide_params_to_s = @full_hide_params.map(&:to_s)
+      return '*****' if full_hide_params_to_s.include?(key.to_s)
+      mask_params_to_s = @mask_params.map(&:to_s)
+      return value if mask_params_to_s.include?(key.to_s) == false
 
       value = value.to_s
       return '*****' if value.length <= 5
