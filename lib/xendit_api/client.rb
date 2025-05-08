@@ -1,5 +1,6 @@
 require 'faraday_middleware'
 require 'xendit_api/middleware/handle_response_exception'
+require 'xendit_api/middleware/faraday_log_formatter'
 require 'xendit_api/api/virtual_account'
 require 'xendit_api/api/ewallet'
 require 'xendit_api/api/credit_card'
@@ -16,7 +17,6 @@ require 'xendit_api/api/report'
 require 'logger'
 
 module XenditApi
-  # rubocop:disable Metrics/ClassLength
   class Client
     BASE_URL = 'https://api.xendit.co'.freeze
 
@@ -30,17 +30,10 @@ module XenditApi
 
         logger = find_logger(options[:logger])
         if logger
-          connection.response :logger, logger, { headers: false, bodies: true, errors: true } do |log|
-            filtered_logs = options[:filtered_logs]
-            if filtered_logs.respond_to?(:each)
-              filtered_logs.each do |filter|
-                log.filter(%r{(#{filter}=)([\w+-.?@:/]+)}, '\1[FILTERED]')
-                log.filter(/(#{filter}":\s*")(.*?)(")/i, '\1[FILTERED]\3')
-                log.filter(/(#{filter}":\s*)(\d+(?:\.\d+)?|true|false)/i, '\1[FILTERED]')
-                log.filter(/(#{filter}":\s*)(\[.*?\])/i, '\1[FILTERED]')
-              end
-            end
-          end
+          connection.response :logger, logger,
+                              full_hide_params: options[:filtered_logs] || [],
+                              mask_params: options[:mask_params] || [],
+                              formatter: XenditApi::Middleware::FaradayLogFormatter
         end
         connection.use XenditApi::Middleware::HandleResponseException, logger
         connection.adapter Faraday.default_adapter
@@ -142,5 +135,4 @@ module XenditApi
       logger_option || XenditApi.configuration&.logger
     end
   end
-  # rubocop:enable Metrics/ClassLength
 end
