@@ -35,7 +35,7 @@ end
 client = XenditApi::Client.new('secret_key')
 
 # when you need to filter logs due to PII or security
-client = XenditAPi::Client.new('secret_key', filtered_logs: [:card_cvv, :expected_amount], mask_logs: [:email, :full_name])
+client = XenditAPi::Client.new('secret_key', filtered_logs: [:card_cvv, :expected_amount], mask_params: [:email, :full_name])
 ```
 
 When you need to filter logs, also make sure you already inject the logger object first, because we don't provide any default logger object. If you writing in Rails, you could use `Rails.logger`. 
