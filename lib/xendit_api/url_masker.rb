@@ -22,6 +22,7 @@ module XenditApi
 
     private
 
+    # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
     def filter(url)
       query_params = URI.decode_www_form(url.query || '').to_h
       return url.to_s if query_params.empty?
@@ -49,5 +50,6 @@ module XenditApi
       masked_url.query = masked_query
       masked_url.to_s
     end
+    # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   end
 end

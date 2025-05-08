@@ -65,6 +65,7 @@ module XenditApi
     def mask_value(key, value)
       full_hide_params_to_s = @full_hide_params.map(&:to_s)
       return '*****' if full_hide_params_to_s.include?(key.to_s)
+
       mask_params_to_s = @mask_params.map(&:to_s)
       return value if mask_params_to_s.include?(key.to_s) == false
 
