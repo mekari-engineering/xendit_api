@@ -27,9 +27,11 @@ module XenditApi
       return url.to_s if query_params.empty?
 
       query_params.each do |key, value|
-        if @full_hide_params.include?(key)
+        full_hide_params_to_s = @full_hide_params.map(&:to_s)
+        mask_params_to_s = @mask_params.map(&:to_s)
+        if full_hide_params_to_s.include?(key)
           query_params[key] = '*****'
-        elsif @mask_params.include?(key)
+        elsif mask_params_to_s.include?(key)
           value = value.to_s
           if value.length <= 5
             query_params[key] = '*****'

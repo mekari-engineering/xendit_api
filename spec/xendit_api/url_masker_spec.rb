@@ -13,6 +13,16 @@ RSpec.describe XenditApi::UrlMasker do
       expect(described_class.mask(url, options)).to eq(expected)
     end
 
+    it 'returns expected with valid URL with symbol params' do
+      url = 'https://example.com?token=1234567890123456&cvv=123&other_param=value&account_number=123456789&bank=bca'
+      expected = 'https://example.com?token=*****&cvv=*****&other_param=value&account_number=123******&bank=*****'
+      options = {
+        full_hide_params: %i[token cvv],
+        mask_params: %i[account_number bank]
+      }
+      expect(described_class.mask(url, options)).to eq(expected)
+    end
+
     it 'returns expected with empty URL' do
       url = ''
       expected = ''
