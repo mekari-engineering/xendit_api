@@ -13,6 +13,7 @@ require 'xendit_api/api/v2/account'
 require 'xendit_api/api/transfer'
 require 'xendit_api/api/transaction'
 require 'xendit_api/api/fee_rule'
+require 'xendit_api/api/split_rule'
 require 'xendit_api/api/report'
 require 'logger'
 
@@ -86,6 +87,10 @@ module XenditApi
 
     def fee_rule
       @fee_rule || XenditApi::Api::FeeRule.new(self)
+    end
+
+    def split_rule
+      @split_rule ||= XenditApi::Api::SplitRule.new(self)
     end
 
     def report
