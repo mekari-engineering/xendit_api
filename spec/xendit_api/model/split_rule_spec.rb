@@ -166,7 +166,7 @@ RSpec.describe XenditApi::Model::SplitRule do
           id: 'sr_unknown',
           name: 'Split Rule with Unknown',
           unknown_attribute: 'should be ignored',
-          another_unknown: 12345
+          another_unknown: 12_345
         }
       end
 
